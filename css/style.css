@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Katibeh&display=swap');
+
+:root{
+    --morado:hsl(262, 100%, 68%);
+    --guinda:#910039;
+    --verde:#008876;
+    --verde-oscuro:#006153;
+    --verde-claro:#00B19A;
+    --verde-fosfo:#00B19A;
+    --negro:#191A1B;
+    --titulo:"Katibeh", serif;
+    --contenido:"Istok Web", sans-serif;
+}
+h1#titulo-nosotras{
+    font-family: var(--titulo);
+    font-size: 4rem;
+    text-align: center;
+}
+
+h2{
+    font-family: var(--contenido);
+    
+}
+
+p.parrafos{
+    font-family: var(--contenido);
+    text-align: justify;
+}
+
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 12px rgba(145,0,57,0.5);
+} 
+
+
+.card-img:hover {
+  transform: scale(1.05);
+} 
+
+.card-title{
+    font-family: var(--titulo);
+    font-size: 2rem;
+}
+.card-text{
+    font-family: var(--contenido);
+    text-align: justify;
+}
+
+.iconos-redes{
+    color:var(--guinda);
+
+}
+
+.iconos-redes:hover{
+      transform: scale(1.05);
+      
+}
