@@ -7,7 +7,7 @@ for (let i = 0; i < copiarCorreo.length; i++) {
         const correoPersona = this.dataset.correo;
 
         navigator.clipboard.writeText(correoPersona).then(function(){
-            alert('Correo copiado al portapapeles');
+            alert(`Correo ${correoPersona} copiado al portapapeles`);
         })
     });
 };
