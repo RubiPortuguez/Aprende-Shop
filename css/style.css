@@ -83,4 +83,7 @@ p.parrafos{
   height: 100%;
 }
 
+img.foto-persona{
+    max-width: 17rem;
+}
 
