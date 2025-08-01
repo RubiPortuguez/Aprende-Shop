@@ -56,3 +56,11 @@ p.parrafos{
       transform: scale(1.05);
       
 }
+
+/*Para que todas las tarjetas se vean del mismo tamaño y alineada*/
+.tarjetas-individuales{
+    min-width: 20rem; 
+    max-width: 35rem; 
+    min-height: 22rem; 
+    max-height: 50rem;
+}
