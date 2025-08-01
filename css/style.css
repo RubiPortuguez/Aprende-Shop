@@ -30,7 +30,7 @@ p.parrafos{
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 4px 12px rgba(145,0,57,0.5);
+  box-shadow: 0 4px 12px rgba(145,0,57,0.2);
 } 
 
 
