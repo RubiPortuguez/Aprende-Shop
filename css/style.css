@@ -11,10 +11,17 @@
     --titulo:"Katibeh", serif;
     --contenido:"Istok Web", sans-serif;
 }
+
+main{
+    margin: 2rem;
+}
+
 h1#titulo-nosotras{
     font-family: var(--titulo);
     font-size: 4rem;
     text-align: center;
+    line-height: 0.7;
+    margin-bottom: 0.5em;
 }
 
 h2{
@@ -58,9 +65,22 @@ p.parrafos{
 }
 
 /*Para que todas las tarjetas se vean del mismo tamaño y alineada*/
-.tarjetas-individuales{
-    min-width: 20rem; 
+/* .tarjetas-individuales{
+    min-width: 16rem; 
     max-width: 35rem; 
-    min-height: 22rem; 
+    min-height: 100%; 
     max-height: 50rem;
+    display: flex;
+    flex-direction: column;
+} */
+
+.tarjetas-individuales {
+  display: flex;
+  flex-direction: column;
 }
+
+.card.tarjetas-individuales {
+  height: 100%;
+}
+
+
