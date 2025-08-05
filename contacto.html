@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto - AprendeShop</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/styleContacto.css" />
+  <!-- <link rel="stylesheet" href="./css/styleContacto.css" /> -->
 </head>
 
 <body>
@@ -28,27 +29,36 @@
       <div class="col-lg-6">
         <div class="card p-4">
           <form>
-            <div class="mb-3">
+            <div class="mb-3" id="labelNombre">
               <label for="iptNombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="iptNombre" required />
+              <input type="text" class="form-control" id="iptNombre" name="nombre" required />
+              <div class="invalid-feedback" id="invalidName" style="display: none;"> Ingrese un nombre válido. </div>
             </div>
 
-            <div class="mb-3">
+
+            <div class="mb-3" id="labelCorreo">
               <label for="iptCorreo" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="iptCorreo" required />
+              <input type="email" class="form-control" id="iptCorreo" name="correo" required />
+              <div class="invalid-feedback" id="invalidCorreo" style="display: none;"> Ingrese un correo válido. </div>
+
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" id="labelTelefono">
               <label for="iptTel" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="iptTel" required />
+              <input type="tel" class="form-control" id="iptTel" name="telefono" required />
+              <div class="invalid-feedback" id="invalidTelefono" style="display: none;"> Ingrese un teléfono válido.
+              </div>
+
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" id="labelMensaje">
               <label for="iptMensaje" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="iptMensaje" rows="4" required></textarea>
+              <textarea class="form-control" id="iptMensaje" rows="4" name="mensaje" required></textarea>
+              <div class="invalid-feedback" id="invalidMensaje" style="display: none;"> Ingrese un mensaje válido.
+              </div>
             </div>
 
-            <button type="submit" class="btn  border w-100">Enviar</button>
+            <button type="submit" class="btn  border w-100" id="btnEnviar">Enviar</button>
           </form>
         </div>
       </div>
@@ -56,23 +66,41 @@
   </main>
 
   <!-- sección mapa -->
-    <div class="container">
-      <div class="row align-items-center py-5 border">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <!-- imagen del mapa-->
-          <div style="width: 100%; height: 200px; background-color: #eaeaea; display: flex; align-items: center; justify-content: center;">
-            <span class="text-muted">[Imagen o mapa aquí]</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h5>Conócenos</h5>
-          <p class="mb-0">Nos encontramos en</p>
-          <p class="text-muted">Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look.</p>
+  <div class="container">
+    <div class="row align-items-center py-5 border">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <!-- imagen del mapa-->
+        <div class="ratio ratio-16x9">
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.1121798691665!2d-99.18129742603956!3d19.407558441482653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff5ab24f8f41%3A0x92b34f299fc80e45!2sCoworking%20Condesa%20Openhub!5e0!3m2!1ses-419!2smx!4v1754425672793!5m2!1ses-419!2smx"
+            style="border:0;" allowfullscreen=" " loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
+      <div class="col-md-6">
+        <h5>Conócenos</h5>
+        <p class="mb-0">Nos encontramos en</p>
+        <p class="text-muted">Diagonal Patriotismo 6, Hipódromo Condesa, Cuauhtémoc, 06170 Ciudad de México, CDMX</p>
+      </div>
     </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/contacto.js"></script>
+  <script src="javascript/contacto.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "SAl-LrvZnoZc2atdf", 
+        
+      });
+    
+    })
+    
+    ();
+  </script>
 </body>
+
 </html>
