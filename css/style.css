@@ -16,12 +16,35 @@ main{
     margin: 2rem;
 }
 
-h1#titulo-nosotras{
+.header-equipo {
+    background-color: var(--guinda);
+    border-radius: 12px; /* Mismo redondeo que tus cards */
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- TÍTULO --- */
+h1#titulo-nosotras {
     font-family: var(--titulo);
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-align: center;
-    line-height: 0.7;
-    margin-bottom: 0.5em;
+    color: white; /* Texto blanco sobre fondo guinda */
+    margin-bottom: 1rem;
+    line-height: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- DESCRIPCIÓN --- */
+.descripcion-equipo {
+    font-family: var(--contenido);
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
 }
 
 h2{
@@ -29,39 +52,46 @@ h2{
     
 }
 
-p.parrafos{
-    font-family: var(--contenido);
-    text-align: justify;
+p.parrafos {
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
 }
 
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 4px 12px rgba(145,0,57,0.2);
-} 
+  box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3);
+  transition: all 0.3s ease;
+}
 
 
 .card-img:hover {
   transform: scale(1.05);
 } 
 
-.card-title{
-    font-family: var(--titulo);
-    font-size: 2rem;
-}
-.card-text{
-    font-family: var(--contenido);
-    text-align: justify;
+.card-title {
+    color: var(--guinda);
+    margin-bottom: 0.5rem;
 }
 
-.iconos-redes{
-    color:var(--guinda);
-
+.card-text {
+    font-size: 0.92rem; /* Reducción mínima (original ~1rem) */
+    line-height: 1.35; /* Original 1.5 */
+    margin-bottom: 0.4rem;
 }
 
-.iconos-redes:hover{
-      transform: scale(1.05);
-      
+.iconos-redes {
+    color: var(--guinda);
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.iconos-redes:hover {
+    transform: scale(1.1);
+    color: white;
+    background: var(--guinda);
 }
 
 /*Para que todas las tarjetas se vean del mismo tamaño y alineada*/
@@ -83,7 +113,122 @@ p.parrafos{
   height: 100%;
 }
 
-img.foto-persona{
-    max-width: 17rem;
+img.foto-persona {
+    width: 100%; /* Ocupa todo el espacio del contenedor reducido */
+    max-width: 160px; /* Tamaño máximo un poco menor que el contenedor */
+    height: 160px; /* Altura fija para mantener proporción */
+    object-fit: cover; /* Mantiene la relación de aspecto */
+    border: 3px solid var(--guinda);
+    border-radius: 50%; /* Aseguramos que sea circular */
+    padding: 2px; /* Espacio entre foto y borde */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* --- AJUSTES PARA EL CONTENEDOR DE LA IMAGEN --- */
+.col-md-4.d-flex.align-items-center.justify-content-center {
+    padding: 0; 
+    max-width: 180px; 
+}
+
+/* --- AJUSTES PARA EL CONTENEDOR DE TEXTO --- */
+.col-md-8 .card-body {
+    padding: 0.8rem 0.8rem 0.5rem; /* Top/LR: 0.8rem, Bottom: 0.5rem */
+}
+
+@media (max-width: 767.98px) { 
+    .col-md-4.d-flex.align-items-center.justify-content-center {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1rem 0;
+    }
+    
+    img.foto-persona {
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .row.g-0 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .col-md-8 .card-body {
+        text-align: center; /* Centra texto horizontalmente */
+        padding: 0.5rem 1rem; /* Ajuste de padding para móvil */
+    }
+
+    .card-title,
+    .card-text {
+        text-align: center !important; /* Fuerza centrado */
+    }
+
+    .d-flex.justify-content-end.gap-4.my-3 {
+        justify-content: center !important; /* Centra iconos */
+        margin: 0.8rem 0 !important; /* Ajuste de márgenes */
+    }
+}
+
+/* Estilos para el carrusel */
+#equipoCarousel {
+    margin: auto auto;
+    max-width: 800px;
+    position: relative;
+    margin-top: 100px;
+}
+
+.carousel-inner {
+    padding: 20px 0;
+}
+
+/* Flechas personalizadas 
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23910039'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+    width: 2rem;
+    height: 2rem;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23910039'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    width: 2rem;
+    height: 2rem;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+    display: flex !important; Fuerza visualización 
+    z-index: 10; /* Asegura que estén sobre otros elementos 
+    
+}
+
+.carousel-control-prev {
+    left: 10px !important; /* Posición ajustada 
+    margin: 150px;
+}
+
+.carousel-control-next {
+    right: 10px !important; /* Posición ajustada 
+}*/
+
+/* Eliminar sombras de las cards */
+#equipoCarousel {
+    margin-bottom: 5rem !important;
+    padding-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-control-prev {
+        left: -1rem;
+    }
+    .carousel-control-next {
+        right: -1rem;
+    }
+    
+    /* Ajuste adicional para móviles muy pequeños */
+    @media (max-width: 480px) {
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}

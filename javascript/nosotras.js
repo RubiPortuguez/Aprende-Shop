@@ -11,3 +11,12 @@ for (let i = 0; i < copiarCorreo.length; i++) {
         })
     });
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const myCarousel = document.getElementById('equipoCarousel');
+    const carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 2000, // Cambia cada 3 segundos
+        pause: 'hover', // Pausa al hacer hover
+        wrap: true // Vuelve al inicio después del último
+    });
+});
