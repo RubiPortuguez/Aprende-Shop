@@ -71,7 +71,7 @@ h1#titulo-contacto {
 }
 
 .fondo-color{
-    background: url(/assets/fondoContacto/Section-1.jpg);
+    background: url(../assets/fondoContacto/Section-1.jpg);
     background-size: cover;
 }
 
