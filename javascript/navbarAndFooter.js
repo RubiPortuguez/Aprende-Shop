@@ -104,7 +104,7 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
 const footerAprendeShop = 
 `   <div class="container">
         <div class="row">
-            <div class="col-md-3 mb-3 d-flex  align-items-end ">
+            <div class="col-md-3 mb-3 d-flex  align-items-end gap-5">
                     <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
                         class="copiarCorreo"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
                     <a href="https://www.linkedin.com/" target="_blank"
