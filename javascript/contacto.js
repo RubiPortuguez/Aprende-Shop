@@ -38,8 +38,8 @@ function validarCorreo(correo) {
 }
 //validación numero telefonico
 function validarTelefono(telefono) {
-    const regex = new RegExp(`^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$`);
-    return regex.test(telefono);
+    const regex = new RegExp(`^[\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$`);
+    return regex.test(telefono) && !/^0+$/.test(telefono.replace(/\D/g, '')); //no acepta solo ceros
 }
 //validacion mensaje
 function validarMensaje(mensaje) {
