@@ -26,6 +26,10 @@ main{
     margin: 2rem;
 }
 
+h2,h3,h4,h5{ 
+    font-family: var(--titulo);
+}
+
 .header-equipo {
     background-color: var(--guinda);
     border-radius: 12px; /* Mismo redondeo que tus cards */
