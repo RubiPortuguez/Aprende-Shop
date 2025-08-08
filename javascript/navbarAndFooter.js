@@ -110,7 +110,7 @@ const footerAprendeShop =
                     <a href="https://www.linkedin.com/" target="_blank"
                         rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
                     <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-github fa-lg iconos-redes"></i></a>
+                            class="fab fa-github fa-lg iconos-redes-footer"></i></a>
 
 
             </div>
