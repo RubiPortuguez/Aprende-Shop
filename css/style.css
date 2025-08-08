@@ -87,12 +87,16 @@ p.parrafos {
 .card-title {
     color: var(--guinda);
     margin-bottom: 0.5rem;
+    font-family: var(--titulo);
+    font-size: 2rem;
 }
 
 .card-text {
     font-size: 0.92rem; /* Reducción mínima (original ~1rem) */
     line-height: 1.35; /* Original 1.5 */
     margin-bottom: 0.4rem;
+    font-family: var(--contenido);
+    
 }
 
 .iconos-redes{
