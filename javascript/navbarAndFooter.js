@@ -106,9 +106,9 @@ const footerAprendeShop =
         <div class="row">
             <div class="col-md-3 mb-3 d-flex  align-items-end ">
                     <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
-                        class="copiarCorreo"><i class="fas fa-envelope fa-lg iconos-redes"></i></a>
+                        class="copiarCorreo"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
                     <a href="https://www.linkedin.com/" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes"></i></a>
+                        rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
                     <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
                             class="fab fa-github fa-lg iconos-redes"></i></a>
 
