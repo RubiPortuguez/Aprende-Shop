@@ -201,45 +201,12 @@ img.foto-persona {
     }
 }
 
-
-body {
-  font-family: "ItsOk", sans-serif;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--titulo);
-  font-weight: normal;
-  margin-top: 0;
-}
-
-p{
-    font-family: var(--contenido);
-}
-
-h1#titulo-contacto {
-  font-family: var(--titulo);
-  color: var(--secondary-color);
-  font-size: 4rem;
-  text-align: center;
-  line-height: 0.7;
-  margin-bottom: 0.5em;
-}
+/* NavBar */
 
 a.navbar-brand{
     font-family: var(--titulo);
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--verde);
-    margin-top: 1.5rem;
 }
 
 .bi-cart{
@@ -254,99 +221,9 @@ a.navbar-brand{
     color: var(--guinda);
 }
 
-#h2-contac{
-    font-size: 2rem;
-
-}
-
-#h5-conocenos{
-    font-size: 1.5rem;
-}
-
-.subtitulo{
-    color: var(--secondary-color);
-    margin: 0 0 0 0 ;
-    padding: 0 0 0 0;
-}
-
-.fondo-color{
-    background: url(../assets/fondoContacto/Section-1.jpg);
-    background-size: cover;
-}
-
-#fondo-conocenos{
-    background-color: var(--fondo);
-}
-
-.color-boton {
-  font-family: var(--contenido);
-  background-color: var(--primary-color); /* Color de fondo */
-  color: white; /* Color del texto */
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease; /* Transición suave */
-}
-
-.color-boton:hover {
-  background-color: var(--primary-hover); /* Color al pasar el mouse */
-  box-shadow: var(--box-shadow); /* Sombra al pasar el mouse */
-  color: var(--secondary-color);
-}
-
-.color-boton:focus{
-    background-color: var(--primary-color);
-    transform: translateY(1px); /* Efecto de "presionado" */
-}
-
-.label-info{
-    font-family: var(--contenido);
-}
-
-.form-control:focus {
-    border-color: var(--primary-color);
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
-}
-
-.mi-titulo {
-  font-family: var(--titulo);
-  font-size: 24px;
-}
-
-.mi-boton {
-  color: white !important;
-  font-family: var(--contenido);
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-}
-
 nav.navbar{
     font-family: var(--contenido);
     background-color: var(--verde-mas-claro);
-}
-
-.color-boton-nav {
-  font-family: var(--contenido);
-  background-color: var(--primary-color); /* Color de fondo */
-  color: white; /* Color del texto */
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease; /* Transición suave */
-}
-
-.color-boton-nav:hover{
-  background-color: var(--primary-hover); /* Color al pasar el mouse */
-  box-shadow: var(--box-shadow); /* Sombra al pasar el mouse */
-  color: var(--secondary-color);
-}
-
-.color-boton-nav:focus{
-    background-color: var(--primary-color);
-    transform: translateY(1px); /* Efecto de "presionado" */
 }
 
 /*
