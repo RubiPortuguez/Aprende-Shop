@@ -374,6 +374,9 @@ li{
 .iconos-redes-footer{
     color:var(--guinda);
      margin: 3px 3px 3px 3px;
+}
 
+.iconos-redes-footer:hover{
+    transform: scale(1.05);
 }
 
