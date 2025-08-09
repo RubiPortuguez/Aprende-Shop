@@ -1,5 +1,3 @@
-let header = document.getElementsByTagName("header").item(0);
-let footer = document.getElementsByTagName("footer").item(0);
 
 const navBarLoggedIn =        
 `
@@ -102,7 +100,8 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
         </nav>`;
 
 const footerAprendeShop = 
-`   <div class="container">
+`<footer class="py-5 border-top"> 
+<div class="container">
         <div class="row">
             <div class="col-md-3 mb-3 d-flex  align-items-end gap-5">
                     <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
@@ -149,10 +148,11 @@ const footerAprendeShop =
         </div>
 
     </div>
+    </footer>  
 `;
 
 document.addEventListener("DOMContentLoaded",function(event){
     event.preventDefault();
-    header.insertAdjacentHTML("afterbegin",navBarLoggedIn);
-    footer.insertAdjacentHTML("beforeend", footerAprendeShop);
+    document.body.insertAdjacentHTML("afterbegin",navBarLoggedIn);
+    document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
 });
