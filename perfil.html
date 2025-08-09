@@ -101,11 +101,21 @@
         <div class="row g-3 align-items-center">
           <!-- Foto -->
           <div class="col-auto">
+            <!-- Foto perfil para elegir avatares -->
             <img
-              src="https://via.placeholder.com/100"
+              id="profilePic"
+              src="https://via.placeholder.com/100?text=Avatar+1"
               alt="Foto perfil"
               class="rounded-circle img-fluid"
-              style="width: 100px; height: 100px; object-fit: cover"
+              style="
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                cursor: pointer;
+              "
+              title="Haz click para cambiar avatar"
+              data-bs-toggle="modal"
+              data-bs-target="#avatarModal"
             />
           </div>
           <!-- Info -->
@@ -153,13 +163,13 @@
         <div class="col-12 col-sm-6 col-md-4">
           <div class="card h-100 shadow-sm">
             <img
-              src="https://via.placeholder.com/150"
+              src="./assets/cursos/candles.jpeg"
               class="card-img-top"
               alt="Curso 1"
             />
             <div class="card-body">
-              <h5 class="card-title">Curso 1</h5>
-              <p class="card-text">Pequeña descripción</p>
+              <h5 class="card-title">Velas</h5>
+              <p class="card-text">Descubre el arte de fabricar velas hechas a mano, aprendiendo sobre tipos de cera, moldes, fragancias y decoración. Perfecto para quienes quieren crear productos únicos para uso personal o para iniciar un negocio artesanal.</p>
             </div>
           </div>
         </div>
@@ -167,13 +177,13 @@
         <div class="col-12 col-sm-6 col-md-4">
           <div class="card h-100 shadow-sm">
             <img
-              src="https://via.placeholder.com/150"
+              src="./assets/cursos/paint.jpeg"
               class="card-img-top"
               alt="Curso 2"
             />
             <div class="card-body">
-              <h5 class="card-title">Curso 2</h5>
-              <p class="card-text">Pequeña descripción</p>
+              <h5 class="card-title">Pintura</h5>
+              <p class="card-text">Aprende técnicas básicas y avanzadas de pintura, desde el manejo del color y las texturas hasta la creación de obras originales. Ideal para quienes desean explorar su creatividad y desarrollar habilidades artísticas en diferentes estilos y materiales.</p>
             </div>
           </div>
         </div>
@@ -181,13 +191,13 @@
         <div class="col-12 col-sm-6 col-md-4">
           <div class="card h-100 shadow-sm">
             <img
-              src="https://via.placeholder.com/150"
+              src="./assets/cursos/crochet.jpeg"
               class="card-img-top"
               alt="Curso 3"
             />
             <div class="card-body">
-              <h5 class="card-title">Curso 3</h5>
-              <p class="card-text">Pequeña descripción</p>
+              <h5 class="card-title">Crochet</h5>
+              <p class="card-text">Conoce las técnicas para diseñar y elaborar accesorios personalizados utilizando diversos materiales. Ideal para quienes disfrutan crear detalles únicos para complementar su estilo o regalar.</p>
             </div>
           </div>
         </div>
@@ -195,6 +205,54 @@
     </section>
 
     <!-- Modales para editar información -->
+    <!-- Modal para elegir avatar -->
+    <div class="modal fade" id="avatarModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3">
+          <h5 class="modal-title mb-3">Selecciona un avatar</h5>
+          <div class="d-flex justify-content-between flex-wrap gap-3">
+            <img
+              src="./assets/avatar perfil/cian.jpeg"
+              class="avatar-select rounded-circle"
+              style="width: 80px; height: 80px; cursor: pointer"
+              alt="Avatar 1"
+            />
+            <img
+              src="./assets/avatar perfil/pink.jpeg"
+              class="avatar-select rounded-circle"
+              style="width: 80px; height: 80px; cursor: pointer"
+              alt="Avatar 2"
+            />
+            <img
+              src="./assets/avatar perfil/yellow:green.jpeg"
+              class="avatar-select rounded-circle"
+              style="width: 80px; height: 80px; cursor: pointer"
+              alt="Avatar 3"
+            />
+            <img
+              src="./assets/avatar perfil/lavander.jpeg"
+              class="avatar-select rounded-circle"
+              style="width: 80px; height: 80px; cursor: pointer"
+              alt="Avatar 4"
+            />
+            <img
+              src="./assets/avatar perfil/orange.jpeg"
+              class="avatar-select rounded-circle"
+              style="width: 80px; height: 80px; cursor: pointer"
+              alt="Avatar 5"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-secondary mt-3"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal Editar Nombre -->
     <div class="modal fade" id="editNameModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
@@ -350,6 +408,19 @@
           }
         });
       }
+
+      // Cambiar avatar al hacer click en una imagen dentro del modal
+      document.querySelectorAll(".avatar-select").forEach((avatar) => {
+        avatar.addEventListener("click", () => {
+          const profilePic = document.getElementById("profilePic");
+          profilePic.src = avatar.src;
+          // Cierra el modal automáticamente después de seleccionar
+          const avatarModal = bootstrap.Modal.getInstance(
+            document.getElementById("avatarModal")
+          );
+          avatarModal.hide();
+        });
+      });
 
       // Guardar cambios modales
       document.getElementById("saveNameBtn").addEventListener("click", () => {
