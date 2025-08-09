@@ -169,7 +169,12 @@
             />
             <div class="card-body">
               <h5 class="card-title">Velas</h5>
-              <p class="card-text">Descubre el arte de fabricar velas hechas a mano, aprendiendo sobre tipos de cera, moldes, fragancias y decoración. Perfecto para quienes quieren crear productos únicos para uso personal o para iniciar un negocio artesanal.</p>
+              <p class="card-text">
+                Descubre el arte de fabricar velas hechas a mano, aprendiendo
+                sobre tipos de cera, moldes, fragancias y decoración. Perfecto
+                para quienes quieren crear productos únicos para uso personal o
+                para iniciar un negocio artesanal.
+              </p>
             </div>
           </div>
         </div>
@@ -183,7 +188,12 @@
             />
             <div class="card-body">
               <h5 class="card-title">Pintura</h5>
-              <p class="card-text">Aprende técnicas básicas y avanzadas de pintura, desde el manejo del color y las texturas hasta la creación de obras originales. Ideal para quienes desean explorar su creatividad y desarrollar habilidades artísticas en diferentes estilos y materiales.</p>
+              <p class="card-text">
+                Aprende técnicas básicas y avanzadas de pintura, desde el manejo
+                del color y las texturas hasta la creación de obras originales.
+                Ideal para quienes desean explorar su creatividad y desarrollar
+                habilidades artísticas en diferentes estilos y materiales.
+              </p>
             </div>
           </div>
         </div>
@@ -197,7 +207,12 @@
             />
             <div class="card-body">
               <h5 class="card-title">Crochet</h5>
-              <p class="card-text">Conoce las técnicas para diseñar y elaborar accesorios personalizados utilizando diversos materiales. Ideal para quienes disfrutan crear detalles únicos para complementar su estilo o regalar.</p>
+              <p class="card-text">
+                Conoce las técnicas para diseñar y elaborar accesorios
+                personalizados utilizando diversos materiales. Ideal para
+                quienes disfrutan crear detalles únicos para complementar su
+                estilo o regalar.
+              </p>
             </div>
           </div>
         </div>
@@ -359,6 +374,31 @@
 
     <!-- Script Dark Mode + Modales -->
     <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedName = localStorage.getItem("userName");
+        if (savedName)
+          document.getElementById("userName").textContent = savedName;
+
+        const savedDesc = localStorage.getItem("userDesc");
+        if (savedDesc)
+          document.getElementById("userDesc").firstChild.textContent =
+            savedDesc + " ";
+
+        const savedEmail = localStorage.getItem("userEmail");
+        if (savedEmail) {
+          document.getElementById("userEmail").textContent = savedEmail;
+          document.getElementById("userEmail").href = "mailto:" + savedEmail;
+        }
+
+        // Cargar avatar guardado si tienes avatar con id profilePic
+        const savedAvatar = localStorage.getItem("userAvatar");
+        if (savedAvatar) {
+          document.getElementById("profilePic").src = savedAvatar;
+          if (document.getElementById("headerAvatar"))
+            document.getElementById("headerAvatar").src = savedAvatar;
+        }
+      });
+
       const switchMode = document.getElementById("modeSwitch");
 
       // Aplicar preferencia al cargar con localStorage
@@ -413,8 +453,12 @@
       document.querySelectorAll(".avatar-select").forEach((avatar) => {
         avatar.addEventListener("click", () => {
           const profilePic = document.getElementById("profilePic");
+          const headerAvatar = document.getElementById("headerAvatar");
+
           profilePic.src = avatar.src;
-          // Cierra el modal automáticamente después de seleccionar
+          if (headerAvatar) headerAvatar.src = avatar.src;
+          localStorage.setItem("userAvatar", avatar.src);
+
           const avatarModal = bootstrap.Modal.getInstance(
             document.getElementById("avatarModal")
           );
@@ -425,7 +469,10 @@
       // Guardar cambios modales
       document.getElementById("saveNameBtn").addEventListener("click", () => {
         const val = document.getElementById("userNameInput").value.trim();
-        if (val) document.getElementById("userName").textContent = val;
+        if (val) {
+          document.getElementById("userName").textContent = val;
+          localStorage.setItem("userName", val);
+        }
         bootstrap.Modal.getInstance(
           document.getElementById("editNameModal")
         ).hide();
@@ -433,9 +480,11 @@
 
       document.getElementById("saveDescBtn").addEventListener("click", () => {
         const val = document.getElementById("userDescInput").value.trim();
-        if (val)
+        if (val) {
           document.getElementById("userDesc").firstChild.textContent =
             val + " ";
+          localStorage.setItem("userDesc", val);
+        }
         bootstrap.Modal.getInstance(
           document.getElementById("editDescModal")
         ).hide();
@@ -446,6 +495,7 @@
         if (val) {
           document.getElementById("userEmail").textContent = val;
           document.getElementById("userEmail").href = "mailto:" + val;
+          localStorage.setItem("userEmail", val);
         }
         bootstrap.Modal.getInstance(
           document.getElementById("editEmailModal")
