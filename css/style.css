@@ -26,7 +26,7 @@ main{
     margin: 2rem;
 }
 
-h2,h3,h4,h5{ 
+h1,h2,h3,h4,h5{ 
     font-family: var(--titulo);
 }
 
@@ -268,7 +268,7 @@ li{
 
 /*MODIFICACIÓN DE LA ALAERTA */
 .mi-titulo {
-  font-family: var(--titulo);
+  font-family: var(--contenido);
   font-size: 24px;
 }
 
