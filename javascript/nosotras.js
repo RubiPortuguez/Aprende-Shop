@@ -7,7 +7,22 @@ for (let i = 0; i < copiarCorreo.length; i++) {
         const correoPersona = this.dataset.correo;
 
         navigator.clipboard.writeText(correoPersona).then(function(){
-            alert(`Correo ${correoPersona} copiado al portapapeles`);
+            Swal.fire({
+              title: `Correo ${correoPersona} copiado al portapapeles`,
+              icon: "success",
+              draggable: true,
+              // Personalización de botones
+              buttonsStyling: true, // Mantener estilos base de SweetAlert2
+              confirmButtonText: "Aceptar",
+              confirmButtonColor: "#985EFF", // Color azul (puedes cambiarlo)
+              cancelButtonColor: "#d33", // Color rojo para botón cancelar
+              // Personalización de fuentes
+              customClass: {
+                title: "mi-titulo", // Clase para el título
+                content: "mi-contenido", // Clase para el contenido
+                confirmButton: "mi-boton", // Clase para el botón confirmar
+              },
+            });
         })
     });
 };

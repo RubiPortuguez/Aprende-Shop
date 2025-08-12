@@ -266,3 +266,18 @@ li{
     transform: scale(1.05);
 }
 
+/*MODIFICACIÓN DE LA ALAERTA */
+.mi-titulo {
+  font-family: var(--titulo);
+  font-size: 24px;
+}
+
+.mi-boton {
+  color: white !important;
+  font-family: var(--contenido);
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+

@@ -105,7 +105,7 @@ const footerAprendeShop =
         <div class="row">
             <div class="col-md-3 mb-3 d-flex  align-items-end gap-5">
                     <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
-                        class="copiarCorreo"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
+                        class="copiarCorreoFooter"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
                     <a href="https://www.linkedin.com/" target="_blank"
                         rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
                     <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
@@ -155,4 +155,31 @@ document.addEventListener("DOMContentLoaded",function(event){
     event.preventDefault();
     document.body.insertAdjacentHTML("afterbegin",navBarLoggedIn);
     document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
+});
+
+document.body.addEventListener('click', function(event) {
+  if (event.target.closest('.copiarCorreoFooter')) { //Detecta el elemento donde se origino el clic
+    event.preventDefault();
+    const elemento = event.target.closest('.copiarCorreoFooter');
+    const correo = elemento.dataset.correo; //Obtiene el valor de data-correo
+    
+    navigator.clipboard.writeText(correo).then(() => { //Metodo que copia el correo al portapapeles a traves de la API Clipboard (del navegador)
+      Swal.fire({
+              title: `Correo ${correo} copiado al portapapeles`,
+              icon: "success",
+              draggable: true,
+              // Personalización de botones
+              buttonsStyling: true, // Mantener estilos base de SweetAlert2
+              confirmButtonText: "Aceptar",
+              confirmButtonColor: "#985EFF", 
+              cancelButtonColor: "#d33", 
+              // Personalización de fuentes
+              customClass: {
+                title: "mi-titulo", // Clase para el título
+                content: "mi-contenido", // Clase para el contenido
+                confirmButton: "mi-boton", // Clase para el botón confirmar
+              },
+            });
+    });
+  }
 });
