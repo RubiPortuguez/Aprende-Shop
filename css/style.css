@@ -190,6 +190,14 @@ img.foto-persona {
     padding-bottom: 2rem;
 }
 
+/* ajustar tamaño de fotos en catalogo */
+.card-img-top {
+    width: 100%;
+    height: 200px; /* altura uniforme */
+    object-fit: cover; /* recorta para que no se deforme */
+    object-position: center;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .carousel-control-prev {
