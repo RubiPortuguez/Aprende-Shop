@@ -310,9 +310,6 @@ li{
     transform: translateY(1px); /* Efecto de "presionado" */
 }
 
-.tamañoClases {
-    
-}
 
 button#corazon{
   position: absolute;
@@ -322,8 +319,6 @@ button#corazon{
   color: #ffffff;
   background-color: transparent;
   z-index: 10;
-  
-  
 }
 
 button#corazon2{
@@ -344,4 +339,69 @@ button#corazon2:hover {
 
 .bi-heart-fill{
     box-shadow:  0 10px 30px rgba(0, 0, 0, 0.545); /* Sombra de tarjetas */ /* Sombra al pasar el mouse */
+}
+
+
+/*MOSTRAR UN PRODUCTO PARA ADQUIRIR*/
+.card-producto {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#card-materiales {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.92rem; /* Reducción mínima (original ~1rem) */
+  line-height: 1.35; /* Original 1.5 */
+  margin-bottom: 0.4rem;
+  font-family: var(--contenido);
+  text-align: justify;
+}
+
+#descripcionProducto {
+  font-size: 1rem; /* Reducción mínima (original ~1rem) */
+  line-height: 1.35; /* Original 1.5 */
+  margin-bottom: 0.4rem;
+  font-family: var(--contenido);
+  text-align: justify;
+}
+
+.imgProducto {
+  margin-top: 1rem;
+}
+
+.btnMateriales {
+  font-family: var(--contenido);
+  background-color: var(--primary-color); /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 6px 6px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease; /* Transición suave */
+  border: none;
+  outline: none;
+}
+
+.btnMateriales:hover {
+  background-color: var(--primary-hover); /* Color al pasar el mouse */
+  box-shadow: var(--box-shadow); /* Sombra al pasar el mouse */
+  color: var(--secondary-color);
+}
+
+#chekMateriales {
+  margin-bottom: 0.5rem;
+  font-family: var(--contenido);
+}
+
+.form-switch .form-check-input {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+}
+.form-switch .form-check-input:checked {
+  background-color: var(--primary-color); /* Color del switch activado*/
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 }
