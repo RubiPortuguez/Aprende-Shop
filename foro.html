@@ -1,35 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
-    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180">
-    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="icon"
+      href="./assets/favicon/favicon.svg?v=3"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="./assets/favicon/favicon.png?v=3"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="./assets/favicon/apple-touch-icon.png?v=3"
+      sizes="180x180"
+    />
+    <link
+      rel="mask-icon"
+      href="./assets/favicon/favicon.svg?v=4"
+      color="#000000"
+    />
     <title>Foro</title>
-    <link rel="stylesheet" href="./css/navbarAndFooter.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
+    <link rel="stylesheet" href="./css/navbarAndFooter.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
 
-<body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Katibeh&display=swap");
 
+      :root {
+        --morado: hsl(262, 100%, 68%);
+        --guinda: #910039;
+        --verde: #008876;
+        --verde-oscuro: #006153;
+        --verde-claro: #00b19a;
+        --verde-fosfo: #00b19a;
+        --negro: #191a1b;
+        --titulo: "Katibeh", serif;
+        --contenido: "Istok Web", sans-serif;
+        --primary-color: #00b19a;
+        --primary-hover: #008c7a;
+        --secondary-color: #f8f9fa;
+        --text-color: #333;
+        --error-color: #dc3545;
+        --success-color: #28a745;
+        --border-color: #ced4da;
+        --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --fondo: #d8f4ee;
+        --verde-mas-claro: #ecfffb;
+      }
 
-    <br>
-    <h1>Foro</h1>
-    <br>
+      /* ===== Foro AprendeShop ===== */
+      #foro h2,
+      #foro .fw-semibold {
+        color: var(--guinda);
+      }
+      #foro .text-muted {
+        color: #6c757d !important;
+      }
+
+      #foro .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+      }
+      #foro .card:hover {
+        transform: translateY(-4px);
+        transition: all 0.25s ease;
+        box-shadow: 0 8px 16px rgba(145, 0, 57, 0.18);
+      }
+
+      #foro .btn.btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+      #foro .btn.btn-primary:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+      }
+
+      #foro .btn-outline-secondary:hover {
+        box-shadow: var(--box-shadow);
+      }
+
+      #foro .post-avatar {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 10rem;
+        background: #f2f2f2;
+      }
+      #foro .post-img {
+        width: 100%;
+        max-height: 220px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+      }
+
+      #foro .icon-btn {
+        border: 0;
+        background: transparent;
+        padding: 0.25rem 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      #foro .icon-btn .bi {
+        font-size: 1.1rem;
+      }
+      #foro .like-btn .bi-heart-fill {
+        color: var(--guinda);
+      }
+
+      #foro .comment-box textarea {
+        resize: vertical;
+      }
+      #foro .invalid-feedback {
+        color: var(--error-color);
+      }
+      #foro .valid-feedback {
+        color: var(--success-color);
+      }
+
+      /* Inputs */
+      #foro .form-control:focus {
+        border-color: var(--verde);
+        box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+      }
+    </style>
+  </head>
+
+  <body>
+    <br />
+    <!-- ======= SECCIÓN DEL FORO ======= -->
+    <section class="container my-5" id="foro">
+      <div class="row">
+        <!-- Crear publicación -->
+        <div class="col-lg-6 mb-4">
+          <h2 class="mb-1">Nueva publicación</h2>
+          <p class="text-muted mb-3">Comparte!!</p>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <form id="formPublicacion" novalidate>
+                <div class="mb-3">
+                  <label for="postTitle" class="form-label">Curso</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="postTitle"
+                    maxlength="120"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Escribe el nombre del curso.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="postBody" class="form-label">Contenido</label>
+                  <textarea
+                    class="form-control"
+                    id="postBody"
+                    rows="5"
+                    placeholder="Comparte algo..."
+                    required
+                  ></textarea>
+                  <div class="invalid-feedback">Cuéntanos algo ;)</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="postImage" class="form-label"
+                    >Imagen (opcional, URL)</label
+                  >
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="postImage"
+                    placeholder="https://…"
+                  />
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="submit" class="btn btn-primary">
+                    Publicar
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary">
+                    Limpiar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed -->
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="mb-0">Publicación de los usuarios</h2>
+            <button id="btnClearDemo" class="btn btn-sm btn-outline-danger">
+              Vaciar
+            </button>
+          </div>
+          <div id="feed" class="vstack gap-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== JS del foro (funciona sin backend con localStorage) ====== -->
+    <script>
+      (() => {
+        const LS_KEY = "aprendeshop_forum_posts_v1";
+        const form = document.getElementById("formPublicacion");
+        const feed = document.getElementById("feed");
+        const btnClearDemo = document.getElementById("btnClearDemo");
+
+        let posts = loadPosts();
+
+        function uid() {
+          return Math.random().toString(36).slice(2) + Date.now().toString(36);
+        }
+        function timeAgo(ts) {
+          const s = Math.max(1, Math.floor((Date.now() - ts) / 1000));
+          if (s < 60) return s + "s";
+          const m = Math.floor(s / 60);
+          if (m < 60) return m + "m";
+          const h = Math.floor(m / 60);
+          if (h < 24) return h + "h";
+          const d = Math.floor(h / 24);
+          return d + "d";
+        }
+        function escapeHtml(str) {
+          return String(str ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        }
+        function demoSeed() {
+          return [
+            {
+              id: uid(),
+              user: "@ejemplo_usuario",
+              avatar: "",
+              title: "Title",
+              body: "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
+              image: "",
+              likes: 0,
+              liked: false,
+              comments: [],
+              createdAt: Date.now() - 1000 * 60 * 30,
+            },
+            {
+              id: uid(),
+              user: "@ejemplo_usuario",
+              avatar: "",
+              title: "Title",
+              body: "Otro post de ejemplo con el mismo estilo.",
+              image: "",
+              likes: 1,
+              liked: false,
+              comments: [],
+              createdAt: Date.now() - 1000 * 60 * 60 * 5,
+            },
+          ];
+        }
+        function loadPosts() {
+          try {
+            const raw = localStorage.getItem(LS_KEY);
+            return raw ? JSON.parse(raw) : demoSeed();
+          } catch {
+            return demoSeed();
+          }
+        }
+        function save() {
+          localStorage.setItem(LS_KEY, JSON.stringify(posts));
+        }
+
+        function cardHTML(p) {
+          const avatar =
+            p.avatar || "https://via.placeholder.com/48?text=%F0%9F%91%A4";
+          const heart = p.liked ? "bi-heart-fill" : "bi-heart";
+          const heartLabel = p.liked ? "Quitar like" : "Dar like";
+          const img = p.image
+            ? `<img class="post-img mt-2" src="${escapeHtml(
+                p.image
+              )}" alt="imagen">`
+            : "";
+
+          const comments = p.comments
+            .map(
+              (c) => `
+              <div class="d-flex gap-2 mt-2">
+                <img src="${avatar}" class="post-avatar" alt="avatar">
+                <div class="flex-grow-1">
+                  <div class="bg-light border rounded p-2">
+                    <div class="small text-muted mb-1"><strong>${escapeHtml(
+                      c.user
+                    )}</strong> · ${timeAgo(c.createdAt)}</div>
+                    <div>${escapeHtml(c.text)}</div>
+                  </div>
+                </div>
+              </div>
+            `
+            )
+            .join("");
+
+          return `
+            <div class="card shadow-sm" data-id="${p.id}">
+              <div class="card-body">
+                <div class="d-flex align-items-start gap-3">
+                  <img src="${avatar}" class="post-avatar" alt="avatar">
+                  <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="fw-semibold">${escapeHtml(p.user)}</span>
+                      <span class="text-muted small">· ${timeAgo(
+                        p.createdAt
+                      )}</span>
+                    </div>
+                    <div class="fw-semibold mt-1">${escapeHtml(p.title)}</div>
+                    <div class="text-muted mt-1">${escapeHtml(p.body)}</div>
+                    ${img}
+                    <div class="d-flex align-items-center gap-3 mt-3">
+                      <button class="icon-btn like-btn" aria-label="${heartLabel}">
+                        <i class="bi ${heart}"></i><span class="ms-1 small">${
+            p.likes
+          }</span>
+                      </button>
+                      <button class="icon-btn toggle-comment" aria-expanded="false">
+                        <i class="bi bi-chat"></i><span class="ms-1 small">Comentar</span>
+                      </button>
+                    </div>
+                    <div class="comment-box d-none mt-3">
+                      <label class="form-label small">Nuevo comentario</label>
+                      <textarea class="form-control mb-2" rows="2" placeholder="Escribe un comentario..."></textarea>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-primary send-comment">Enviar</button>
+                        <button class="btn btn-sm btn-outline-secondary cancel-comment">Cancelar</button>
+                      </div>
+                    </div>
+                    <div class="comments mt-2">${comments}</div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        }
+
+        function render() {
+          if (!posts.length) {
+            feed.innerHTML = `<div class="text-muted text-center py-5 border rounded bg-white">Aún no hay publicaciones.</div>`;
+            return;
+          }
+          feed.innerHTML = posts
+            .slice()
+            .sort((a, b) => b.createdAt - a.createdAt)
+            .map(cardHTML)
+            .join("");
+        }
+
+        // Crear post
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            return;
+          }
+
+          const title = document.getElementById("postTitle").value.trim();
+          const body = document.getElementById("postBody").value.trim();
+          const image = document.getElementById("postImage").value.trim();
+
+          posts.push({
+            id: uid(),
+            user: "@ejemplo_usuario",
+            avatar: "",
+            title,
+            body,
+            image,
+            likes: 0,
+            liked: false,
+            comments: [],
+            createdAt: Date.now(),
+          });
+          save();
+          form.reset();
+          form.classList.remove("was-validated");
+          render();
+        });
+
+        // Delegación: like/comentar
+        feed.addEventListener("click", (e) => {
+          const card = e.target.closest(".card[data-id]");
+          if (!card) return;
+          const id = card.getAttribute("data-id");
+          const post = posts.find((p) => p.id === id);
+          if (!post) return;
+
+          if (e.target.closest(".like-btn")) {
+            post.liked = !post.liked;
+            post.likes += post.liked ? 1 : -1;
+            save();
+            render();
+            return;
+          }
+          if (e.target.closest(".toggle-comment")) {
+            const box = card.querySelector(".comment-box");
+            const hidden = box.classList.toggle("d-none");
+            if (!hidden)
+              setTimeout(() => box.querySelector("textarea")?.focus(), 0);
+            return;
+          }
+          if (e.target.closest(".send-comment")) {
+            const ta = card.querySelector(".comment-box textarea");
+            const text = ta.value.trim();
+            if (!text) return;
+            post.comments.push({
+              user: "@ejemplo_usuario",
+              text,
+              createdAt: Date.now(),
+            });
+            save();
+            render();
+            return;
+          }
+          if (e.target.closest(".cancel-comment")) {
+            const box = card.querySelector(".comment-box");
+            box.querySelector("textarea").value = "";
+            box.classList.add("d-none");
+            return;
+          }
+        });
+
+        // Vaciar (demo)
+        btnClearDemo.addEventListener("click", () => {
+          if (!confirm("¿Borrar todas las publicaciones?")) return;
+          posts = [];
+          save();
+          render();
+        });
+
+        render();
+      })();
+    </script>
 
     <script src="./javascript/main.js"></script>
     <script src="./javascript/navbarAndFooter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
