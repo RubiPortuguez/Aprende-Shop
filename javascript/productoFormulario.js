@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     Array.from(additionalImages.files).slice(0, 3).map(file => file.name) : []
             };
             
-            // Mostrar confirmación con SweetAlert2 (como en contacto.js)
+            // SweetAlert2 
             Swal.fire({
                 title: '¿Guardar este curso?',
                 html: `Estás a punto de crear el curso: <strong>${formData.name}</strong>`,
