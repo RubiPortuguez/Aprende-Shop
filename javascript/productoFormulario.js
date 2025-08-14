@@ -144,13 +144,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Aquí iría la lógica para enviar los datos al servidor
-                    Swal.fire(
-                        '¡Guardado!',
-                        'El curso ha sido creado exitosamente.',
-                        'success'
-                    );
-
+                    let isImageSent = sendImage(mainImage.files[0]);
+                    for (const file of  additionalImages.files) {
+                       sendImage(file);
+                    }
+                    
+                    if (isImageSent){
+                         Swal.fire(
+                                '¡Guardado!',
+                                'El curso ha sido creado exitosamente.',
+                                'success'
+                            );
+                    } else {
+                        Swal.fire(
+                            'Error al guardar',
+                        );
+                    }
                     // Resetear formulario después de éxito
                     form.reset();
                     form.classList.remove('was-validated');
@@ -162,15 +171,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
         form.classList.add('was-validated');
     }, false);
-
-    // Función auxiliar para obtener idiomas seleccionados
-    function getSelectedLanguages() {
-        const languages = [];
-        if (document.getElementById('spanish').checked) languages.push('es');
-        if (document.getElementById('english').checked) languages.push('en');
-        if (document.getElementById('otherLanguage').checked && otherLanguageText.value) {
-            languages.push(otherLanguageText.value);
-        }
-        return languages;
-    }
 });
+
+// Función auxiliar para obtener idiomas seleccionados
+function getSelectedLanguages() {
+    const languages = [];
+    if (document.getElementById('spanish').checked) languages.push('es');
+    if (document.getElementById('english').checked) languages.push('en');
+    if (document.getElementById('otherLanguage').checked && otherLanguageText.value) {
+        languages.push(otherLanguageText.value);
+    }
+    return languages;
+}
+
+async function sendImage(file){
+    //Preparar los datos para enviar imagen a Cloudinary
+    const formData = new FormData();
+    //Cloudinary info
+    const cloudName = "dwkykeqgz"; // Nombre en Cloudinary
+    const uploadPreset = "imagen_cursos"; //Upload Preset
+    formData.append("file", file); // El archivo
+    formData.append("upload_preset", uploadPreset); // Tu preset unsigned
+
+    //Enviar la imagen a Cloudinary
+    try {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            //  Aquí está la URL de la imagen (que se debe utilizar para cargar la imagen)
+            const uploadedImageUrl = data.secure_url;
+            
+            //  Para verificar en consola
+            console.log(uploadedImageUrl);
+            
+            return true;
+
+    } catch (error) {
+        console.log("Error al cargar imagen");
+        return false;
+    };
+
+}
