@@ -9,12 +9,12 @@ function addItem(product) {
     const card = `
     <div class="col-sm-6 col-md-4 col-lg-3">
     <div class="card h-100 shadow-sm">
-    <img src="${product.img}" class="card-img-top" alt="${product.alt}">
+    <img src="${product.mainImage}" class="card-img-top" alt="${product.alt}">
     <button id="corazon"> <i class="bi bi-heart-fill"></i> </button>
     <button id="corazon2"> <i class="bi bi-heart"></i> </button>
     <div class="card-body">
     <h5 class="card-title">${product.name}</h5>
-    <p class="card-text">${product.description}</p>
+    <p class="card-text">${product.shortDescription}</p>
     </div>
     </div>  
     </div>
@@ -24,10 +24,10 @@ function addItem(product) {
 
 
 // Redireccionamiento y adición del id
-function redirection(card, sku){
+function redirection(card, id){
     card.addEventListener('click', function(event){
         event.preventDefault();
-        window.location.href = `./producto.html?sku=${sku}`;
+        window.location.href = `./producto.html?id=${id}`;
 
     }) // click
 } // redirection
@@ -37,4 +37,4 @@ function redirection(card, sku){
 products.forEach(product => addItem(product));
 
 const cards = document.querySelectorAll('.card');
-cards.forEach((card,index) => redirection(card, products[index].SKU));
+cards.forEach((card,index) => redirection(card, products[index].idProd));
