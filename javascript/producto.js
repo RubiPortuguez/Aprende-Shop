@@ -22,7 +22,7 @@ if (producto){
     )
     precioProducto.textContent = `$ ${producto.price} MX`
     imgContainer.insertAdjacentHTML('afterbegin', 
-        `<img src="${producto.img}" class="card-img-top imgProducto" alt="${producto.alt}">`
+        `<img src="${producto.img}" class="imagen-producto imgProducto" alt="${producto.alt}">`
     );
     descripcionProducto.textContent = producto.description;
     cardMateriales.insertAdjacentHTML('afterbegin', 
