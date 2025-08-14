@@ -4,7 +4,7 @@ export const products = [
     {
         SKU: "CRS-VE-4821",
         name: "Velas",
-        img: "./assets/cursos/candles.jpeg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199911/candles_jrg8zo.jpg",
         alt: "Velas artesanales hechas a mano con cera de colores y fragancias",
         description:
             "Descubre el arte de fabricar velas hechas a mano, aprendiendo sobre tipos de cera, moldes, fragancias y decoración. Perfecto para quienes quieren crear productos únicos para uso personal o para iniciar un negocio artesanal.",
@@ -108,7 +108,7 @@ export const products = [
     {
         SKU: "CRS-PI-9375",
         name: "Pintura",
-        img: "./assets/cursos/paint.jpeg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755200187/paint_tlowmd.jpg",
         alt: "Set de pintura con lienzo, pinceles y paleta de mezclas",
         description:
             "Aprende técnicas básicas y avanzadas de pintura, desde el manejo del color y las texturas hasta la creación de obras originales. Ideal para quienes desean explorar su creatividad y desarrollar habilidades artísticas en diferentes estilos y materiales.",
@@ -212,7 +212,7 @@ export const products = [
     {
         SKU: "CRS-CR-6502",
         name: "Crochet",
-        img: "./assets/cursos/crochet.jpeg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199917/crochet_m1mcfh.jpg",
         alt: "Accesorios de crochet tejidos con hilo de algodón de colores",
         description:
             "Conoce las técnicas para diseñar y elaborar accesorios personalizados utilizando diversos materiales.Ideal para quienes disfrutan crear detalles únicos para complementar su estilo o regalar.",
@@ -289,7 +289,7 @@ export const products = [
     {
         SKU: "CRS-RC-2214",
         name: "Repostería Creativa",
-        img: "./assets/cursos/reposteria.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755200193/reposteria_o20yu8.jpg",
         alt: "Cupcakes y pasteles decorados con fondant y glasé de colores",
         description:
             "Domina la elaboración de pasteles, cupcakes y postres decorados con técnicas modernas. Aprende desde las recetas básicas hasta el uso de fondant, glasé y técnicas de decoración para crear piezas irresistibles.",
@@ -402,7 +402,7 @@ export const products = [
     {
         SKU: "CRS-CE-8450",
         name: "Cerámica",
-        img: "./assets/cursos/ceramica.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199914/ceramica_snmxab.jpg",
         alt: "Piezas de cerámica artesanales listas para esmaltar",
         description:
             "Explora el modelado, esmaltado y cocción de piezas de cerámica. Aprende a crear objetos funcionales y decorativos, combinando tradición y creatividad en cada diseño.",
@@ -452,7 +452,7 @@ export const products = [
     {
         SKU: "CRS-JO-1798",
         name: "Joyería Artesanal",
-        img: "./assets/cursos/joyeria.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199921/joyeria_dejtub.jpg",
         alt: "Piezas de joyería artesanal con piedras y metales",
         description:
             "Aprende a diseñar y fabricar piezas únicas de joyería con metales, piedras y otros materiales. Ideal para emprendedores o amantes de los accesorios exclusivos.",
@@ -538,7 +538,7 @@ export const products = [
     {
         SKU: "CRS-FO-5834",
         name: "Fotografía Digital",
-        img: "./assets/cursos/fotografia.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199920/fotografia_ru9lml.jpg",
         alt: "Cámara fotográfica profesional con lente y trípode",
         description:
             "Domina el uso de tu cámara y las técnicas de composición, iluminación y edición. Perfecto para capturar momentos únicos o iniciar un portafolio profesional.",
@@ -597,7 +597,7 @@ export const products = [
     {
         SKU: "CRS-BO-7069",
         name: "Bordado Moderno",
-        img: "./assets/cursos/bordado.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199910/bordado_z1rogd.jpg",
         alt: "Bordado moderno con hilos de colores y aro de madera",
         description:
             "Conoce puntos, combinaciones de colores y técnicas creativas para bordar en prendas, accesorios o cuadros decorativos. Ideal para personalizar y dar vida a tus proyectos textiles.",
@@ -728,7 +728,7 @@ export const products = [
     {
         SKU: "CRS-MA-9427",
         name: "Macramé",
-        img: "./assets/cursos/macrame.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199923/macrame_kdb2db.jpg",
         alt: "Tapiz decorativo de macramé con nudos y cuentas",
         description:
             "Aprende nudos y patrones para crear tapices, colgadores de plantas, bolsos y accesorios decorativos con un estilo moderno y bohemio.",
@@ -796,7 +796,7 @@ export const products = [
     {
         SKU: "CRS-CO-3195",
         name: "Costura Básica",
-        img: "./assets/cursos/costura.jpg",
+        img: "https://res.cloudinary.com/dwkykeqgz/image/upload/v1755199915/costura_n7dre2.jpg",
         alt: "Máquina de coser con tela y accesorios de costura",
         description:
             "Descubre cómo usar la máquina de coser, tomar medidas y confeccionar prendas sencillas. Perfecto para quienes desean reparar, personalizar o crear su propia ropa.",
