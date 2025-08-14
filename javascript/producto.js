@@ -38,6 +38,32 @@ if (producto){
     );
 };
 
+producto.reviews.forEach(review => { addFeedback(review) });
+
+
+// Función para agregar feedback
+function addFeedback(review) {
+    const container = document.getElementById("feedbackContainer");
+    
+    const card = `
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${review.user.name}</h5>
+                            <p>${stars(review.rating)}</p>
+                            <p class="card-text">${review.comment}</p>
+                            <p class="card-text"><small class="text-muted">${review.createdAt}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    `;
+    container.insertAdjacentHTML('beforeend', card);
+}
+
 function stars(rate) {
     let resultado = "";
     let estrella = `<i class="bi bi-star-fill" style="color:#D4AC0D"></i>`;
