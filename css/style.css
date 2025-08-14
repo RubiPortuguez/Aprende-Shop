@@ -465,3 +465,94 @@ button#corazon2:hover {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 }
+
+/* ===== ESTILOS ESPECÍFICOS PARA FORMULARIO PRODUCTO ===== */
+.formulario-producto {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.formulario-producto .card-header {
+    background-color: var(--verde-claro);
+    color: white;
+    font-family: var(--titulo);
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px 5px 0 0 !important;
+}
+
+.formulario-producto .card {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.formulario-producto label {
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    margin-bottom: 0.5rem;
+    font-family: var(--contenido);
+}
+
+.formulario-producto .form-control, 
+.formulario-producto .form-select {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.formulario-producto .form-control:focus, 
+.formulario-producto .form-select:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+}
+
+/* Estilos para los botones */
+.btn-guinda {
+    background-color: var(--guinda);
+    color: white;
+    font-family: var(--contenido);
+}
+
+.btn-guinda:hover {
+    background-color: #7a0030;
+    color: white;
+}
+
+/* Vista previa de imágenes */
+.image-preview-container {
+    border: 2px dashed var(--border-color);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    background-color: var(--verde-mas-claro);
+}
+
+/* Validaciones */
+.invalid-feedback {
+    color: var(--error-color);
+    font-size: 0.85rem;
+}
+
+.valid-feedback {
+    color: var(--success-color);
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .formulario-producto {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .formulario-producto .card-header {
+        font-size: 1.2rem;
+    }
+}
