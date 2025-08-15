@@ -9,11 +9,13 @@ const botones = document.querySelectorAll('.botonHide');
 const cardMateriales = document.getElementById('card-materiales');
 
 const params = new URLSearchParams(window.location.search);
-const sku = params.get('sku'); // obtiene el sku de la URL 
+const id = parseInt(params.get('id')); // obtiene el sku de la URL 
+console.log(id);
 
 // JSON del producto 
-const producto = products.find(prod => prod.SKU === sku);
-// console.log(producto);
+const producto = products.find(prod => prod.idProd === id);
+console.log(producto);
+
 
 if (producto){
     nombreProducto.textContent = producto.name;
@@ -22,9 +24,9 @@ if (producto){
     )
     precioProducto.textContent = `$ ${producto.price} MX`
     imgContainer.insertAdjacentHTML('afterbegin', 
-        `<img src="${producto.img}" class="imagen-producto imgProducto" alt="${producto.alt}">`
+        `<img src="${producto.mainImage}" class="imagen-producto imgProducto" alt="${producto.alt}">`
     );
-    descripcionProducto.textContent = producto.description;
+    descripcionProducto.textContent = producto.fullDescription;
     cardMateriales.insertAdjacentHTML('afterbegin', 
         `<ul class="list-group list-group-flush">
          ${ (producto.materials || []).map(material => `<li class="list-group-item py-1">${material}</li>`).join('') }
@@ -86,3 +88,4 @@ function stars(rate) {
     return resultado;
 
 }; //createStars
+

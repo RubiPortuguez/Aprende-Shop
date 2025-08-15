@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
+import { products } from "./data.js";
+
+document.addEventListener("DOMContentLoaded", function () {
     // Elementos del formulario
     const form = document.getElementById('product-form');
     const shortDescription = document.getElementById('shortDescription');
@@ -14,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const galleryPreview = document.getElementById('galleryPreview');
 
     // Contador de caracteres para descripción corta
-    shortDescription.addEventListener('input', function() {
+    shortDescription.addEventListener('input', function () {
         const remaining = 200 - this.value.length;
         charCount.textContent = this.value.length;
-        
+
         if (remaining < 0) {
             this.value = this.value.substring(0, 200);
             charCount.textContent = 200;
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Mostrar/ocultar descripción del kit
-    includesKit.addEventListener('change', function() {
+    includesKit.addEventListener('change', function () {
         kitDescriptionContainer.style.display = this.checked ? 'block' : 'none';
         if (!this.checked) {
             document.getElementById('kitDescription').value = '';
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Mostrar/ocultar campo de otro idioma
-    otherLanguage.addEventListener('change', function() {
+    otherLanguage.addEventListener('change', function () {
         otherLanguageText.style.display = this.checked ? 'block' : 'none';
         if (!this.checked) {
             otherLanguageText.value = '';
@@ -41,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Vista previa de imagen principal
-    mainImage.addEventListener('change', function(e) {
+    mainImage.addEventListener('change', function (e) {
         if (e.target.files.length > 0) {
             const file = e.target.files[0];
             const reader = new FileReader();
-            
-            reader.onload = function(event) {
+
+            reader.onload = function (event) {
                 previewImage.src = event.target.result;
                 imagePreview.style.display = 'block';
             };
-            
+
             reader.readAsDataURL(file);
         } else {
             imagePreview.style.display = 'none';
@@ -58,39 +60,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Vista previa de galería adicional
-    additionalImages.addEventListener('change', function(e) {
+    additionalImages.addEventListener('change', function (e) {
         galleryPreview.innerHTML = '';
-        
+
         if (e.target.files.length > 0) {
             const files = Array.from(e.target.files).slice(0, 3); // Limitar a 3 imágenes
-            
+
             files.forEach(file => {
                 if (file.type.match('image.*')) {
                     const reader = new FileReader();
                     const col = document.createElement('div');
                     col.className = 'position-relative';
                     col.style.width = '150px';
-                    
-                    reader.onload = function(event) {
+
+                    reader.onload = function (event) {
                         const img = document.createElement('img');
                         img.src = event.target.result;
                         img.className = 'img-thumbnail';
                         img.style.height = '100px';
                         img.style.objectFit = 'cover';
-                        
+
                         const btn = document.createElement('button');
                         btn.className = 'btn btn-danger btn-sm position-absolute top-0 end-0';
                         btn.innerHTML = '<i class="fas fa-times"></i>';
-                        btn.onclick = function() {
+                        btn.onclick = function () {
                             col.remove();
                             // Aquí podrías agregar lógica para remover el archivo del input
                         };
-                        
+
                         col.appendChild(img);
                         col.appendChild(btn);
                         galleryPreview.appendChild(col);
                     };
-                    
+
                     reader.readAsDataURL(file);
                 }
             });
@@ -98,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Validación del formulario
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
         event.stopPropagation();
-        
+
         if (form.checkValidity()) {
             // Crear objeto con los datos del formulario
             const formData = {
@@ -123,10 +125,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 discount: parseInt(document.getElementById('courseDiscount').value) || 0,
                 rating: parseInt(document.getElementById('courseRating').value),
                 mainImage: mainImage.files[0] ? mainImage.files[0].name : null,
-                additionalImages: additionalImages.files.length > 0 ? 
+                additionalImages: additionalImages.files.length > 0 ?
                     Array.from(additionalImages.files).slice(0, 3).map(file => file.name) : []
             };
-            
+
+            // Añade información al local storage 
+            localStorage.setItem('curso', JSON.stringify(formData));
+
             // SweetAlert2 
             Swal.fire({
                 title: '¿Guardar este curso?',
@@ -139,13 +144,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Aquí iría la lógica para enviar los datos al servidor
-                    Swal.fire(
-                        '¡Guardado!',
-                        'El curso ha sido creado exitosamente.',
-                        'success'
-                    );
+                    let isImageSent = sendImage(mainImage.files[0]);
+                    for (const file of  additionalImages.files) {
+                       sendImage(file);
+                    }
                     
+                    if (isImageSent){
+                         Swal.fire(
+                                '¡Guardado!',
+                                'El curso ha sido creado exitosamente.',
+                                'success'
+                            );
+                    } else {
+                        Swal.fire(
+                            'Error al guardar',
+                        );
+                    }
                     // Resetear formulario después de éxito
                     form.reset();
                     form.classList.remove('was-validated');
@@ -154,18 +168,49 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-        
+
         form.classList.add('was-validated');
     }, false);
-    
-    // Función auxiliar para obtener idiomas seleccionados
-    function getSelectedLanguages() {
-        const languages = [];
-        if (document.getElementById('spanish').checked) languages.push('es');
-        if (document.getElementById('english').checked) languages.push('en');
-        if (document.getElementById('otherLanguage').checked && otherLanguageText.value) {
-            languages.push(otherLanguageText.value);
-        }
-        return languages;
-    }
 });
+
+// Función auxiliar para obtener idiomas seleccionados
+function getSelectedLanguages() {
+    const languages = [];
+    if (document.getElementById('spanish').checked) languages.push('es');
+    if (document.getElementById('english').checked) languages.push('en');
+    if (document.getElementById('otherLanguage').checked && otherLanguageText.value) {
+        languages.push(otherLanguageText.value);
+    }
+    return languages;
+}
+
+async function sendImage(file){
+    //Preparar los datos para enviar imagen a Cloudinary
+    const formData = new FormData();
+    //Cloudinary info
+    const cloudName = "dwkykeqgz"; // Nombre en Cloudinary
+    const uploadPreset = "imagen_cursos"; //Upload Preset
+    formData.append("file", file); // El archivo
+    formData.append("upload_preset", uploadPreset); // Tu preset unsigned
+
+    //Enviar la imagen a Cloudinary
+    try {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            //  Aquí está la URL de la imagen (que se debe utilizar para cargar la imagen)
+            const uploadedImageUrl = data.secure_url;
+            
+            //  Para verificar en consola
+            console.log(uploadedImageUrl);
+            
+            return true;
+
+    } catch (error) {
+        console.log("Error al cargar imagen");
+        return false;
+    };
+
+}
