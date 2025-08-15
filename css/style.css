@@ -251,12 +251,26 @@ img.foto-persona {
 }
 
 /* NavBar */
-
 a.navbar-brand {
     font-family: var(--titulo);
     font-size: 2.5rem;
-    color: var(--verde);
-    padding-bottom: 1.4rem
+    color: var(--verde);       /* Color para "Aprende" */
+    padding-bottom: 1.4rem;
+    transition: color 0.2s ease;
+}
+
+#shop {
+    color: var(--guinda);      /* Color distinto para "Shop" */
+    transition: color 0.2s ease;
+}
+
+/* Hover: cambia AMBOS al mismo color */
+a.navbar-brand:hover {
+    color: var(--morado);      /* Cambia "Aprende" */
+}
+
+a.navbar-brand:hover #shop {
+    color: var(--morado);      /* Cambia "Shop" igual que Aprende */
 }
 
 .bi-cart {
@@ -267,19 +281,12 @@ a.navbar-brand {
     color: var(--verde);
 }
 
-#shop {
-    color: var(--guinda);
-}
-
 nav.navbar {
     font-family: var(--contenido);
     background-color: var(--verde-mas-claro);
 }
 
-/*
-    Footer
-*/
-
+/* Footer */
 #titulo-footer {
     font-family: var(--titulo);
     font-size: 3rem;
@@ -287,8 +294,8 @@ nav.navbar {
 
 h2 {
     font-family: var(--titulo);
-
 }
+
 
 footer {
     background-color: var(--primary-color);
