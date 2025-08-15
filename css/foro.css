@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Katibeh&display=swap");
+
+:root {
+  --morado: hsl(262, 100%, 68%);
+  --guinda: #910039;
+  --verde: #008876;
+  --verde-oscuro: #006153;
+  --verde-claro: #00b19a;
+  --verde-fosfo: #00b19a;
+  --negro: #191a1b;
+  --titulo: "Katibeh", serif;
+  --contenido: "Istok Web", sans-serif;
+  --primary-color: #00b19a;
+  --primary-hover: #008c7a;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --border-color: #ced4da;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --fondo: #d8f4ee;
+  --verde-mas-claro: #ecfffb;
+}
+
+/* ===== Foro AprendeShop ===== */
+/* Títulos en guinda */
+#foro h2,
+#foro .fw-semibold {
+  color: var(--guinda);
+}
+
+/* Texto muted normal */
+#foro .text-muted {
+  color: #6c757d !important;
+}
+
+#foro .card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+#foro .btn.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+#foro .btn.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+#foro .btn-outline-secondary:hover {
+  box-shadow: var(--box-shadow);
+}
+
+#foro .post-avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 3rem;
+  background: #f2f2f2;
+}
+
+#foro .post-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+#foro .icon-btn {
+  border: 0;
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#foro .icon-btn .bi {
+  font-size: 1.1rem;
+}
+
+#foro .like-btn .bi-heart-fill {
+  color: var(--guinda);
+}
+
+#foro .comment-box textarea {
+  resize: vertical;
+}
+
+#foro .invalid-feedback {
+  color: var(--error-color);
+}
+
+#foro .valid-feedback {
+  color: var(--success-color);
+}
+
+/* Inputs */
+#foro .form-control:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+}
+
+/* Color TODOS los nombres (post y comentarios) */
+#foro .post-user,
+#foro .comment-user {
+  color: var(--verde-oscuro) !important;
+  font-weight: 700;
+}
+
+#foro .card:hover {
+  transform: none !important;
+}
+#foro .card {
+  transition: box-shadow 0.25s ease;
+}
+#foro .like-btn .small {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+#feed .card .card-body .fw-semibold.mt-1 {
+  color: var(--morado);
+}

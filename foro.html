@@ -1,680 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="icon"
-      href="./assets/favicon/favicon.svg?v=3"
-      type="image/svg+xml"
-    />
-    <link
-      rel="icon"
-      href="./assets/favicon/favicon.png?v=3"
-      sizes="32x32"
-      type="image/png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="./assets/favicon/apple-touch-icon.png?v=3"
-      sizes="180x180"
-    />
-    <link
-      rel="mask-icon"
-      href="./assets/favicon/favicon.svg?v=4"
-      color="#000000"
-    />
+    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180" />
+    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000" />
     <title>Foro</title>
     <link rel="stylesheet" href="./css/navbarAndFooter.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./css/foro.css">
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Katibeh&display=swap");
+</head>
 
-      :root {
-        --morado: hsl(262, 100%, 68%);
-        --guinda: #910039;
-        --verde: #008876;
-        --verde-oscuro: #006153;
-        --verde-claro: #00b19a;
-        --verde-fosfo: #00b19a;
-        --negro: #191a1b;
-        --titulo: "Katibeh", serif;
-        --contenido: "Istok Web", sans-serif;
-        --primary-color: #00b19a;
-        --primary-hover: #008c7a;
-        --secondary-color: #f8f9fa;
-        --text-color: #333;
-        --error-color: #dc3545;
-        --success-color: #28a745;
-        --border-color: #ced4da;
-        --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        --fondo: #d8f4ee;
-        --verde-mas-claro: #ecfffb;
-      }
-
-      /* ===== Foro AprendeShop ===== */
-      /* Títulos en guinda si quieres mantenerlo */
-      #foro h2,
-      #foro .fw-semibold {
-        color: var(--guinda);
-      }
-
-      /* Texto muted normal */
-      #foro .text-muted {
-        color: #6c757d !important;
-      }
-
-      /* Color morado para TODOS los nombres (post y comentarios) */
-      #foro .post-user,
-      #foro .comment-user {
-        color: var(--morado) !important;
-        font-weight: 700;
-      }
-
-      #foro .card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-
-      #foro .card:hover {
-        transform: translateY(-4px);
-        transition: all 0.25s ease;
-        box-shadow: 0 8px 16px rgba(145, 0, 57, 0.18);
-      }
-
-      #foro .btn.btn-primary {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-      }
-
-      #foro .btn.btn-primary:hover {
-        background-color: var(--primary-hover);
-        border-color: var(--primary-hover);
-      }
-
-      #foro .btn-outline-secondary:hover {
-        box-shadow: var(--box-shadow);
-      }
-
-      #foro .post-avatar {
-        width: 48px;
-        height: 48px;
-        object-fit: cover;
-        border-radius: 3rem;
-        background: #f2f2f2;
-      }
-
-      #foro .post-img {
-        width: 100%;
-        max-height: 220px;
-        object-fit: cover;
-        border-radius: 0.75rem;
-      }
-
-      #foro .icon-btn {
-        border: 0;
-        background: transparent;
-        padding: 0.25rem 0.5rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      #foro .icon-btn .bi {
-        font-size: 1.1rem;
-      }
-
-      #foro .like-btn .bi-heart-fill {
-        color: var(--guinda);
-      }
-
-      #foro .comment-box textarea {
-        resize: vertical;
-      }
-
-      #foro .invalid-feedback {
-        color: var(--error-color);
-      }
-
-      #foro .valid-feedback {
-        color: var(--success-color);
-      }
-
-      /* Inputs */
-      #foro .form-control:focus {
-        border-color: var(--verde);
-        box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
-      }
-
-      /* Nombres de usuario en morado */
-      #foro .post-user,
-      #foro .comment-user {
-        color: var(--morado) !important;
-        font-weight: 700;
-      }
-
-      #foro .card:hover {
-        transform: none !important;
-      }
-      #foro .card {
-        transition: box-shadow 0.25s ease;
-      }
-      #foro .like-btn .small {
-        display: inline-block;
-        min-width: 2ch;
-      }
-    </style>
-  </head>
-
-  <body>
+<body>
     <br />
     <!-- ======= SECCIÓN DEL FORO ======= -->
     <section class="container my-5" id="foro">
-      <!-- Barra de “perfil demo” -->
-      <div class="row">
-        <div class="col-lg-12 mb-3">
-          <div class="card shadow-sm">
-            <div class="card-body d-flex flex-wrap gap-2 align-items-center">
-              <i class="bi bi-person-circle me-1"></i>
-              <span class="me-2">Nombre para la demo:</span>
-              <input
-                id="displayName"
-                class="form-control"
-                style="max-width: 260px"
-                placeholder="Ej. Erika / AprendeShop Team"
-              />
-              <button id="btnSaveName" class="btn btn-sm btn-primary">
-                Guardar
-              </button>
+        <div class="row">
+            <!-- Crear publicación -->
+            <div class="col-lg-6 mb-4">
+                <h2 class="mb-1">Nueva publicación</h2>
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form id="formPublicacion" novalidate>
+                            <div class="mb-3">
+                                <label for="postTitle" class="form-label">Curso</label>
+                                <input type="text" class="form-control" id="postTitle" placeholder="Tema..."
+                                    maxlength="120" required />
+                                <div class="invalid-feedback">
+                                    Escribe el nombre del curso.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="postBody" class="form-label">Contenido</label>
+                                <textarea class="form-control" id="postBody" rows="5" placeholder="Comparte algo..."
+                                    required></textarea>
+                                <div class="invalid-feedback">Cuéntanos algo ;)</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="postImage" class="form-label">Imagen (opcional, URL)</label>
+                                <input type="url" class="form-control" id="postImage" placeholder="https://…" />
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    Publicar
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary">
+                                    Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <!-- Crear publicación -->
-        <div class="col-lg-6 mb-4">
-          <h2 class="mb-1">Nueva publicación</h2>
-          <p class="text-muted mb-3">Comparte!!</p>
-
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <form id="formPublicacion" novalidate>
-                <div class="mb-3">
-                  <label for="postTitle" class="form-label">Curso</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="postTitle"
-                    maxlength="120"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Escribe el nombre del curso.
-                  </div>
+            <!-- Feed -->
+            <div class="col-lg-6">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="mb-0">Publicación de los usuarios</h2>
+                    <div class="d-flex gap-2">
+                        <button id="btnSeed" class="btn btn-sm btn-outline-success" title="Re-sembrar posts de demo">
+                            Demo
+                        </button>
+                        <button id="btnClearDemo" class="btn btn-sm btn-outline-danger" title="Vaciar todo">
+                            Vaciar
+                        </button>
+                    </div>
                 </div>
-
-                <div class="mb-3">
-                  <label for="postBody" class="form-label">Contenido</label>
-                  <textarea
-                    class="form-control"
-                    id="postBody"
-                    rows="5"
-                    placeholder="Comparte algo..."
-                    required
-                  ></textarea>
-                  <div class="invalid-feedback">Cuéntanos algo ;)</div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="postImage" class="form-label"
-                    >Imagen (opcional, URL)</label
-                  >
-                  <input
-                    type="url"
-                    class="form-control"
-                    id="postImage"
-                    placeholder="https://…"
-                  />
-                </div>
-
-                <div class="d-flex gap-2">
-                  <button type="submit" class="btn btn-primary">
-                    Publicar
-                  </button>
-                  <button type="reset" class="btn btn-outline-secondary">
-                    Limpiar
-                  </button>
-                </div>
-              </form>
+                <div id="feed" class="vstack gap-3"></div>
             </div>
-          </div>
         </div>
-
-        <!-- Feed -->
-        <div class="col-lg-6">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h2 class="mb-0">Publicación de los usuarios</h2>
-            <div class="d-flex gap-2">
-              <button
-                id="btnSeed"
-                class="btn btn-sm btn-outline-success"
-                title="Re-sembrar posts de demo"
-              >
-                Demo
-              </button>
-              <button
-                id="btnClearDemo"
-                class="btn btn-sm btn-outline-danger"
-                title="Vaciar todo"
-              >
-                Vaciar
-              </button>
-            </div>
-          </div>
-          <div id="feed" class="vstack gap-3"></div>
-        </div>
-      </div>
     </section>
 
-    <script>
-      (() => {
-        const LS_KEY = "aprendeshop_forum_posts_v2";
-        const NAME_KEY = "aprendeshop_display_name";
-
-        const form = document.getElementById("formPublicacion");
-        const feed = document.getElementById("feed");
-        const btnClearDemo = document.getElementById("btnClearDemo");
-        const btnSeed = document.getElementById("btnSeed");
-        const displayNameIpt = document.getElementById("displayName");
-        const btnSaveName = document.getElementById("btnSaveName");
-
-        // === Perfiles de usuarios (color y/o avatar URL) ===
-        const USER_PROFILES = {
-          "Miss Carla": { color: "var(--morado)", avatar: "" },
-          "Profe Lili": { color: "var(--guinda)", avatar: "" },
-          "AprendeShop Team": { color: "var(--verde-oscuro)", avatar: "" },
-          // "Erika": { color: "var(--primary-color)", avatar: "./assets/avatars/erika.png" }
-        };
-
-        function getUserProfile(name) {
-          return USER_PROFILES[name] || null;
-        }
-
-        function userColor(name) {
-          const p = getUserProfile(name);
-          return p?.color || "var(--guinda)"; // color por defecto
-        }
-
-        function getAvatar(name) {
-          const p = getUserProfile(name);
-          if (p?.avatar) return p.avatar;
-          return makeInitialsAvatar(name);
-        }
-
-        function makeInitialsAvatar(name) {
-          const initials = (name || "?")
-            .trim()
-            .split(/\s+/)
-            .filter(Boolean)
-            .slice(0, 2)
-            .map((w) => w[0].toUpperCase())
-            .join("");
-
-          const css = getComputedStyle(document.documentElement);
-          const pick = (v, fb) => css.getPropertyValue(v).trim() || fb;
-
-          const palette = [
-            pick("--guinda", "#910039"),
-            pick("--verde", "#008876"),
-            pick("--verde-claro", "#00B19A"),
-            pick("--morado", "#7C3AED"),
-            pick("--verde-oscuro", "#006153"),
-            pick("--verde-fosfo", "#00B19A"),
-            pick("--negro", "#191A1B"),
-          ];
-
-          let h = 0;
-          for (let i = 0; i < (name || "").length; i++)
-            h = (h * 31 + name.charCodeAt(i)) | 0;
-          const bg = palette[Math.abs(h) % palette.length];
-          const fg = "#ffffff";
-
-          const svg = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
-                <rect width="100%" height="100%" rx="16" ry="16" fill="${bg}"/>
-                <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
-                      font-family="Istok Web, Arial, sans-serif" font-size="40" fill="${fg}">${initials}</text>
-              </svg>`;
-          return "data:image/svg+xml;utf8," + encodeURIComponent(svg.trim());
-        }
-
-        // ==== Nombre para demo (sin login) ====
-        function getNameFromQuery() {
-          const q = new URLSearchParams(location.search);
-          return q.get("name");
-        }
-        function loadName() {
-          return (
-            getNameFromQuery() ||
-            localStorage.getItem(NAME_KEY) ||
-            "AprendeShop Team"
-          );
-        }
-        function saveName(n) {
-          localStorage.setItem(NAME_KEY, n);
-        }
-        let currentName = loadName();
-        if (displayNameIpt) displayNameIpt.value = currentName;
-
-        btnSaveName?.addEventListener("click", () => {
-          const n = displayNameIpt.value.trim() || "Invitado";
-          currentName = n;
-          saveName(n);
-          alert("Nombre actualizado para la demo: " + n);
-          render();
-        });
-
-        // ==== Datos ====
-        function uid() {
-          return Math.random().toString(36).slice(2) + Date.now().toString(36);
-        }
-        function timeAgo(ts) {
-          const s = Math.max(1, Math.floor((Date.now() - ts) / 1000));
-          if (s < 60) return s + "s";
-          const m = Math.floor(s / 60);
-          if (m < 60) return m + "m";
-          const h = Math.floor(m / 60);
-          if (h < 24) return h + "h";
-          const d = Math.floor(h / 24);
-          return d + "d";
-        }
-        function escapeHtml(str) {
-          return String(str ?? "")
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-        }
-
-        // Semilla demo
-        function demoSeed() {
-          const now = Date.now();
-          return [
-            {
-              id: uid(),
-              user: "Miss Carla",
-              avatar: "",
-              title: "Pintura acrílica – dudas de materiales",
-              body: "Tip: imprimación y tipos de pincel. ¿Qué recomiendan para lienzos chicos?",
-              image: "",
-              likes: 3,
-              liked: false,
-              comments: [
-                {
-                  user: "Rebecca",
-                  text: "Para 20x20cm, pincel redondo #6 y plano #4 va perfecto.",
-                  createdAt: now - 1000 * 60 * 20,
-                },
-                {
-                  user: "Jenny",
-                  text: "Yo uso gesso 2 capas y lijo suave, queda bien liso.",
-                  createdAt: now - 1000 * 60 * 10,
-                },
-              ],
-              createdAt: now - 1000 * 60 * 60 * 6,
-              isDemo: true,
-            },
-            {
-              id: uid(),
-              user: "Profe Juan",
-              avatar: "",
-              title: "Velas artesanales – fragancias",
-              body: "¿Cuánto % de fragancia usan para cera de soya? Estoy probando 6–8%.",
-              image: "",
-              likes: 5,
-              liked: false,
-              comments: [
-                {
-                  user: "Ana",
-                  text: "En soya me funciona 8%, pero ojo con el punto de vertido.",
-                  createdAt: now - 1000 * 60 * 45,
-                },
-                {
-                  user: "Rodrigo",
-                  text: "Entre 6 y 8% está bien para demo. Agregar a 65–70°C ayuda.",
-                  createdAt: now - 1000 * 60 * 40,
-                },
-              ],
-              createdAt: now - 1000 * 60 * 60 * 12,
-              isDemo: true,
-            },
-          ];
-        }
-
-        function loadPosts() {
-          try {
-            const raw = localStorage.getItem(LS_KEY);
-            return raw ? JSON.parse(raw) : demoSeed();
-          } catch {
-            return demoSeed();
-          }
-        }
-        let posts = loadPosts();
-        function save() {
-          localStorage.setItem(LS_KEY, JSON.stringify(posts));
-        }
-
-        // ==== Render ====
-        function render() {
-          if (!feed) return;
-          if (!posts.length) {
-            feed.innerHTML = `<div class="text-muted text-center py-5 border rounded bg-white">Aún no hay publicaciones.</div>`;
-            return;
-          }
-          const realPosts = posts
-            .filter((p) => !p.isDemo)
-            .sort((a, b) => b.createdAt - a.createdAt);
-          const demoPosts = posts.filter((p) => p.isDemo);
-          const ordered = [...realPosts, ...demoPosts];
-          feed.innerHTML = ordered.map(cardHTML).join("");
-        }
-
-        function cardHTML(p) {
-          const avatarPost = getAvatar(p.user);
-          const heart = p.liked ? "bi-heart-fill" : "bi-heart";
-          const heartLabel = p.liked ? "Quitar like" : "Dar like";
-          const img = p.image
-            ? `<img class="post-img mt-2" src="${escapeHtml(
-                p.image
-              )}" alt="imagen">`
-            : "";
-
-          const comments = (p.comments || [])
-            .slice()
-            .sort((a, b) => b.createdAt - a.createdAt)
-            .map((c) => {
-              const cAvatar = getAvatar(c.user);
-              return `
-                  <div class="d-flex gap-2 mt-2">
-                    <img src="${cAvatar}" class="post-avatar" alt="avatar">
-                    <div class="flex-grow-1">
-                      <div class="bg-light border rounded p-2">
-                        <div class="small text-muted mb-1">
-                          <strong class="comment-user" style="color:${userColor(
-                            c.user
-                          )}">${escapeHtml(c.user)}</strong>
-                          · ${timeAgo(c.createdAt)}
-                        </div>
-                        <div>${escapeHtml(c.text)}</div>
-                      </div>
-                    </div>
-                  </div>
-                `;
-            })
-            .join("");
-
-          return `
-              <div class="card shadow-sm" data-id="${p.id}">
-                <div class="card-body">
-                  <div class="d-flex align-items-start gap-3">
-                    <img src="${avatarPost}" class="post-avatar" alt="avatar">
-                    <div class="flex-grow-1">
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="fw-semibold post-user" style="color:${userColor(
-                          p.user
-                        )}">${escapeHtml(p.user)}</span>
-                        <span class="text-muted small">· ${timeAgo(
-                          p.createdAt
-                        )}</span>
-                      </div>
-                      <div class="fw-semibold mt-1">${escapeHtml(p.title)}</div>
-                      <div class="text-muted mt-1">${escapeHtml(p.body)}</div>
-                      ${img}
-                      <div class="d-flex align-items-center gap-3 mt-3">
-                        <button class="icon-btn like-btn" aria-label="${heartLabel}">
-                          <i class="bi ${heart}"></i><span class="ms-1 small">${
-            p.likes
-          }</span>
-                        </button>
-                        <button class="icon-btn toggle-comment" aria-expanded="false">
-                          <i class="bi bi-chat"></i><span class="ms-1 small">Comentar</span>
-                        </button>
-                      </div>
-                      <div class="comment-box d-none mt-3">
-                        <label class="form-label small">Nuevo comentario</label>
-                        <textarea class="form-control mb-2" rows="2" placeholder="Escribe un comentario..."></textarea>
-                        <div class="d-flex gap-2">
-                          <button class="btn btn-sm btn-primary send-comment">Enviar</button>
-                          <button class="btn btn-sm btn-outline-secondary cancel-comment">Cancelar</button>
-                        </div>
-                      </div>
-                      <div class="comments mt-2">${comments}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>`;
-        }
-
-        // ==== Eventos ====
-        form?.addEventListener("submit", (e) => {
-          e.preventDefault();
-          if (!form.checkValidity()) {
-            form.classList.add("was-validated");
-            return;
-          }
-
-          const title = document.getElementById("postTitle").value.trim();
-          const body = document.getElementById("postBody").value.trim();
-          const image = document.getElementById("postImage").value.trim();
-
-          posts.push({
-            id: uid(),
-            user: currentName,
-            avatar: "",
-            title,
-            body,
-            image,
-            likes: 0,
-            liked: false,
-            comments: [],
-            createdAt: Date.now(),
-            isPinned: false,
-          });
-          save();
-          form.reset();
-          form.classList.remove("was-validated");
-          render();
-        });
-
-        feed?.addEventListener("click", (e) => {
-          const card = e.target.closest(".card[data-id]");
-          if (!card) return;
-          const id = card.getAttribute("data-id");
-          const post = posts.find((p) => p.id === id);
-          if (!post) return;
-
-          if (e.target.closest(".like-btn")) {
-            post.liked = !post.liked;
-            post.likes += post.liked ? 1 : -1;
-            save();
-            render();
-            return;
-          }
-          if (e.target.closest(".toggle-comment")) {
-            const box = card.querySelector(".comment-box");
-            const hidden = box.classList.toggle("d-none");
-            if (!hidden)
-              setTimeout(() => box.querySelector("textarea")?.focus(), 0);
-            return;
-          }
-          if (e.target.closest(".send-comment")) {
-            const ta = card.querySelector(".comment-box textarea");
-            const text = ta.value.trim();
-            if (!text) return;
-            post.comments.unshift({
-              user: currentName,
-              text,
-              createdAt: Date.now(),
-            });
-            save();
-            render();
-            return;
-          }
-          if (e.target.closest(".cancel-comment")) {
-            const box = card.querySelector(".comment-box");
-            box.querySelector("textarea").value = "";
-            box.classList.add("d-none");
-            return;
-          }
-        });
-
-        btnClearDemo?.addEventListener("click", () => {
-          if (!confirm("¿Borrar todas las publicaciones?")) return;
-          posts = [];
-          save();
-          render();
-        });
-
-        btnSeed?.addEventListener("click", () => {
-          if (
-            !confirm("Esto reemplaza el feed por la demo fijada. ¿Continuar?")
-          )
-            return;
-          posts = demoSeed();
-          save();
-          render();
-        });
-
-        // Inicial
-        render();
-      })(); // <- Solo este cierre
-    </script>
+    <script src="./javascript/foro.js"></script>
 
     <script src="./javascript/main.js"></script>
     <script src="./javascript/navbarAndFooter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
