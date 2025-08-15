@@ -569,3 +569,25 @@ button#corazon2:hover {
     }
 }
 
+<<<<<<< HEAD
+=======
+.stars {
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .star {
+    position: relative;
+    display: inline-block;
+    color: #ccc; /* estrella vacía */
+  }
+  .star-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: gold; /* estrella llena */
+    white-space: nowrap;
+    pointer-events: none;
+  }
+>>>>>>> Yutnu
