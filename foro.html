@@ -2,27 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
-    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180">
-    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180" />
+    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000" />
     <title>Foro</title>
-    <link rel="stylesheet" href="./css/navbarAndFooter.css">
+    <link rel="stylesheet" href="./css/navbarAndFooter.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./css/foro.css">
+
 </head>
 
 <body>
+    <br />
+    <!-- ======= SECCIÓN DEL FORO ======= -->
+    <section class="container my-5" id="foro">
+        <div class="row">
+            <!-- Crear publicación -->
+            <div class="col-lg-6 mb-4">
+                <h2 class="mb-1">Nueva publicación</h2>
 
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form id="formPublicacion" novalidate>
+                            <div class="mb-3">
+                                <label for="postTitle" class="form-label">Curso</label>
+                                <input type="text" class="form-control" id="postTitle" placeholder="Tema..."
+                                    maxlength="120" required />
+                                <div class="invalid-feedback">
+                                    Escribe el nombre del curso.
+                                </div>
+                            </div>
 
-    <br>
-    <h1>Foro</h1>
-    <br>
+                            <div class="mb-3">
+                                <label for="postBody" class="form-label">Contenido</label>
+                                <textarea class="form-control" id="postBody" rows="5" placeholder="Comparte algo..."
+                                    required></textarea>
+                                <div class="invalid-feedback">Cuéntanos algo ;)</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="postImage" class="form-label">Imagen (opcional, URL)</label>
+                                <input type="url" class="form-control" id="postImage" placeholder="https://…" />
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    Publicar
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary">
+                                    Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feed -->
+            <div class="col-lg-6">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="mb-0">Publicación de los usuarios</h2>
+                    <div class="d-flex gap-2">
+                        <button id="btnSeed" class="btn btn-sm btn-outline-success" title="Re-sembrar posts de demo">
+                            Demo
+                        </button>
+                        <button id="btnClearDemo" class="btn btn-sm btn-outline-danger" title="Vaciar todo">
+                            Vaciar
+                        </button>
+                    </div>
+                </div>
+                <div id="feed" class="vstack gap-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./javascript/foro.js"></script>
 
     <script src="./javascript/main.js"></script>
     <script src="./javascript/navbarAndFooter.js"></script>
