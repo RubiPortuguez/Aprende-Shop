@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
 
     <title>Mi carrito</title>
-    
-    <link rel="stylesheet" href="./css/navbarAndFooter.css">
+
+
     <!-- Favicon principal en formato SVG -->
     <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
     <!-- PNG fallback para navegadores que no soportan SVG -->
@@ -17,10 +18,10 @@
     <!-- Para pestañas ancladas en Safari macOS -->
     <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -31,11 +32,128 @@
     <br>
 
 
-    
+    <div class="container">
+
+        <!-- Barra de progreso -->
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="position-relative mb-4">
+                    <div class="progress" role="progressbar" style="height: 1px;">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <button type="button"
+                        class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
+                        style="width: 2rem; height:2rem;">1</button>
+                    <button type="button"
+                        class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill"
+                        style="width: 2rem; height:2rem;">2</button>
+                    <button type="button"
+                        class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
+                        style="width: 2rem; height:2rem;">3</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Cards -->
+            <div class="col-md-9 mb-4">
+                <section>
+                    <div class="row row-cols-1 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Contenido de la card.</p>
+                                </div>
+                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
+                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Contenido de la card.</p>
+                                </div>
+                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
+                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Contenido de la card.</p>
+                                </div>
+                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
+                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Contenido de la card.</p>
+                                </div>
+                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
+                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Lista -->
+            <div class="col-md-3">
+                <aside>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Resumen del carrito
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                            Subtotal
+                            <span>$ </span>
+                        </li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center border-0">
+                            Descuentos
+                            <span>$ </span>
+                        </li>
+                    </ul>
+                    <div class="input-group input-group-sm mt-2 px-2">
+                        <input type="text" class="form-control border-0  " placeholder="Código de descuento">
+                        <button class="btn btn-outline-secondary border-0" type="button"
+                            id="button-addon2">Aplicar</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 px-2 py-2 border-top">
+                        <strong>Total</strong>
+                        <span>$ </span>
+                    </div>
+                    <div class="d-grid gap-2 col-10 mx-auto mt-4">
+                        <button type="button" class="btn btn-outline-success">Pagar</button>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <script src="./javascript/navbarAndFooter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
