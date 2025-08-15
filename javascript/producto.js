@@ -7,6 +7,10 @@ const descripcionProducto = document.getElementById('descripcionProducto');
 const imgContainer = document.getElementById('imgContainer');
 const botones = document.querySelectorAll('.botonHide');
 const cardMateriales = document.getElementById('card-materiales');
+const categoriaContainer = document.getElementById('categoriaContainer');
+const nivelContainer = document.getElementById('nivelContainer');
+const idiomaContainer = document.getElementById('idiomaContainer');
+const duracionContainer = document.getElementById('duracionContainer');
 
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get('id')); // obtiene el sku de la URL 
@@ -26,7 +30,7 @@ if (producto){
         <p class="my-0">Dale una calificación a nuestro curso</p>
         <div id="seleccionarCalificacion" class="stars"></div>`
     )
-    precioProducto.textContent = `$ ${producto.price} MX`
+    precioProducto.textContent = `$ ${producto.price} MXN`
     imgContainer.insertAdjacentHTML('afterbegin', 
         `<img src="${producto.mainImage}" class="imagen-producto imgProducto" alt="${producto.alt}">`
     );
@@ -36,6 +40,10 @@ if (producto){
          ${ (producto.materials || []).map(material => `<li class="list-group-item py-1">${material}</li>`).join('') }
         </ul>
         `);
+    categoriaContainer.textContent = `Categoría : ${producto.category}`;
+    nivelContainer.textContent = `Dificultad : ${producto.difficulty}`;
+    idiomaContainer.textContent = `Idioma : ${producto.languages}`;
+    duracionContainer.textContent = `Duración : ${producto.duration.value} ${producto.duration.unit}`;
 } else {
     nombreProducto.textContent = `Producto no encontrado`
     botones.forEach( btn => btn.style.display = 'none')

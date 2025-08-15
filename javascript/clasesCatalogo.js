@@ -8,15 +8,15 @@ function addItem(product) {
     
     const card = `
     <div class="col-sm-6 col-md-4 col-lg-3">
-    <div class="card h-100 shadow-sm">
-    <img src="${product.mainImage}" class="card-img-top" alt="${product.alt}">
-    <button id="corazon"> <i class="bi bi-heart-fill"></i> </button>
-    <button id="corazon2"> <i class="bi bi-heart"></i> </button>
-    <div class="card-body">
-    <h5 class="card-title">${product.name}</h5>
-    <p class="card-text">${product.shortDescription}</p>
-    </div>
-    </div>  
+        <div class="card h-100 shadow-sm">
+            <img src="${product.mainImage}" class="card-img-top" alt="${product.alt}">
+            <button id="corazon"> <i class="bi bi-heart-fill"></i> </button>
+            <button id="corazon2"> <i class="bi bi-heart"></i> </button>
+            <div class="card-body">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.shortDescription}</p>
+            </div>
+        </div>  
     </div>
     `;
     container.insertAdjacentHTML('beforeend', card);
