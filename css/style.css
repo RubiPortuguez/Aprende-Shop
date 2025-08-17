@@ -87,12 +87,11 @@ p.parrafos {
 }
 
 
-.card:hover {
+ /* .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3);
     transition: all 0.3s ease;
-}
-
+}  */
 
 .card-img:hover {
     transform: scale(1.05);
@@ -128,6 +127,12 @@ p.parrafos {
 .tarjetas-individuales {
     display: flex;
     flex-direction: column;
+}
+
+.tarjetas-individuales:hover{
+transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3);
+    transition: all 0.3s ease;
 }
 
 .card.tarjetas-individuales {
@@ -314,7 +319,7 @@ li {
     transform: scale(1.05);
 }
 
-/*MODIFICACIÓN DE LA ALAERTA */
+/*MODIFICACIÓN DE LA ALERTA */
 .mi-titulo {
     font-family: var(--contenido);
     font-size: 24px;
@@ -595,3 +600,47 @@ button#corazon2:hover {
     white-space: nowrap;
     pointer-events: none;
   }
+
+/***** HOVER DE LA TARJETA CLASES *****/
+.clases:hover{
+transform: translateY(-8px);
+    /* box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3); */
+    transition: all 0.3s ease;
+}
+
+/*** CARRUSEL DE COMENTARIOS ***/
+.comment-card {
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.comment-card:hover {
+    transform: translateY(-5px);
+}
+
+.carousel-inner {
+    padding: 30px 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.star-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+.avatar-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+/**** CABIA EL COLOR DE LOS INPUTS AL DAR CLIC*****/
+/* .form-control:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+} */
