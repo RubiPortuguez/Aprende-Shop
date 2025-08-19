@@ -1,7 +1,12 @@
+// Detecta si estamos en perfil.html para usar anchors locales
+const isPerfil = /(^|\/)perfil\.html(\?|#|$)/.test(location.pathname);
 
-const navBarLoggedIn =        
-`
-        <nav class="navbar navbar-expand-lg sticky-top">
+const hrefPerfil = isPerfil ? '#perfil' : './perfil.html#perfil';
+const hrefConfig = isPerfil ? '#configuracion' : './perfil.html#configuracion';
+const hrefWishlist = isPerfil ? '#wishlist' : './perfil.html#wishlist';
+
+const navBarLoggedIn = `
+  <nav id="perfilMenu" class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html">Aprende<span id="shop">Shop</span></a>
                 <button class="navbar-toggler color-boton-nav" type="button" data-bs-toggle="collapse"
@@ -39,18 +44,15 @@ const navBarLoggedIn =
                             </a>
                         </li>
                         <li class="nav-item dropdown align-self-end">
-                            <a class="nav-link dropdown-toggle" href="./perfil.html" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="bi bi-person-circle d-none d-lg-inline"></i>
-                                <span class="d-lg-none">Mi perfil</span>
+                            <a class="nav-link dropdown-toggle" href=" href="${hrefPerfil}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle d-none d-lg-inline"></i>
+                            <span class="d-lg-none">Mi perfil</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item desktop-menu d-none d-md-block" href="./perfil.html">Mi perfil</a>
-                                </li>
-                                <li><a class="dropdown-item" href="./config.html">Configuración</a></li>
-                                <li><a class="dropdown-item" href="./perfil.html">Wishlist</a></li>
-                                <li><a class="dropdown-item" href="./iniciarSesion.html">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item desktop-menu d-none d-md-block" href="${hrefPerfil}">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="${hrefConfig}">Configuración</a></li>
+                            <li><a class="dropdown-item" href="${hrefWishlist}">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="./iniciarSesion.html">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -99,87 +101,102 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
             </div>
         </nav>`;
 
-const footerAprendeShop = 
-`<footer class="py-5 border-top"> 
+const footerAprendeShop =
+    `<footer class="py-4 border-top"> 
 <div class="container">
         <div class="row">
-            <div class="col-md-3 mb-3 d-flex  align-items-end gap-5">
-                    <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
-                        class="copiarCorreoFooter"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
-                    <a href="https://www.linkedin.com/" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
-                    <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-github fa-lg iconos-redes-footer"></i></a>
+            <div class="col-md-3 mb-2"></div>
 
-
-            </div>
-
-            <!-- Repetimos 3 columnas iguales -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Cursos</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
-                    <li class="nav-item mb-2"><a href="./materiales.html" class="nav-link p-0 text-muted">Materiales</a></li>
-                    <li class="nav-item mb-2"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
+                    <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
+                    <li class="nav-item"><a href="./materiales.html" class="nav-link p-0 text-muted">Materiales</a></li>
+                    <li class="nav-item"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Usuario</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./perfil.html" class="nav-link p-0 text-muted">Perfil</a></li>
-                    <li class="nav-item mb-2"><a href="./config.html" class="nav-link p-0 text-muted">Configuración de cuenta</a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="./clases.html" class="nav-link p-0 text-muted">Mis cursos</a></li>
-                    <li class="nav-item mb-2"><a href="./perfil.html" class="nav-link p-0 text-muted">Wishlist</a></li>
-                    <li class="nav-item mb-2"><a href="./carrito.html" class="nav-link p-0 text-muted">Carrito de compras</a></li>
+                    <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Perfil</a></li>
+                    <li class="nav-item"><a href="./config.html" class="nav-link p-0 text-muted">Configuración de cuenta</a></li>
+                    <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Mis cursos</a></li>
+                    <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Wishlist</a></li>
+                    <li class="nav-item"><a href="./carrito.html" class="nav-link p-0 text-muted">Carrito de compras</a></li>
 
                 </ul>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Más sobre AprendeShop</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./nosotras.html" class="nav-link p-0 text-muted">Nosotras</a>
+                    <li class="nav-item"><a href="./nosotras.html" class="nav-link p-0 text-muted">Nosotras</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="./contacto.html" class="nav-link p-0 text-muted">Contacto</a></li>
+                    <li class="nav-item"><a href="./contacto.html" class="nav-link p-0 text-muted">Contacto</a></li>
                 </ul>
             </div>
         </div>
 
+        <!-- línea + copyright + iconos abajo -->
+        <div class="d-flex justify-content-between align-items-center pt-3 mt-2">
+            <small class="text-muted">© 2025 AprendeShop</small>
+            <div class="d-flex gap-4">
+                <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
+                    class="copiarCorreoFooter"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
+                <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-github fa-lg iconos-redes-footer"></i></a>
+            </div>
+        </div>
+
     </div>
-    </footer>  
-`;
+    </footer>`; 
 
-document.addEventListener("DOMContentLoaded",function(event){
-    event.preventDefault();
-    document.body.insertAdjacentHTML("afterbegin",navBarLoggedIn);
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.insertAdjacentHTML("afterbegin", navBarLoggedIn);
     document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
-});
+  
+    // Activa ScrollSpy solo en perfil.html
+    if (isPerfil && window.bootstrap) {
+      // Atributos útiles para ScrollSpy
+      document.body.setAttribute('data-bs-spy', 'scroll');
+      document.body.setAttribute('data-bs-target', '#perfilMenu');
+      document.body.setAttribute('data-bs-offset', '80');
+      document.body.setAttribute('tabindex', '0');
+  
+      // Inicialización programática (opcional pero recomendable al inyectar HTML)
+      new bootstrap.ScrollSpy(document.body, {
+        target: '#perfilMenu',
+        offset: 80
+      });
+    }
+  });  
 
-document.body.addEventListener('click', function(event) {
-  if (event.target.closest('.copiarCorreoFooter')) { //Detecta el elemento donde se origino el clic
-    event.preventDefault();
-    const elemento = event.target.closest('.copiarCorreoFooter');
-    const correo = elemento.dataset.correo; //Obtiene el valor de data-correo
-    
-    navigator.clipboard.writeText(correo).then(() => { //Metodo que copia el correo al portapapeles a traves de la API Clipboard (del navegador)
-      Swal.fire({
-              title: `Correo ${correo} copiado al portapapeles`,
-              icon: "success",
-              draggable: true,
-              // Personalización de botones
-              buttonsStyling: true, // Mantener estilos base de SweetAlert2
-              confirmButtonText: "Aceptar",
-              confirmButtonColor: "#985EFF", 
-              cancelButtonColor: "#d33", 
-              // Personalización de fuentes
-              customClass: {
-                title: "mi-titulo", // Clase para el título
-                content: "mi-contenido", // Clase para el contenido
-                confirmButton: "mi-boton", // Clase para el botón confirmar
-              },
+document.body.addEventListener('click', function (event) {
+    if (event.target.closest('.copiarCorreoFooter')) { //Detecta el elemento donde se origino el clic
+        event.preventDefault();
+        const elemento = event.target.closest('.copiarCorreoFooter');
+        const correo = elemento.dataset.correo; //Obtiene el valor de data-correo
+
+        navigator.clipboard.writeText(correo).then(() => { //Metodo que copia el correo al portapapeles a traves de la API Clipboard (del navegador)
+            Swal.fire({
+                title: `Correo ${correo} copiado al portapapeles`,
+                icon: "success",
+                draggable: true,
+                // Personalización de botones
+                buttonsStyling: true, // Mantener estilos base de SweetAlert2
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#985EFF",
+                cancelButtonColor: "#d33",
+                // Personalización de fuentes
+                customClass: {
+                    title: "mi-titulo", // Clase para el título
+                    content: "mi-contenido", // Clase para el contenido
+                    confirmButton: "mi-boton", // Clase para el botón confirmar
+                },
             });
-    });
-  }
+        });
+    }
 });

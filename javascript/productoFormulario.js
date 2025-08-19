@@ -105,67 +105,76 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
 
         if (form.checkValidity()) {
-            // Crear objeto con los datos del formulario
-            const formData = {
-                name: document.getElementById('courseName').value,
-                shortDescription: shortDescription.value,
-                fullDescription: document.getElementById('fullDescription').value,
-                category: document.getElementById('courseCategory').value,
-                difficulty: document.querySelector('input[name="difficulty"]:checked').value,
-                duration: {
-                    value: document.getElementById('courseDuration').value,
-                    unit: document.getElementById('durationUnit').value
-                },
-                resolution: document.getElementById('videoResolution').value,
-                languages: getSelectedLanguages(),
-                materials: document.getElementById('materialsList').value.split(/[\n,]/).filter(item => item.trim()),
-                includesKit: includesKit.checked,
-                kitDescription: includesKit.checked ? document.getElementById('kitDescription').value : null,
-                price: parseFloat(document.getElementById('coursePrice').value),
-                discount: parseInt(document.getElementById('courseDiscount').value) || 0,
-                rating: parseInt(document.getElementById('courseRating').value),
-                mainImage: mainImage.files[0] ? mainImage.files[0].name : null,
-                additionalImages: additionalImages.files.length > 0 ?
-                    Array.from(additionalImages.files).slice(0, 3).map(file => file.name) : []
-            };
-
-            // Añade información al local storage 
-            localStorage.setItem('curso', JSON.stringify(formData));
 
             // SweetAlert2 
             Swal.fire({
                 title: '¿Guardar este curso?',
-                html: `Estás a punto de crear el curso: <strong>${formData.name}</strong>`,
+                html: `Estás a punto de crear el curso: <strong>${document.getElementById('courseName').value}</strong>`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#00b19a',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, guardar',
                 cancelButtonText: 'Cancelar'
-            }).then((result) => {
+            }).then(async (result) => {
                 if (result.isConfirmed) {
-                    let isImageSent = sendImage(mainImage.files[0]);
-                    for (const file of  additionalImages.files) {
-                       sendImage(file);
+
+                    let mainImageUrl = null;
+                    if (mainImage.files[0]) {
+                        mainImageUrl = await sendImage(mainImage.files[0]);
                     }
-                    
-                    if (isImageSent){
-                         Swal.fire(
-                                '¡Guardado!',
-                                'El curso ha sido creado exitosamente.',
-                                'success'
-                            );
+                    console.log(mainImageUrl);
+                    // Crear objeto con los datos del formulario
+                    const formData = {
+                        idProd: products.length + 1, // Asignar un nuevo ID
+                        name: document.getElementById('courseName').value,
+                        shortDescription: shortDescription.value,
+                        fullDescription: document.getElementById('fullDescription').value,
+                        category: document.getElementById('courseCategory').value,
+                        difficulty: document.querySelector('input[name="difficulty"]:checked').value,
+                        duration: {
+                            value: document.getElementById('courseDuration').value,
+                            unit: document.getElementById('durationUnit').value
+                        },
+                        resolution: document.getElementById('videoResolution').value,
+                        languages: getSelectedLanguages(),
+                        materials: document.getElementById('materialsList').value.split(/[\n,]/).filter(item => item.trim()),
+                        includesKit: includesKit.checked,
+                        kitDescription: includesKit.checked ? document.getElementById('kitDescription').value : null,
+                        price: parseFloat(document.getElementById('coursePrice').value),
+                        discount: parseInt(document.getElementById('courseDiscount').value) || 0,
+                        rating: parseInt(document.getElementById('courseRating').value),
+                        mainImage: mainImageUrl,
+                        additionalImages: additionalImages.files.length > 0 ?
+                            Array.from(additionalImages.files).slice(0, 3).map(file => file.name) : []
+                    };
+
+                    // Añade información al local storage 
+                    localStorage.setItem('curso', JSON.stringify(formData));
+
+                    // for (const file of additionalImages.files) {
+                    //     sendImage(file);
+                    // }
+
+                    if (mainImageUrl) {
+                        Swal.fire(
+                            '¡Guardado!',
+                            'El curso ha sido creado exitosamente.',
+                            'success'
+                        );
                     } else {
                         Swal.fire(
                             'Error al guardar',
                         );
                     }
+
                     // Resetear formulario después de éxito
                     form.reset();
                     form.classList.remove('was-validated');
                     imagePreview.style.display = 'none';
                     galleryPreview.innerHTML = '';
                 }
+
             });
         }
 
@@ -184,7 +193,7 @@ function getSelectedLanguages() {
     return languages;
 }
 
-async function sendImage(file){
+async function sendImage(file) {
     //Preparar los datos para enviar imagen a Cloudinary
     const formData = new FormData();
     //Cloudinary info
@@ -195,22 +204,22 @@ async function sendImage(file){
 
     //Enviar la imagen a Cloudinary
     try {
-            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-                method: "POST",
-                body: formData
-            });
-            const data = await response.json();
-            //  Aquí está la URL de la imagen (que se debe utilizar para cargar la imagen)
-            const uploadedImageUrl = data.secure_url;
-            
-            //  Para verificar en consola
-            console.log(uploadedImageUrl);
-            
-            return true;
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+            method: "POST",
+            body: formData
+        });
+        const data = await response.json();
+        //  Aquí está la URL de la imagen (que se debe utilizar para cargar la imagen)
+        const uploadedImageUrl = data.secure_url;
+
+        //  Para verificar en consola
+        console.log(uploadedImageUrl);
+
+        return data.secure_url;
 
     } catch (error) {
         console.log("Error al cargar imagen");
-        return false;
+        return null;
     };
 
 }

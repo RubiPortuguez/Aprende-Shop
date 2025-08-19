@@ -121,7 +121,9 @@ export const products = [
 ];
 
 // Añadir al catálogo ---------------------------------------------- Pendiente 
-    // localStorage.getItem('curso');
-    // const nuevoCurso = JSON.parse(localStorage.getItem('curso'));
-    // console.log(nuevoCurso);
-    // products.push(nuevoCurso);
+if (localStorage.getItem('curso')) {
+    localStorage.getItem('curso');
+    const nuevoCurso = JSON.parse(localStorage.getItem('curso'));
+    console.log(nuevoCurso);
+    products.push(nuevoCurso);
+} 
