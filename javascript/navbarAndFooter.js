@@ -7,7 +7,7 @@ const hrefWishlist = isPerfil ? '#wishlist' : './perfil.html#wishlist';
 
 const navBarLoggedIn = `
   <nav id="perfilMenu" class="navbar navbar-expand-lg sticky-top">
-            <div class="container-fluid">
+            <div class="container-fluid align-items-center">
                 <a class="navbar-brand" href="./index.html">Aprende<span id="shop">Shop</span></a>
                 <button class="navbar-toggler color-boton-nav" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -15,35 +15,26 @@ const navBarLoggedIn = `
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <br>
-                    <form class="d-flex">
-                        <div class="input-group border rounded-4 overflow-hidden">
-                            <input class="form-control border-0 shadow-none" type="search" placeholder="Buscar"
-                                aria-label="Search">
-                            <button class="color-boton-nav btn btn-outline-success border-0 shadow-none" type="submit"><i
-                                    class="bi bi-search"></i></button>
-                        </div>
-                    </form>
+                    
+                   
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex justify-content-end">
-                        <li class="nav-item align-self-end">
+                        <li class="nav-item ">
                             <a class="nav-link active" aria-current="page" href="./clases.html">Clases</a>
-                        </li>
-                        <li class="nav-item align-self-end">
-                            <a class="nav-link active" aria-current="page" href="./materiales.html">Materiales</a>
-                        </li>
-                        <li class="nav-item align-self-end">
+                         </li>
+                         
+                        <li class="nav-item ">
                             <a class="nav-link active" aria-current="page" href="./foro.html">Foro</a>
                         </li>
-                        <li class="nav-item align-self-end">
+                        <li class="nav-item ">
                             <a class="nav-link active" aria-current="page" href="./contacto.html">Contacto</a>
                         </li>
-                        <li class="nav-item align-self-end">
+                        <li class="nav-item ">
                             <a class="nav-link active" id="carrito" aria-current="page" href="./carrito.html">
                                 <i class="bi bi-cart d-none d-lg-inline"></i>
                                 <span class="d-lg-none"> Carrito</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown align-self-end">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href=" href="${hrefPerfil}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle d-none d-lg-inline"></i>
                             <span class="d-lg-none">Mi perfil</span>
@@ -61,7 +52,7 @@ const navBarLoggedIn = `
         </nav>`;
 
 const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
-            <div class="container-fluid">
+            <div class="container-fluid align-items-center">
                 <a class="navbar-brand d-flex align-content-center" href="./index.html">Aprende<span id="shop">Shop</span></a>
                 <button class="navbar-toggler color-boton-nav" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -70,14 +61,6 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <br>
-                    <form class="d-flex">
-                        <div class="input-group border rounded-4 overflow-hidden">
-                            <input class="form-control border-0 shadow-none" type="search" placeholder="Buscar"
-                                aria-label="Search">
-                            <button class="btn btn-outline-success border-0 shadow-none color-boton-nav" type="submit"><i
-                                    class="bi bi-search"></i></button>
-                        </div>
-                    </form>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
                         <li class="nav-item align-self-end">
                             <a class="nav-link active" aria-current="page" href="./clases.html">Clases</a>
@@ -111,7 +94,6 @@ const footerAprendeShop =
                 <h2>Cursos</h2>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
-                    <li class="nav-item"><a href="./materiales.html" class="nav-link p-0 text-muted">Materiales</a></li>
                     <li class="nav-item"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
                 </ul>
             </div>
