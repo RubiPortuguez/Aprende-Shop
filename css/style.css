@@ -270,6 +270,29 @@ a.navbar-brand {
 }
 
 /* Hover: cambia AMBOS al mismo color */
+
+/* Fuerza flex + centrado vertical en toda la barra */
+.navbar,
+.navbar .container-fluid,
+.navbar .navbar-collapse,
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Alinea marca e items al centro vertical exacto y evita alturas raras */
+.navbar .navbar-brand,
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 56px;        /* ajusta si tu navbar es más alta */
+  line-height: 1;
+}
+/* Evita saltos por <br> dentro del collapse */
+#navbarSupportedContent br { display: none; }
+
 a.navbar-brand:hover {
     color: var(--morado);      /* Cambia "Aprende" */
 }
