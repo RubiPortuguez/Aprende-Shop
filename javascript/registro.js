@@ -197,6 +197,14 @@ btnRegistro.addEventListener("click", function (event) {
         invalidPassword.style.display = "none";
         invalidConfirmPassword.style.display = "none";
         invalidSelectUsuario.style.display = "none";
+
+        //limpiar clases previas
+        iptNombre.classList.remove("is-valid", "is-invalid");
+        iptCorreo.classList.remove("is-valid", "is-invalid");
+        iptTelefono.classList.remove("is-valid", "is-invalid");
+        iptPassword.classList.remove("is-valid", "is-invalid");
+        iptConfirmPassword.classList.remove("is-valid", "is-invalid");
+        selectUsuario.classList.remove("is-valid", "is-invalid");
     }
 
 });//orejita boton
