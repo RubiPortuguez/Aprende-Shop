@@ -638,9 +638,14 @@ transform: translateY(-8px);
     object-fit: cover;
 }
 
-/**** CABIA EL COLOR DE LOS INPUTS AL DAR CLIC*****/
-/* .form-control:focus {
+input.form-control:focus {
     border-color: var(--primary-color);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
-} */
+}
+
+select.form-select:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
+}
