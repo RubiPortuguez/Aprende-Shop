@@ -300,6 +300,56 @@ a.navbar-brand:hover {
 a.navbar-brand:hover #shop {
     color: var(--morado);      /* Cambia "Shop" igual que Aprende */
 }
+/* ===== Dropdown del navbar con tema AprendeShop (verde) ===== */
+.navbar .dropdown-menu{
+    --bs-dropdown-bg: #fff;
+    --bs-dropdown-color: #111827;
+    --bs-dropdown-link-color: #111827;
+    --bs-dropdown-link-hover-color: var(--verde-oscuro, #005b4f);
+    --bs-dropdown-link-hover-bg: rgba(0,177,154,.12);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: var(--verde, #00b19a);
+    --bs-dropdown-border-color: var(--border-color, #e5e7eb);
+    --bs-dropdown-box-shadow: 0 16px 40px rgba(0,177,154,.18);
+    border-radius: 10px;
+  }
+  
+  /* Fallback extra por si algún estilo externo gana especificidad */
+  .navbar .dropdown-item.active,
+  .navbar .dropdown-item:active{
+    background-color: var(--verde, #00b19a) !important;
+    color: #fff !important;
+  }
+
+/* Píldora correcta (sin height fija) */
+.navbar .navbar-nav .nav-link{
+    display: inline-flex;           /* se ajusta al contenido */
+    align-items: center;            /* centra vertical */
+    height: auto !important;        /* <-- clave: quita la altura fija */
+    line-height: 1.1;
+    padding: .30rem .56rem;         /* fina */
+    border-radius: 9999px;          /* forma de píldora */
+    border: 0;                      /* sin borde por defecto */
+    background: transparent;
+  }
+  
+  /* Activo: verde translúcido, no “bola” */
+  .navbar .navbar-nav .nav-link.active,
+  .navbar .navbar-nav .nav-link[aria-current="page"]{
+    background-color: rgba(0,177,154,.16);     /* relleno sutil */
+    color: var(--verde-oscuro, #005b4f) !important;
+    border: 1px solid rgba(0,177,154,.45);     /* delineado fino */
+    box-shadow: 0 1px 3px rgba(0,177,154,.12); /* sombra ligera */
+  }
+  
+  /* Hover consistente (no activo) */
+  .navbar .navbar-nav .nav-link:hover{
+    background-color: rgba(0,177,154,.10);
+    color: var(--verde-oscuro, #005b4f);
+  }
+  
+  
+  
 
 .bi-cart {
     color: var(--verde);

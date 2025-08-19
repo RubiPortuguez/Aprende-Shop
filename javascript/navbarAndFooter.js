@@ -101,8 +101,8 @@ const footerAprendeShop =
             <div class="col-md-3 mb-1">
                 <h2>Usuario</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Perfil</a></li>
-                    <li class="nav-item"><a href="./config.html" class="nav-link p-0 text-muted">Configuración de cuenta</a></li>
+                    <li class="nav-item"><a href="${hrefPerfil}" class="nav-link p-0 text-muted">Perfil</a></li>
+                    <li class="nav-item"><a href="${hrefConfig}" class="nav-link p-0 text-muted">Configuración de cuenta</a></li>
                     <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Mis cursos</a></li>
                     <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Wishlist</a></li>
                     <li class="nav-item"><a href="./carrito.html" class="nav-link p-0 text-muted">Carrito de compras</a></li>
@@ -182,3 +182,27 @@ document.body.addEventListener('click', function (event) {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  
+    // Marca los links del navbar principal
+    document.querySelectorAll('.navbar a.nav-link[href]').forEach(a => {
+      const page = a.getAttribute('href').split('/').pop().toLowerCase();
+      if (page && page === current) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      }
+    });
+  
+    // (Opcional) Marca dentro del dropdown si estás en perfil/config/etc.
+    document.querySelectorAll('.navbar .dropdown-menu a.dropdown-item[href]').forEach(a => {
+      const page = a.getAttribute('href').split('/').pop().toLowerCase();
+      if (page && page === current) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  });
+  
