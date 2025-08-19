@@ -722,3 +722,39 @@ select.form-select:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 }
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    top: 75%;
+    right: 11px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    background-color: white;
+}
+
+.fondo-color-registro{
+    background: url(../assets/fondoContacto/Section-1.jpg);
+    background-size: cover;
+}
+
+h1#titulo-registro {
+  font-family: var(--titulo);
+  color: var(--secondary-color);
+  font-size: 4rem;
+  text-align: center;
+  line-height: 0.7;
+  margin-bottom: 0.5em;
+}
+
+p#subtitulo-registro{
+    color: var(--secondary-color);
+    font-family:  var(--contenido);
+    font-size: 1.5rem;
+    margin: 0 0 0 0 ;
+    padding: 0 0 0 0;
+}

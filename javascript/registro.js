@@ -26,6 +26,9 @@ const labelPassword = document.getElementById("labelPassword");
 const labelConfirmPassword = document.getElementById("labelConfirmPassword");
 const labelSelectUsuario = document.getElementById("labelSelectUsuario");
 
+//Visualizar contraseña
+const togglePassword = document.getElementById("togglePassword");
+
 //mensaje valido
 const mensajeValido = `<div class="valid-feedback" id="mensajeVal"> 
                             Campo valido
@@ -205,6 +208,19 @@ btnRegistro.addEventListener("click", function (event) {
         iptPassword.classList.remove("is-valid", "is-invalid");
         iptConfirmPassword.classList.remove("is-valid", "is-invalid");
         selectUsuario.classList.remove("is-valid", "is-invalid");
+
+        iptPassword.type = "password";
+        iptConfirmPassword.type = "password";
+        togglePassword.classList.add("bi-eye");
+        togglePassword.classList.remove("bi-eye-slash");
     }
 
 });//orejita boton
+
+togglePassword.addEventListener("click", () => {
+  const type = iptPassword.type === "password" ? "text" : "password";
+  iptPassword.type = type;
+  iptConfirmPassword.type = type;
+  togglePassword.classList.toggle("bi-eye");
+  togglePassword.classList.toggle("bi-eye-slash");
+});

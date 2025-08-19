@@ -22,9 +22,9 @@
 
 
     <!-- Encabezado -->
-    <div class="text-center py-5">
-        <h1 class="display-4 fw-bold" id="titulo-contacto">AprendeShop</h1>
-        <p class="lead subtitulo">Registro</p>
+    <div class="text-center py-5 fondo-color-registro">
+        <h1 class="display-4" id="titulo-registro">Registro</h1>
+        <p id = "subtitulo-registro">Regístrate y accede a la plataforma</p>
     </div>
 
     <!-- Sección de registro -->
@@ -64,8 +64,11 @@
                         <!-- Contraseña -->
                         <div class="row">
                             <div class="col-md-6 mb-3" id="labelPassword">
+                                <div class="password-wrapper">
                                 <label for="iptPassword" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control" id="iptPassword" required>
+                                <i class="bi bi-eye toggle-password" id="togglePassword"  style="display: inline;"></i>
+                                </div>
                                 <div class="invalid-feedback" id="invalidPassword" style="display: none;"> Ingrese una
                                     contraseña válida. La contraseña debe contener al menos 8 caracteres.
                                     Al menos una letra, un número y un caracter especial.
