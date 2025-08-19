@@ -1,0 +1,110 @@
+:root {
+    --morado: hsl(262, 100%, 68%);
+    --guinda: #910039;
+    --guinda-claro: #91003a7e;
+    --verde: #008876;
+    --verde-oscuro: #006153;
+    --verde-claro: #00B19A;
+    --verde-fosfo: #00B19A;
+    --negro: #191A1B;
+    --titulo: "Katibeh", serif;
+    --contenido: "Istok Web", sans-serif;
+    --primary-color: #00b19a;
+    /* Color principal verde */
+    --primary-hover: #008c7a;
+    /* Color hover del botón */
+    --secondary-color: #f8f9fa;
+    /* Color de fondo secundario */
+    --text-color: #333;
+    /* Color de texto principal */
+    --error-color: #dc3545;
+    /* Color para errores */
+    --success-color: #28a745;
+    /* Color para éxito */
+    --border-color: #ced4da;
+    /* Color de bordes */
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra de tarjetas */
+    --fondo: #D8F4EE;
+    --verde-mas-claro: #ECFFFB;
+}
+
+main {
+    margin: 2rem;
+}
+
+#h1Inicio,
+h3,
+h5,
+#catalog-title,
+#how-title,
+#community-title, .listaTitle  {
+    font-family: var(--contenido);
+}
+
+div#announcementBar {
+    background-color: var(--verde-oscuro);
+}
+
+.header-grad {
+    background: radial-gradient(1000px 500px at 10% 0%, var(--fondo), transparent),
+        radial-gradient(1000px 500px at 90% 0%, var(--guinda-claro), transparent),
+        linear-gradient(180deg, #ffffff 0%, var(--fondo) 100%);
+}
+
+#color-boton {
+    font-family: var(--contenido);
+    background-color: var(--primary-color);
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+}
+
+#color-boton:hover {
+    background-color: var(--primary-hover);
+    /* Color al pasar el mouse */
+    box-shadow: var(--box-shadow);
+    /* Sombra al pasar el mouse */
+    color: var(--secondary-color);
+}
+
+#color-boton:focus {
+    background-color: var(--primary-color);
+    transform: translateY(1px);
+    /* Efecto de "presionado" */
+}
+
+#heroCarousel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#heroCarousel .carousel-item img {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+}
+
+.card-hover {
+    transition: transform .18s ease, box-shadow .18s ease
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08)
+}
+
+#value-title {
+    font-family: var(--contenido);
+    font-size: 2rem;
+}
+
+.section-cta {
+    background: linear-gradient(90deg, var(--guinda), var(--verde-claro));
+}

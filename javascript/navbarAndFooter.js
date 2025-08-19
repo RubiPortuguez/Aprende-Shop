@@ -102,56 +102,57 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
         </nav>`;
 
 const footerAprendeShop =
-    `<footer class="py-5 border-top"> 
+    `<footer class="py-4 border-top"> 
 <div class="container">
         <div class="row">
-            <div class="col-md-3 mb-3 d-flex  align-items-end gap-5">
-                    <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
-                        class="copiarCorreoFooter"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
-                    <a href="https://www.linkedin.com/" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
-                    <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-github fa-lg iconos-redes-footer"></i></a>
+            <div class="col-md-3 mb-2"></div>
 
-
-            </div>
-
-            <!-- Repetimos 3 columnas iguales -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Cursos</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
-                    <li class="nav-item mb-2"><a href="./materiales.html" class="nav-link p-0 text-muted">Materiales</a></li>
-                    <li class="nav-item mb-2"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
+                    <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
+                    <li class="nav-item"><a href="./materiales.html" class="nav-link p-0 text-muted">Materiales</a></li>
+                    <li class="nav-item"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Usuario</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./perfil.html" class="nav-link p-0 text-muted">Perfil</a></li>
-                    <li class="nav-item mb-2"><a href="./config.html" class="nav-link p-0 text-muted">Configuración de cuenta</a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="./clases.html" class="nav-link p-0 text-muted">Mis cursos</a></li>
-                    <li class="nav-item mb-2"><a href="./perfil.html" class="nav-link p-0 text-muted">Wishlist</a></li>
-                    <li class="nav-item mb-2"><a href="./carrito.html" class="nav-link p-0 text-muted">Carrito de compras</a></li>
+                    <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Perfil</a></li>
+                    <li class="nav-item"><a href="./config.html" class="nav-link p-0 text-muted">Configuración de cuenta</a></li>
+                    <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Mis cursos</a></li>
+                    <li class="nav-item"><a href="./perfil.html" class="nav-link p-0 text-muted">Wishlist</a></li>
+                    <li class="nav-item"><a href="./carrito.html" class="nav-link p-0 text-muted">Carrito de compras</a></li>
 
                 </ul>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-1">
                 <h2>Más sobre AprendeShop</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="./nosotras.html" class="nav-link p-0 text-muted">Nosotras</a>
+                    <li class="nav-item"><a href="./nosotras.html" class="nav-link p-0 text-muted">Nosotras</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="./contacto.html" class="nav-link p-0 text-muted">Contacto</a></li>
+                    <li class="nav-item"><a href="./contacto.html" class="nav-link p-0 text-muted">Contacto</a></li>
                 </ul>
             </div>
         </div>
 
+        <!-- línea + copyright + iconos abajo -->
+        <div class="d-flex justify-content-between align-items-center pt-3 mt-2">
+            <small class="text-muted">© 2025 AprendeShop</small>
+            <div class="d-flex gap-4">
+                <a href="#" target="_blank" rel="noopener noreferrer" data-correo="aprendeshop808@gmail.com"
+                    class="copiarCorreoFooter"><i class="fas fa-envelope fa-lg iconos-redes-footer"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-linkedin fa-lg iconos-redes-footer"></i></a>
+                <a href="https://github.com/RubiPortuguez/Aprende-Shop" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-github fa-lg iconos-redes-footer"></i></a>
+            </div>
+        </div>
+
     </div>
-    </footer>  
-`;
+    </footer>`; 
 
 document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML("afterbegin", navBarLoggedIn);
