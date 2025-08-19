@@ -31,6 +31,27 @@ const mensajeValido = `<div class="valid-feedback" id="mensajeVal">
                             Campo valido
                         </div>`;
 
+class Usuario {
+                    userId = 0;
+                    name = "";
+                    email = "";
+                    phoneNumber = "";
+                    password = "";
+                    userType = "";
+
+                    static total = 0;
+
+                    constructor(name,email,phoneNumber,password,userType){
+                        this.userId = Usuario.total++;
+                        this.name = name;
+                        this.email = email;
+                        this.phoneNumber = phoneNumber;
+                        this.password = password;
+                        this.userType = userType;
+                    }
+                }
+
+let usuarios = []; //Arreglo de usuarios
 
 //Mensaje validación
 function inputValido(input, nombre) {
@@ -59,21 +80,17 @@ function validarPassword(password) {
 }
 //validación confirmar contraseña
 function confirmarPassword(password, confirmPassword) {
-    return password === confirmPassword;
+    return ((password === confirmPassword) && (password != "") && (password != null));
 }
 //Validación tipo usuario
 function validarTipoUsuario(tipo) {
     return tipo !== "";
 }
 
-
-
-
-
-
 //orejita boton
 btnRegistro.addEventListener("click", function (event) {
     event.preventDefault();
+    let isValid = true;
     //ocultar alertas invalido
     invalidName.style.display = "none";
     invalidCorreo.style.display = "none";
@@ -97,46 +114,89 @@ btnRegistro.addEventListener("click", function (event) {
     if (!validarNombre(iptNombre.value)) {
         iptNombre.classList.add("is-invalid");
         invalidName.style.display = "block";
-
+        isValid &= false;
     } else {
         inputValido(iptNombre, labelNombre);
+        isValid &= true;
     }//validarNombre
 
     if (!validarCorreo(iptCorreo.value)) {
         iptCorreo.classList.add("is-invalid");
         invalidCorreo.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptCorreo, labelCorreo);
+        isValid &= true;
     }//validarCorreo
 
     if (!validarTelefono(iptTelefono.value)) {
         iptTelefono.classList.add("is-invalid");
         invalidTelefono.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptTelefono, labelTelefono);
+        isValid &= true;
     }//validarTelefono
 
     if (!validarPassword(iptPassword.value)) {
         iptPassword.classList.add("is-invalid");
         invalidPassword.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptPassword, labelPassword);
+        isValid &= true;
     }//validarPassword
 
     if (!confirmarPassword(iptPassword.value, iptConfirmPassword.value)) {
         iptConfirmPassword.classList.add("is-invalid");
         invalidConfirmPassword.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptConfirmPassword, labelConfirmPassword);
+        isValid &= true;
     }//confirmarPassword
 
     if (!validarTipoUsuario(selectUsuario.value)) {
         selectUsuario.classList.add("is-invalid");
         invalidSelectUsuario.style.display = "block";
+        isValid &= false;
     } else {
         selectUsuario.classList.remove("is-invalid");
         selectUsuario.classList.add("is-valid");
+        isValid &= true;
     }//validarTipoUsuario
 
+    if (isValid){
+        //Construir objeto
+        let usuario = new Usuario(iptNombre.value, iptCorreo.value, iptTelefono.value, iptPassword.value, selectUsuario.value);
+
+        //Agregar a arreglo de usuarios
+        usuarios.push(usuario);
+
+        //Convertir a String
+        let jsonUsuarios = JSON.stringify(usuarios);
+        //console.log("JSON: " + jsonUsuarios);
+
+        //Guardar en localStorage
+        localStorage.setItem("usuarios",jsonUsuarios);
+
+        //Limpiar campos:
+        
+        //limpiar valores
+        iptNombre.value = "";
+        iptCorreo.value = "";
+        iptTelefono.value = "";
+        iptPassword.value = "";
+        iptConfirmPassword.value = "";
+        selectUsuario.value = "";
+
+        //ocultar alertas invalido
+        invalidName.style.display = "none";
+        invalidCorreo.style.display = "none";
+        invalidTelefono.style.display = "none";
+        invalidPassword.style.display = "none";
+        invalidConfirmPassword.style.display = "none";
+        invalidSelectUsuario.style.display = "none";
+    }
 
 });//orejita boton
