@@ -27,6 +27,8 @@
 #foro h2,
 #foro .fw-semibold {
   color: var(--guinda);
+  /* font-family: var(--contenido);
+  font-size: 1.5rem; */
 }
 
 /* Texto muted normal */

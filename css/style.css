@@ -54,14 +54,38 @@ h5 {
 
 /* --- TÍTULO --- */
 h1#titulo-nosotras {
-    font-family: var(--titulo);
-    font-size: 3.5rem;
+    font-family: var(--contenido);
+    font-weight: bold;
+    font-size: 2rem;
     text-align: center;
     color: white;
     /* Texto blanco sobre fondo guinda */
     margin-bottom: 1rem;
     line-height: 1;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Títulos con font istok */
+h2#titulo-istok {
+    font-family: var(--contenido);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Título card producto */
+h1#nombreProducto {
+    font-family: var(--contenido);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+/* Títulos Fotter */
+h2#titulo-istok-footter {
+    font-family: var(--contenido);
+    font-weight:bold;
+    font-size: 1.3rem;
+    /* color: var(--border-color); */
 }
 
 /* --- DESCRIPCIÓN --- */

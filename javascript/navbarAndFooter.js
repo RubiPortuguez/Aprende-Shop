@@ -91,7 +91,7 @@ const footerAprendeShop =
             <div class="col-md-3 mb-2"></div>
 
             <div class="col-md-3 mb-1">
-                <h2>Cursos</h2>
+                <h2 id="titulo-istok-footter">Cursos</h2>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="./clases.html" class="nav-link p-0 text-muted">Catálogo completo</a></li>
                     <li class="nav-item"><a href="./foro.html" class="nav-link p-0 text-muted">Foro</a></li>
@@ -99,7 +99,7 @@ const footerAprendeShop =
             </div>
 
             <div class="col-md-3 mb-1">
-                <h2>Usuario</h2>
+                <h2 id="titulo-istok-footter">Usuario</h2>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="${hrefPerfil}" class="nav-link p-0 text-muted">Perfil</a></li>
                     <li class="nav-item"><a href="${hrefConfig}" class="nav-link p-0 text-muted">Configuración de cuenta</a></li>
@@ -111,7 +111,7 @@ const footerAprendeShop =
             </div>
 
             <div class="col-md-3 mb-1">
-                <h2>Más sobre AprendeShop</h2>
+                <h2 id="titulo-istok-footter">Más sobre AprendeShop</h2>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="./nosotras.html" class="nav-link p-0 text-muted">Nosotras</a>
                     </li>
