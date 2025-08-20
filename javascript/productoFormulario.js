@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagePreview = document.getElementById('imagePreview');
     const additionalImages = document.getElementById('additionalImages');
     const galleryPreview = document.getElementById('galleryPreview');
+    const coursePrice = document.getElementById('coursePrice');
+    const coursePriceWithKit = document.getElementById('coursePriceWithKit');
 
     // Contador de caracteres para descripción corta
     shortDescription.addEventListener('input', function () {
@@ -29,8 +31,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar/ocultar descripción del kit
     includesKit.addEventListener('change', function () {
         kitDescriptionContainer.style.display = this.checked ? 'block' : 'none';
+
+        // Mostrar/ocultar validación de precio con kit
+        if (this.checked) {
+            coursePriceWithKit.setAttribute('required', 'true');
+            coursePriceWithKit.closest('.mb-3').style.display = 'block';
+        } else {
+            coursePriceWithKit.removeAttribute('required');
+            coursePriceWithKit.closest('.mb-3').style.display = 'none';
+            coursePriceWithKit.value = '';
+        }
+
         if (!this.checked) {
             document.getElementById('kitDescription').value = '';
+        }
+    });
+
+    // Validación en tiempo real de precios
+    coursePriceWithKit.addEventListener('input', function() {
+        const price = parseFloat(coursePrice.value) || 0;
+        const priceWithKit = parseFloat(this.value) || 0;
+
+        if (priceWithKit <= price && priceWithKit > 0) {
+            this.classList.add('is-invalid');
+            this.nextElementSibling.textContent = 'El precio con kit debe ser mayor al precio base';
+        } else {
+            this.classList.remove('is-invalid');
         }
     });
 
@@ -104,6 +130,17 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
 
+        // Validación personalizada de precios
+        const price = parseFloat(coursePrice.value);
+        const priceWithKit = parseFloat(coursePriceWithKit.value);
+        const kitChecked = includesKit.checked;
+
+        if (kitChecked && (isNaN(priceWithKit) || priceWithKit <= price)) {
+            coursePriceWithKit.classList.add('is-invalid');
+            coursePriceWithKit.nextElementSibling.textContent = 'El precio con kit debe ser mayor al precio base';
+            return;
+        }
+
         if (form.checkValidity()) {
 
             // SweetAlert2
@@ -123,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (mainImage.files[0]) {
                         mainImageUrl = await sendImage(mainImage.files[0]);
                     }
-                    console.log(mainImageUrl);
+
                     // Crear objeto con los datos del formulario
                     const formData = {
                         idProd: products.length + 1, // Asignar un nuevo ID
@@ -139,9 +176,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         resolution: document.getElementById('videoResolution').value,
                         languages: getSelectedLanguages(),
                         materials: document.getElementById('materialsList').value.split(/[\n,]/).filter(item => item.trim()),
-                        includesKit: includesKit.checked,
-                        kitDescription: includesKit.checked ? document.getElementById('kitDescription').value : null,
-                        price: parseFloat(document.getElementById('coursePrice').value),
+                        includesKit: kitChecked,
+                        kitDescription: kitChecked ? document.getElementById('kitDescription').value : null,
+                        price: price,
+                        priceWithKit: kitChecked ? priceWithKit : null,
                         discount: parseInt(document.getElementById('courseDiscount').value) || 0,
                         rating: parseInt(document.getElementById('courseRating').value),
                         mainImage: mainImageUrl,
@@ -168,18 +206,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
                     }
 
-                    // Resetear formulario después de éxito
+                    // Resetear formulario
                     form.reset();
                     form.classList.remove('was-validated');
                     imagePreview.style.display = 'none';
                     galleryPreview.innerHTML = '';
+                    coursePriceWithKit.closest('.mb-3').style.display = 'none';
                 }
-
             });
         }
 
         form.classList.add('was-validated');
     }, false);
+
+    // Ocultar inicialmente el campo de precio con kit
+    coursePriceWithKit.closest('.mb-3').style.display = 'none';
 });
 
 // Función auxiliar para obtener idiomas seleccionados
