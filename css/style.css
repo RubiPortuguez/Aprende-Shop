@@ -451,6 +451,22 @@ button#corazon2:hover {
     /* margin-bottom: 1rem; */
 }
 
+.btnComprar{
+font-family: var(--contenido);
+    background-color: var(--primary-color);
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    padding: 6px 6px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+    border: none;
+    outline: none;
+    /* margin-bottom: 1rem; */
+}
+
 .btnMateriales:hover {
     background-color: var(--primary-hover);
     /* Color al pasar el mouse */
@@ -600,8 +616,6 @@ button#corazon2:hover {
     white-space: nowrap;
     pointer-events: none;
   }
-<<<<<<< HEAD
-=======
 
 /***** HOVER DE LA TARJETA CLASES *****/
 .clases:hover{
@@ -646,4 +660,10 @@ transform: translateY(-8px);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 } */
->>>>>>> 480f2d109731140b69c02d031a42e5b12be5553e
+
+/* ESTILOS TOAST alerta chiquita de agregado */
+
+#liveToast {
+  background-color: hsl(261, 57%, 86%) !important;
+}
+
