@@ -38,7 +38,7 @@ function validarCorreo(correo) {
 }
 //validación numero telefonico
 function validarTelefono(telefono) {
-    const regex = new RegExp(`^[\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$`);
+    const regex = new RegExp(`^(?!0+$)(?!1+$)(?!0*1+0*$)[1-9][0-9]{9}$`);
     return regex.test(telefono) && !/^0+$/.test(telefono.replace(/\D/g, '')); //no acepta solo ceros
 }
 //validacion mensaje

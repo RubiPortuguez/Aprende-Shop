@@ -73,12 +73,12 @@ function validarCorreo(correo) {
 }
 //validación numero telefonico
 function validarTelefono(telefono) {
-    const regex = new RegExp(`^[\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$`);
+    const regex = new RegExp(`^(?!0+$)(?!1+$)(?!0*1+0*$)[1-9][0-9]{9}$`);
     return regex.test(telefono) && !/^0+$/.test(telefono.replace(/\D/g, '')); //no acepta solo ceros
 }
 // validación contraseña (mínimo 8, 1 número, 1 letra, 1 caracter especial)
 function validarPassword(password) {
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&.,;:_\-])[A-Za-z\d@$!%*?&.,;:_\-]{8,}$/;
+    const regex = /^(?=.*?[A-ZÁÉÍÓÚÜÑ])(?=.*?[a-záéíóúüñ])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
     return regex.test(password);
 }
 //validación confirmar contraseña
