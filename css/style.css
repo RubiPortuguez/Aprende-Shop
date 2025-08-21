@@ -757,16 +757,7 @@ font-family: var(--contenido);
     /* estrella llena */
     white-space: nowrap;
     pointer-events: none;
-<<<<<<< HEAD
-  }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 }
->>>>>>> 28214ee1930dabc8c18dc848910dbe723624d053
-=======
->>>>>>> Yutnu
 
 /***** HOVER DE LA TARJETA CLASES *****/
 .clases:hover {
@@ -809,12 +800,9 @@ input.form-control:focus {
     border-color: var(--primary-color);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
-<<<<<<< HEAD
-} */
-<<<<<<< HEAD
->>>>>>> 480f2d109731140b69c02d031a42e5b12be5553e
-=======
-}
+
+} 
+
 
 select.form-select:focus {
     border-color: var(--primary-color);
@@ -913,13 +901,9 @@ p#subtitulo-registro {
     display: inline !important;
     margin-left: 10px;
 }
->>>>>>> 28214ee1930dabc8c18dc848910dbe723624d053
-=======
 
 /* ESTILOS TOAST alerta chiquita de agregado */
 
 #liveToast {
   background-color: hsl(261, 57%, 86%) !important;
 }
-
->>>>>>> Yutnu

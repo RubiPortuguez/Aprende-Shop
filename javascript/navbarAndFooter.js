@@ -192,7 +192,6 @@ document.body.addEventListener('click', function (event) {
     }
 });
 
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
     const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
@@ -241,7 +240,6 @@ document.body.addEventListener("click", function (event) {
         });
     }
 });
-=======
 document.addEventListener("DOMContentLoaded", cargarElementos);
 let iconoPA;
 const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
@@ -256,4 +254,3 @@ function actualizariconoPA(){
     iconoPA.textContent = productosCesta.length;
   }
 }
->>>>>>> Yutnu
