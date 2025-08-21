@@ -11,6 +11,7 @@ const categoriaContainer = document.getElementById("categoriaContainer");
 const nivelContainer = document.getElementById("nivelContainer");
 const idiomaContainer = document.getElementById("idiomaContainer");
 const duracionContainer = document.getElementById("duracionContainer");
+const checkIncluyeKit = document.getElementById("checkNativeSwitch");
 
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id")); // obtiene el sku de la URL
@@ -30,7 +31,31 @@ if (producto) {
         <p class="my-0">Dale una calificación a nuestro curso</p>
         <div id="seleccionarCalificacion" class="stars"></div>`
   );
-  precioProducto.textContent = `$ ${producto.price} MXN`;
+
+  // Inicializa el switch según si el producto incluye kit
+  checkIncluyeKit.checked = producto.includesKit ?? false;
+
+  // Función para actualizar el precio según el switch
+  function actualizarPrecioKit() {
+    if (checkIncluyeKit.checked && producto.priceWithKit) {
+      precioProducto.style.display = "block";
+      precioProducto.innerHTML = `
+        <span class="text-muted text-decoration-line-through me-2">$${producto.price} MXN</span>
+        <span class="fw-bold text-morado">$${producto.priceWithKit} MXN</span>
+        <small class="text-verde d-block">Incluye kit de materiales</small>
+      `;
+    } else {
+      precioProducto.style.display = "block";
+      precioProducto.innerHTML = `<span>$${producto.price} MXN</span>`;
+    }
+  }
+
+  // Inicializa el precio al cargar
+  actualizarPrecioKit();
+
+  // Evento para cambiar el precio dinámicamente
+  checkIncluyeKit.addEventListener("change", actualizarPrecioKit);
+
   imgContainer.insertAdjacentHTML(
     "afterbegin",
     `<img src="${producto.mainImage}" class="imagen-producto imgProducto" alt="${producto.alt}">`
@@ -63,10 +88,10 @@ if (producto) {
 /***** INSERTA EL CARRUSEL DE COMENTARIOS *****/
 let comentarios = [];
 producto.reviews.forEach((review) => {
-    comentarios.push(review);
-  });
+  comentarios.push(review);
+});
 
-function agruparComentarios(comentarios,tamanoGrupo) {
+function agruparComentarios(comentarios, tamanoGrupo) {
   const grupos = [];
   for (let i = 0; i < comentarios.length; i += tamanoGrupo) {
     grupos.push(comentarios.slice(i, i + tamanoGrupo));
@@ -90,20 +115,17 @@ function crearCarruselComentarios() {
                         <div class="col-md-4 mb-4 mb-md-0">
                             <div class="card comment-card h-100 shadow-sm">
                                 <div class="card-body text-center p-4">
-                                    <img src="" class="avatar-img rounded-circle mb-3" alt="">
-                                    <h3 class="card-title">${
-                                      comentario.user.name
-                                    }</h3>
+                                    <img src="${comentario.user.photo}" class="avatar-img rounded-circle mb-3" alt="">
+                                    <h3 class="card-title">${comentario.user.name
+        }</h3>
                                     <p class="text-muted mb-2"></p>
                                     <div class="star-rating mb-3">
                                     ${starsRandom(comentario.rating)}
                                     </div>
-                                    <p class="card-text">"${
-                                      comentario.comment
-                                    }"</p>
-                                    <small class="text-muted">${
-                                      comentario.createdAt
-                                    }</small>
+                                    <p class="card-text">"${comentario.comment
+        }"</p>
+                                    <small class="text-muted">${comentario.createdAt
+        }</small>
                                 </div>
                             </div>
                         </div>

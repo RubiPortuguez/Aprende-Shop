@@ -188,3 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
         spy.refresh();
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnNuevoProducto = document.getElementById('btnNuevoProducto');
+    if (btnNuevoProducto) {
+      btnNuevoProducto.addEventListener('click', function() {
+        window.location.href = 'formularioProducto.html';
+      });
+    }
+  });
