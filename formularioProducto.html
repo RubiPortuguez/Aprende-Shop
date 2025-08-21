@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Favicon principal en formato SVG -->
+    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
+    <!-- PNG fallback para navegadores que no soportan SVG -->
+    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png">
+    <!-- Icono para dispositivos Apple (iOS y macOS)  -->
+    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180">
+    <!-- Para pestañas ancladas en Safari macOS -->
+    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
+    
 </head>
 <body>
     <main class="container formulario-producto py-5">
@@ -170,7 +180,7 @@
                                     </div>
                                     <div class="invalid-feedback">El precio mínimo es $100.00 MXN.</div>
                                 </div>
-                                
+
                                 <div class="col-md-6 mb-3">
                                     <label for="courseDiscount" class="form-label fw-bold">Descuento (%)</label>
                                     <div class="input-group">
@@ -179,7 +189,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="courseRating" class="form-label fw-bold">Valoración Inicial</label>
                                 <select class="form-select" id="courseRating">

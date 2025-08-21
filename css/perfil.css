@@ -1,0 +1,307 @@
+    /* Estilos para el switch con sol y luna */
+    .theme-switch {
+        display: flex;
+        /* Coloca los elementos en una línea */
+        align-items: center;
+        /* Centra verticalmente el sol, el switch y la luna */
+        gap: 8px;
+        /* Espacio entre íconos y el switch */
+        cursor: pointer;
+        /* Muestra la manita */
+    }
+
+    .theme-switch input {
+        display: none;
+        /* Oculta el checkbox real*/
+    }
+
+    /* barra de switch */
+    .theme-switch-label {
+        width: 50px;
+        height: 25px;
+        background-color: #ccc;
+        /* Color gris por defecto (modo claro) */
+        border-radius: 25px;
+        /* Bordes */
+        position: relative;
+        /* Necesario para posicionar el círculo dentro */
+        transition: background-color 0.3s;
+        /* Transición suave del color */
+    }
+
+    /* bolita del switch */
+    .theme-switch-label::after {
+        content: "";
+        /* Obligatorio para pseudo-elementos */
+        width: 21px;
+        /* Tamaño del círculo */
+        height: 21px;
+        background-color: white;
+        /* Color blanco del círculo */
+        border-radius: 50%;
+        /* Para que sea redondo */
+        position: absolute;
+        /* Dentro del contenedor */
+        top: 2px;
+        /* Espaciado desde arriba */
+        left: 2px;
+        /* Espaciado desde la izquierda */
+        transition: transform 0.3s;
+        /* Movimiento suave al cambiar de lado */
+    }
+
+    .theme-switch input:checked+.theme-switch-label {
+        background-color: #444;
+        /* Fondo más oscuro cuando está en modo oscuro */
+    }
+
+    .theme-switch input:checked+.theme-switch-label::after {
+        transform: translateX(25px);
+        /* Mueve la bolita hacia la derecha */
+    }
+
+    .theme-switch .sun {
+        color: #f39c12;
+        /* Amarillo cálido para el sol */
+        font-size: 1.2rem;
+    }
+
+    .theme-switch .moon {
+        color: #f1c40f;
+        /* Amarillo brillante para la luna */
+        font-size: 1.2rem;
+    }
+
+    /* Ajusta 80px al alto real de tu navbar */
+    #perfil,
+    #configuracion,
+    #wishlist {
+        scroll-margin-top: 80px;
+    }
+
+    /* ===== Theme general de formularios AprendeShop ===== */
+    /* ===== PERFIL: avatar sin borde/anillo ===== */
+    #profilePic {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 0;
+        /* quita borde */
+        box-shadow: none;
+        /* quita sombra/anillo */
+        background: transparent;
+        /* sin fondo de color */
+    }
+
+    /* ===== PERFIL: tipografías y colores unificados ===== */
+    .perfil-card {
+        /* scope para que solo afecte perfil */
+        color: var(--gris-900, #111827);
+        font-family: var(--contenido, system-ui, sans-serif);
+    }
+
+    .perfil-card h5,
+    .perfil-card p {
+        color: var(--gris-900, #111827);
+        font-weight: 500;
+        /* peso homogéneo */
+        margin-bottom: .5rem;
+    }
+
+    /* Si el nombre estaba en verde, unifícalo también */
+    .perfil-card #userName {
+        color: var(--gris-900, #111827) !important;
+        font-weight: 600;
+    }
+
+    /* La descripción tenía .text-muted: sobreescríbela para unificar */
+    .perfil-card #userDesc {
+        color: var(--gris-800, #1f2937) !important;
+        font-weight: 500 !important;
+    }
+
+    /* El párrafo del correo tenía .fw-bold: bájalo para unificar */
+    .perfil-card .fw-bold {
+        font-weight: 500 !important;
+    }
+
+    /* El email como texto normal (sin rojo/azul), con hover sutil */
+    .perfil-card #userEmail {
+        color: inherit;
+        /* mismo color del texto */
+        text-decoration: none;
+        font-weight: 600;
+        /* resalta solo un poco */
+    }
+
+    .perfil-card #userEmail:hover {
+        text-decoration: underline;
+    }
+
+    /* Íconos de lápiz coherentes */
+    .perfil-card .bi-pencil-square {
+        cursor: pointer;
+        margin-left: .25rem;
+        vertical-align: middle;
+        opacity: .8;
+        transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .perfil-card .bi-pencil-square:hover {
+        opacity: 1;
+        transform: translateY(-1px);
+    }
+
+    /* Link "Cambiar contraseña" con look uniforme (opcional) */
+    .perfil-card a[href^="mailto:"],
+    .perfil-card a[href^="#"],
+    .perfil-card a[data-bs-toggle="modal"] {
+        color: var(--guinda, #99003d);
+    }
+
+    .perfil-card a[data-bs-toggle="modal"]:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== AprendeShop: theme para MODALES ===== */
+    .modal .modal-content {
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 24px 48px rgba(0, 177, 154, .18);
+        /* sombra verdosa */
+        font-family: var(--contenido, system-ui, sans-serif);
+    }
+
+    .modal .modal-header {
+        background-color: var(--verde-claro, #06c1aa);
+        color: #fff;
+        border-bottom: 0;
+    }
+
+    .modal .modal-title {
+        font-family: var(--titulo, system-ui, sans-serif);
+    }
+
+    .modal .modal-footer {
+        border-top: 1px solid var(--border-color, #e5e7eb);
+    }
+
+    /* Cerrar en blanco */
+    .modal .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+        opacity: .9;
+    }
+
+    .modal .btn-close:hover {
+        opacity: 1;
+    }
+
+    /* ===== Inputs/selects con focus verde ===== */
+    .modal .form-control:focus,
+    .modal .form-select:focus {
+        border-color: var(--verde, #00b19a);
+        box-shadow: 0 0 0 .25rem rgba(0, 177, 154, .25);
+        outline: 0;
+    }
+
+    .modal .form-text {
+        color: var(--gris-500, #6b7280);
+    }
+
+    /* ===== Botones ===== */
+    .modal .btn-primary {
+        background-color: var(--verde, #00b19a);
+        border-color: var(--verde, #00b19a);
+        color: #fff;
+    }
+
+    .modal .btn-primary:hover {
+        background-color: #009782;
+        border-color: #009782;
+    }
+
+    .modal .btn-primary:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 .25rem rgba(0, 177, 154, .35);
+        /* halo verde */
+    }
+
+    /* Secundario (Cancelar) en gris suave */
+    .modal .btn-secondary {
+        background-color: #e5e7eb;
+        border-color: #e5e7eb;
+        color: #111827;
+    }
+
+    .modal .btn-secondary:hover {
+        background-color: #d1d5db;
+        border-color: #d1d5db;
+    }
+
+    .modal .btn-secondary:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 .25rem rgba(17, 24, 39, .15);
+    }
+
+    /* ===== Validaciones en el modal ===== */
+    .modal .form-control.is-valid {
+        border-color: var(--verde, #00b19a);
+        box-shadow: 0 0 0 .2rem rgba(0, 177, 154, .20);
+    }
+
+    .modal .form-control.is-invalid {
+        border-color: var(--guinda, #99003d);
+        box-shadow: 0 0 0 .2rem rgba(153, 0, 61, .20);
+    }
+
+    .modal .invalid-feedback {
+        color: var(--guinda, #99003d);
+    }
+
+    /* Quita los íconos internos de validación de Bootstrap si molestan */
+    .modal .form-control.is-valid,
+    .modal .form-control.is-invalid {
+        background-image: none;
+        padding-right: .75rem;
+    }
+
+    /* Perfil: enlaces en guinda */
+    .perfil-card a[href^="mailto:"],
+    /* correo */
+    .perfil-card a[data-bs-toggle="modal"],
+    /* "Cambiar contraseña" si es <a> */
+    .perfil-card button[data-bs-toggle="modal"].btn-link {
+        /* ...o si es <button> */
+        color: var(--guinda, #99003d) !important;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .perfil-card a[href^="mailto:"]:visited,
+    .perfil-card a[data-bs-toggle="modal"]:visited {
+        color: var(--guinda, #99003d) !important;
+    }
+
+    .perfil-card a[href^="mailto:"]:hover,
+    .perfil-card a[data-bs-toggle="modal"]:hover,
+    .perfil-card button[data-bs-toggle="modal"].btn-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Accesible: halo al enfocar con teclado */
+    .perfil-card a[href^="mailto:"]:focus-visible,
+    .perfil-card a[data-bs-toggle="modal"]:focus-visible,
+    .perfil-card button[data-bs-toggle="modal"].btn-link:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 .25rem rgba(153, 0, 61, .25);
+        border-radius: .375rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+        #profilePic {
+            width: 96px;
+            height: 96px;
+        }
+    }

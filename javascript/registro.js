@@ -26,11 +26,35 @@ const labelPassword = document.getElementById("labelPassword");
 const labelConfirmPassword = document.getElementById("labelConfirmPassword");
 const labelSelectUsuario = document.getElementById("labelSelectUsuario");
 
+//Visualizar contraseña
+const togglePassword = document.getElementById("togglePassword");
+
 //mensaje valido
 const mensajeValido = `<div class="valid-feedback" id="mensajeVal"> 
                             Campo valido
                         </div>`;
 
+class Usuario {
+    userId = 0;
+    name = "";
+    email = "";
+    phoneNumber = "";
+    password = "";
+    userType = "";
+
+    static total = 0;
+
+    constructor(name, email, phoneNumber, password, userType) {
+        this.userId = Usuario.total++;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.userType = userType;
+    }
+}
+
+let usuarios = []; //Arreglo de usuarios
 
 //Mensaje validación
 function inputValido(input, nombre) {
@@ -49,31 +73,27 @@ function validarCorreo(correo) {
 }
 //validación numero telefonico
 function validarTelefono(telefono) {
-    const regex = new RegExp(`^[\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$`);
+    const regex = new RegExp(`^(?!0+$)(?!1+$)(?!0*1+0*$)[1-9][0-9]{9}$`);
     return regex.test(telefono) && !/^0+$/.test(telefono.replace(/\D/g, '')); //no acepta solo ceros
 }
 // validación contraseña (mínimo 8, 1 número, 1 letra, 1 caracter especial)
 function validarPassword(password) {
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&.,;:_\-])[A-Za-z\d@$!%*?&.,;:_\-]{8,}$/;
+    const regex = /^(?=.*?[A-ZÁÉÍÓÚÜÑ])(?=.*?[a-záéíóúüñ])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
     return regex.test(password);
 }
 //validación confirmar contraseña
 function confirmarPassword(password, confirmPassword) {
-    return password === confirmPassword;
+    return ((password === confirmPassword) && (password != "") && (password != null));
 }
 //Validación tipo usuario
 function validarTipoUsuario(tipo) {
     return tipo !== "";
 }
 
-
-
-
-
-
 //orejita boton
 btnRegistro.addEventListener("click", function (event) {
     event.preventDefault();
+    let isValid = true;
     //ocultar alertas invalido
     invalidName.style.display = "none";
     invalidCorreo.style.display = "none";
@@ -97,46 +117,135 @@ btnRegistro.addEventListener("click", function (event) {
     if (!validarNombre(iptNombre.value)) {
         iptNombre.classList.add("is-invalid");
         invalidName.style.display = "block";
-
+        isValid &= false;
     } else {
         inputValido(iptNombre, labelNombre);
+        isValid &= true;
     }//validarNombre
 
     if (!validarCorreo(iptCorreo.value)) {
         iptCorreo.classList.add("is-invalid");
         invalidCorreo.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptCorreo, labelCorreo);
+        isValid &= true;
     }//validarCorreo
 
     if (!validarTelefono(iptTelefono.value)) {
         iptTelefono.classList.add("is-invalid");
         invalidTelefono.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptTelefono, labelTelefono);
+        isValid &= true;
     }//validarTelefono
 
     if (!validarPassword(iptPassword.value)) {
         iptPassword.classList.add("is-invalid");
         invalidPassword.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptPassword, labelPassword);
+        isValid &= true;
     }//validarPassword
 
     if (!confirmarPassword(iptPassword.value, iptConfirmPassword.value)) {
         iptConfirmPassword.classList.add("is-invalid");
         invalidConfirmPassword.style.display = "block";
+        isValid &= false;
     } else {
         inputValido(iptConfirmPassword, labelConfirmPassword);
+        isValid &= true;
     }//confirmarPassword
 
     if (!validarTipoUsuario(selectUsuario.value)) {
         selectUsuario.classList.add("is-invalid");
         invalidSelectUsuario.style.display = "block";
+        isValid &= false;
     } else {
         selectUsuario.classList.remove("is-invalid");
         selectUsuario.classList.add("is-valid");
+        isValid &= true;
     }//validarTipoUsuario
+
+    if (isValid) {
+
+        Swal.fire({
+            title: '¿Registrarse?',
+            html: `Estás a punto de registrarte</strong>`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#00b19a',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Registrarme',
+            cancelButtonText: 'Cancelar'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                //Construir objeto
+                let usuario = new Usuario(iptNombre.value, iptCorreo.value, iptTelefono.value, iptPassword.value, selectUsuario.value);
+
+                //Agregar a arreglo de usuarios
+                usuarios.push(usuario);
+
+                //Convertir a String
+                let jsonUsuarios = JSON.stringify(usuarios);
+                //console.log("JSON: " + jsonUsuarios);
+
+                //Guardar en localStorage
+                localStorage.setItem("usuarios", jsonUsuarios);
+
+                Swal.fire({
+                    title: '¡Registro exitoso!',
+                    text: 'Tu cuenta ha sido creada correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#00b19a'
+                }).then(() => {
+                    window.location.href = './index.html';
+                });
+
+                //Limpiar campos:
+
+                //limpiar valores
+                iptNombre.value = "";
+                iptCorreo.value = "";
+                iptTelefono.value = "";
+                iptPassword.value = "";
+                iptConfirmPassword.value = "";
+                selectUsuario.value = "";
+
+                //ocultar alertas invalido
+                invalidName.style.display = "none";
+                invalidCorreo.style.display = "none";
+                invalidTelefono.style.display = "none";
+                invalidPassword.style.display = "none";
+                invalidConfirmPassword.style.display = "none";
+                invalidSelectUsuario.style.display = "none";
+
+                //limpiar clases previas
+                iptNombre.classList.remove("is-valid", "is-invalid");
+                iptCorreo.classList.remove("is-valid", "is-invalid");
+                iptTelefono.classList.remove("is-valid", "is-invalid");
+                iptPassword.classList.remove("is-valid", "is-invalid");
+                iptConfirmPassword.classList.remove("is-valid", "is-invalid");
+                selectUsuario.classList.remove("is-valid", "is-invalid");
+
+                iptPassword.type = "password";
+                iptConfirmPassword.type = "password";
+                togglePassword.classList.add("bi-eye");
+                togglePassword.classList.remove("bi-eye-slash");
+            }
+        });
+
+    }
 
 
 });//orejita boton
+
+togglePassword.addEventListener("click", () => {
+    const type = iptPassword.type === "password" ? "text" : "password";
+    iptPassword.type = type;
+    iptConfirmPassword.type = type;
+    togglePassword.classList.toggle("bi-eye");
+    togglePassword.classList.toggle("bi-eye-slash");
+});

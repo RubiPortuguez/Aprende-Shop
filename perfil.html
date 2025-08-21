@@ -16,88 +16,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <style>
-    /* Estilos para el switch con sol y luna */
-    .theme-switch {
-      display: flex;
-      /* Coloca los elementos en una línea */
-      align-items: center;
-      /* Centra verticalmente el sol, el switch y la luna */
-      gap: 8px;
-      /* Espacio entre íconos y el switch */
-      cursor: pointer;
-      /* Muestra la manita */
-    }
-
-    .theme-switch input {
-      display: none;
-      /* Oculta el checkbox real*/
-    }
-
-    /* barra de switch */
-    .theme-switch-label {
-      width: 50px;
-      height: 25px;
-      background-color: #ccc;
-      /* Color gris por defecto (modo claro) */
-      border-radius: 25px;
-      /* Bordes */
-      position: relative;
-      /* Necesario para posicionar el círculo dentro */
-      transition: background-color 0.3s;
-      /* Transición suave del color */
-    }
-
-    /* bolita del switch */
-    .theme-switch-label::after {
-      content: "";
-      /* Obligatorio para pseudo-elementos */
-      width: 21px;
-      /* Tamaño del círculo */
-      height: 21px;
-      background-color: white;
-      /* Color blanco del círculo */
-      border-radius: 50%;
-      /* Para que sea redondo */
-      position: absolute;
-      /* Dentro del contenedor */
-      top: 2px;
-      /* Espaciado desde arriba */
-      left: 2px;
-      /* Espaciado desde la izquierda */
-      transition: transform 0.3s;
-      /* Movimiento suave al cambiar de lado */
-    }
-
-    .theme-switch input:checked+.theme-switch-label {
-      background-color: #444;
-      /* Fondo más oscuro cuando está en modo oscuro */
-    }
-
-    .theme-switch input:checked+.theme-switch-label::after {
-      transform: translateX(25px);
-      /* Mueve la bolita hacia la derecha */
-    }
-
-    .theme-switch .sun {
-      color: #f39c12;
-      /* Amarillo cálido para el sol */
-      font-size: 1.2rem;
-    }
-
-    .theme-switch .moon {
-      color: #f1c40f;
-      /* Amarillo brillante para la luna */
-      font-size: 1.2rem;
-    }
-
-    /* Ajusta 80px al alto real de tu navbar */
-    #perfil,
-    #configuracion,
-    #wishlist {
-      scroll-margin-top: 80px;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/perfil.css">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#perfilMenu" data-bs-offset="80" tabindex="0">
@@ -108,17 +27,18 @@
   <section class="container my-5" id="perfil" >
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2>Mi perfil</h2>
+
       <!-- Switch con sol y luna -->
-      <label class="theme-switch">
+      <!-- <label class="theme-switch">
         <i class="bi bi-sun-fill sun"></i>
         <input type="checkbox" id="modeSwitch" />
         <span class="theme-switch-label"></span>
         <i class="bi bi-moon-fill moon"></i>
-      </label>
+      </label> -->
     </div>
 
     <!-- Card Perfil -->
-    <div class="card shadow-sm p-3 id="configuracion"">
+    <div class="card shadow-sm p-3 perfil-card" id="configuracion">
       <div class="row g-3 align-items-center">
         <!-- Foto -->
         <div class="col-auto">
@@ -150,6 +70,14 @@
             <i class="bi bi-pencil-square" style="cursor: pointer" data-bs-toggle="modal"
               data-bs-target="#editEmailModal"></i>
           </p>
+          <p class="mb-0">
+            <button class="btn btn-link link-guinda p-0 align-baseline"
+        type="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+  <i class="bi bi-key me-1"></i> Cambiar contraseña
+</button>
+
+          </p>
+          
         </div>
       </div>
     </div>
@@ -295,6 +223,59 @@
     </div>
   </div>
 
+  <!-- Modal Editar Contraseña -->
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="changePasswordForm" novalidate>
+        <div class="modal-header">
+          <h5 class="modal-title" id="changePasswordLabel">Cambiar contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+  
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Contraseña actual</label>
+            <input type="password" class="form-control" id="currentPassword" required autocomplete="current-password">
+            <div class="invalid-feedback">Ingresa tu contraseña actual.</div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nueva contraseña</label>
+            <input type="password" class="form-control" id="newPassword" required
+                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+                   title="Mín. 8 caracteres, con al menos 1 mayúscula, 1 minúscula y 1 número"
+                   autocomplete="new-password" aria-describedby="passwordHelp">
+            <div id="passwordHelp" class="form-text">
+              Mínimo 8 caracteres, al menos 1 mayúscula, 1 minúscula y 1 número.
+            </div>
+            <div class="invalid-feedback">Debe cumplir los requisitos mínimos.</div>
+          </div>
+  
+          <div class="mb-2">
+            <label for="confirmPassword" class="form-label">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control" id="confirmPassword" required autocomplete="new-password">
+            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+          </div>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<section class="container my-5" id="agregarProducto">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>¿Quieres publicar un nuevo curso?</h3>
+    <button id="btnNuevoProducto" class="btn btn-morado">
+      <i class="bi bi-plus-circle me-2"></i>Agregar producto
+    </button>
+  </div>
+</section>
+  
+<script src="./javascript/perfil.js"></script>
   <script src="./javascript/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./javascript/navbarAndFooter.js"></script>
@@ -302,149 +283,6 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
 
-  <!-- Script Dark Mode + Modales -->
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedName = localStorage.getItem("userName");
-      if (savedName)
-        document.getElementById("userName").textContent = savedName;
-
-      const savedDesc = localStorage.getItem("userDesc");
-      if (savedDesc)
-        document.getElementById("userDesc").firstChild.textContent =
-          savedDesc + " ";
-
-      const savedEmail = localStorage.getItem("userEmail");
-      if (savedEmail) {
-        document.getElementById("userEmail").textContent = savedEmail;
-        document.getElementById("userEmail").href = "mailto:" + savedEmail;
-      }
-
-      // Cargar avatar guardado si tienes avatar con id profilePic
-      const savedAvatar = localStorage.getItem("userAvatar");
-      if (savedAvatar) {
-        document.getElementById("profilePic").src = savedAvatar;
-        if (document.getElementById("headerAvatar"))
-          document.getElementById("headerAvatar").src = savedAvatar;
-      }
-    });
-
-    const switchMode = document.getElementById("modeSwitch");
-
-    // Aplicar preferencia al cargar con localStorage
-    if (localStorage.getItem("theme") === "dark") {
-      applyDarkMode(true);
-      switchMode.checked = true;
-    }
-
-    // Evento cambio de tema
-    switchMode.addEventListener("change", () => {
-      if (switchMode.checked) {
-        applyDarkMode(true);
-        localStorage.setItem("theme", "dark");
-      } else {
-        applyDarkMode(false);
-        localStorage.setItem("theme", "light");
-      }
-    });
-
-    function applyDarkMode(enable) {
-      document.body.classList.toggle("bg-dark", enable);
-      document.body.classList.toggle("text-white", enable);
-
-      // Tarjetas
-      document.querySelectorAll(".card").forEach((card) => {
-        card.classList.toggle("bg-dark", enable);
-        card.classList.toggle("text-white", enable);
-      });
-
-      // Descripción (para que no se quede gris en dark mode)
-      document.querySelectorAll("#userDesc").forEach((desc) => {
-        if (enable) {
-          desc.classList.remove("text-muted");
-          desc.classList.add("text-light");
-        } else {
-          desc.classList.remove("text-light");
-          desc.classList.add("text-muted");
-        }
-      });
-
-      // Íconos de edición (para que se vean en dark mode)
-      document.querySelectorAll(".bi-pencil-square").forEach((icon) => {
-        if (enable) {
-          icon.style.color = "#fff";
-        } else {
-          icon.style.color = "";
-        }
-      });
-    }
-
-    // Cambiar avatar al hacer click en una imagen dentro del modal
-    document.querySelectorAll(".avatar-select").forEach((avatar) => {
-      avatar.addEventListener("click", () => {
-        const profilePic = document.getElementById("profilePic");
-        const headerAvatar = document.getElementById("headerAvatar");
-
-        profilePic.src = avatar.src;
-        if (headerAvatar) headerAvatar.src = avatar.src;
-        localStorage.setItem("userAvatar", avatar.src);
-
-        const avatarModal = bootstrap.Modal.getInstance(
-          document.getElementById("avatarModal")
-        );
-        avatarModal.hide();
-      });
-    });
-
-    // Guardar cambios modales
-    document.getElementById("saveNameBtn").addEventListener("click", () => {
-      const val = document.getElementById("userNameInput").value.trim();
-      if (val) {
-        document.getElementById("userName").textContent = val;
-        localStorage.setItem("userName", val);
-      }
-      bootstrap.Modal.getInstance(
-        document.getElementById("editNameModal")
-      ).hide();
-    });
-
-    document.getElementById("saveDescBtn").addEventListener("click", () => {
-      const val = document.getElementById("userDescInput").value.trim();
-      if (val) {
-        document.getElementById("userDesc").firstChild.textContent =
-          val + " ";
-        localStorage.setItem("userDesc", val);
-      }
-      bootstrap.Modal.getInstance(
-        document.getElementById("editDescModal")
-      ).hide();
-    });
-
-    document.getElementById("saveEmailBtn").addEventListener("click", () => {
-      const val = document.getElementById("userEmailInput").value.trim();
-      if (val) {
-        document.getElementById("userEmail").textContent = val;
-        document.getElementById("userEmail").href = "mailto:" + val;
-        localStorage.setItem("userEmail", val);
-      }
-      bootstrap.Modal.getInstance(
-        document.getElementById("editEmailModal")
-      ).hide();
-    });
-
-    window.addEventListener("load", () => {
-      if (
-        /(^|\/)perfil\.html(\?|#|$)/.test(location.pathname) &&
-        window.bootstrap
-      ) {
-        const spy = bootstrap.ScrollSpy.getOrCreateInstance(document.body, {
-          target: "#perfilMenu",
-          offset: 80,
-        });
-        spy.refresh(); // por si el navbar se insertó dinámicamente
-      }
-    });
-  </script>
 </body>
 
 </html>
