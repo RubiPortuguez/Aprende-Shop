@@ -902,8 +902,68 @@ p#subtitulo-registro {
     margin-left: 10px;
 }
 
+<<<<<<< HEAD
 /* ESTILOS TOAST alerta chiquita de agregado */
 
 #liveToast {
   background-color: hsl(261, 57%, 86%) !important;
+=======
+/* ===== MEJORAS DE RESPONSIVIDAD PARA FORMULARIO ===== */
+@media (max-width: 768px) {
+    .formulario-producto {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .formulario-producto .card-header {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+    
+    .formulario-producto .row {
+        flex-direction: column;
+    }
+    
+    .formulario-producto .col-md-6 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    /* Mejorar botones en móvil */
+    .d-grid.d-md-flex {
+        flex-direction: column;
+    }
+    
+    .d-grid.d-md-flex .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .formulario-producto {
+        padding: 0.75rem;
+        margin: 0.25rem;
+    }
+    
+    h2.text-center {
+        font-size: 1.5rem;
+    }
+    
+    /* Ajustar inputs group en móviles pequeños */
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group .form-control,
+    .input-group .form-select {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .input-group-text {
+        width: 100%;
+        justify-content: center;
+    }
+>>>>>>> 48bc234 (Modificaciones al formulario)
 }

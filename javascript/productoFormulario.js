@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const additionalImages = document.getElementById('additionalImages');
     const galleryPreview = document.getElementById('galleryPreview');
     const coursePrice = document.getElementById('coursePrice');
+    
+    // Referencias a los elementos de precio con kit
+    const priceWithKitContainer = document.getElementById('priceWithKitContainer');
     const coursePriceWithKit = document.getElementById('coursePriceWithKit');
 
     // Contador de caracteres para descripción corta
@@ -28,21 +31,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Mostrar/ocultar descripción del kit
+    // EVENTO ÚNICO para el switch de kit
     includesKit.addEventListener('change', function () {
-        kitDescriptionContainer.style.display = this.checked ? 'block' : 'none';
-
-        // Mostrar/ocultar validación de precio con kit
-        if (this.checked) {
+        const isChecked = this.checked;
+        
+        kitDescriptionContainer.style.display = isChecked ? 'block' : 'none';
+        priceWithKitContainer.style.display = isChecked ? 'block' : 'none';
+        
+        if (isChecked) {
             coursePriceWithKit.setAttribute('required', 'true');
-            coursePriceWithKit.closest('.mb-3').style.display = 'block';
         } else {
             coursePriceWithKit.removeAttribute('required');
-            coursePriceWithKit.closest('.mb-3').style.display = 'none';
             coursePriceWithKit.value = '';
-        }
-
-        if (!this.checked) {
             document.getElementById('kitDescription').value = '';
         }
     });
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         galleryPreview.innerHTML = '';
 
         if (e.target.files.length > 0) {
-            const files = Array.from(e.target.files).slice(0, 3); // Limitar a 3 imágenes
+            const files = Array.from(e.target.files).slice(0, 3);
 
             files.forEach(file => {
                 if (file.type.match('image.*')) {
@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         btn.innerHTML = '<i class="fas fa-times"></i>';
                         btn.onclick = function () {
                             col.remove();
-                            // Aquí podrías agregar lógica para remover el archivo del input
                         };
 
                         col.appendChild(img);
@@ -130,20 +129,17 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
 
-        // Validación personalizada de precios
         const price = parseFloat(coursePrice.value);
-        const priceWithKit = parseFloat(coursePriceWithKit.value);
+        const priceWithKitValue = parseFloat(coursePriceWithKit.value);
         const kitChecked = includesKit.checked;
 
-        if (kitChecked && (isNaN(priceWithKit) || priceWithKit <= price)) {
+        if (kitChecked && (isNaN(priceWithKitValue) || priceWithKitValue <= price)) {
             coursePriceWithKit.classList.add('is-invalid');
             coursePriceWithKit.nextElementSibling.textContent = 'El precio con kit debe ser mayor al precio base';
             return;
         }
 
         if (form.checkValidity()) {
-
-            // SweetAlert2
             Swal.fire({
                 title: '¿Guardar este curso?',
                 html: `Estás a punto de crear el curso: <strong>${document.getElementById('courseName').value}</strong>`,
@@ -155,15 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-
                     let mainImageUrl = null;
                     if (mainImage.files[0]) {
                         mainImageUrl = await sendImage(mainImage.files[0]);
                     }
 
-                    // Crear objeto con los datos del formulario
                     const formData = {
-                        idProd: products.length + 1, // Asignar un nuevo ID
+                        idProd: products.length + 1,
                         name: document.getElementById('courseName').value,
                         shortDescription: shortDescription.value,
                         fullDescription: document.getElementById('fullDescription').value,
@@ -179,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         includesKit: kitChecked,
                         kitDescription: kitChecked ? document.getElementById('kitDescription').value : null,
                         price: price,
-                        priceWithKit: kitChecked ? priceWithKit : null,
+                        priceWithKit: kitChecked ? priceWithKitValue : null,
                         discount: parseInt(document.getElementById('courseDiscount').value) || 0,
                         rating: parseInt(document.getElementById('courseRating').value),
                         mainImage: mainImageUrl,
@@ -187,40 +181,33 @@ document.addEventListener("DOMContentLoaded", function () {
                             Array.from(additionalImages.files).slice(0, 3).map(file => file.name) : []
                     };
 
-                    // Añade información al local storage
-                    localStorage.setItem('curso', JSON.stringify(formData));
+                    // 👉 Guardar en el array global
+                    products.push(formData);
 
-                    // for (const file of additionalImages.files) {
-                    //     sendImage(file);
-                    // }
+                    // 👉 Guardar en localStorage como lista
+                    localStorage.setItem('cursos', JSON.stringify(products));
 
-                    if (mainImageUrl) {
-                        Swal.fire(
-                            '¡Guardado!',
-                            'El curso ha sido creado exitosamente.',
-                            'success'
-                        );
-                    } else {
-                        Swal.fire(
-                            'Error al guardar',
-                        );
-                    }
+                    // 👉 Debug en consola
+                    console.log("Nuevo curso creado:", formData);
 
-                    // Resetear formulario
+                    Swal.fire(
+                        '¡Guardado!',
+                        'El curso ha sido creado exitosamente.',
+                        'success'
+                    );
+
                     form.reset();
                     form.classList.remove('was-validated');
                     imagePreview.style.display = 'none';
                     galleryPreview.innerHTML = '';
-                    coursePriceWithKit.closest('.mb-3').style.display = 'none';
+                    priceWithKitContainer.style.display = 'none';
+                    kitDescriptionContainer.style.display = 'none';
                 }
             });
         }
 
         form.classList.add('was-validated');
     }, false);
-
-    // Ocultar inicialmente el campo de precio con kit
-    coursePriceWithKit.closest('.mb-3').style.display = 'none';
 });
 
 // Función auxiliar para obtener idiomas seleccionados
@@ -228,39 +215,28 @@ function getSelectedLanguages() {
     const languages = [];
     if (document.getElementById('spanish').checked) languages.push('es');
     if (document.getElementById('english').checked) languages.push('en');
-    if (document.getElementById('otherLanguage').checked && otherLanguageText.value) {
-        languages.push(otherLanguageText.value);
+    if (document.getElementById('otherLanguage').checked && document.getElementById('otherLanguageText').value) {
+        languages.push(document.getElementById('otherLanguageText').value);
     }
     return languages;
 }
 
 async function sendImage(file) {
-    //Preparar los datos para enviar imagen a Cloudinary
     const formData = new FormData();
-    //Cloudinary info
-    const cloudName = "dwkykeqgz"; // Nombre en Cloudinary
-    const uploadPreset = "imagen_cursos"; //Upload Preset
-    formData.append("file", file); // El archivo
-    formData.append("upload_preset", uploadPreset); // Tu preset unsigned
+    const cloudName = "dwkykeqgz";
+    const uploadPreset = "imagen_cursos";
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
 
-    //Enviar la imagen a Cloudinary
     try {
         const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
             method: "POST",
             body: formData
         });
         const data = await response.json();
-        //  Aquí está la URL de la imagen (que se debe utilizar para cargar la imagen)
-        const uploadedImageUrl = data.secure_url;
-
-        //  Para verificar en consola
-        console.log(uploadedImageUrl);
-
         return data.secure_url;
-
     } catch (error) {
         console.log("Error al cargar imagen");
         return null;
-    };
-
+    }
 }

@@ -181,13 +181,13 @@
                                     <div class="invalid-feedback">El precio mínimo es $100.00 MXN.</div>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                    <label for="courseDiscount" class="form-label fw-bold">Descuento (%)</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" id="courseDiscount" min="0" max="100" value="0">
-                                        <span class="input-group-text">%</span>
-                                    </div>
+                            <div class="col-md-6 mb-3" id="priceWithKitContainer" style="display: none;">
+                                <label for="coursePriceWithKit" class="form-label fw-bold">Precio con Kit (MXN)*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="coursePriceWithKit" min="100" step="0.01">
                                 </div>
+                                <div class="invalid-feedback">El precio con kit debe ser mayor al precio base.</div>
                             </div>
 
                             <div class="mb-3">
