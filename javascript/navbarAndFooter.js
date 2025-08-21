@@ -146,6 +146,23 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         document.body.insertAdjacentHTML("afterbegin", navBarLoggedIn);
         document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
+        document.addEventListener("DOMContentLoaded", cargarElementos);
+        let iconoPA;
+        const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+        function cargarElementos() {
+            iconoPA = document.getElementById("iconoPA");
+            actualizariconoPA();
+        }
+
+        function actualizariconoPA() {
+            const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+            if (productosCesta.length > 0) {
+                iconoPA.classList.remove("visually-hidden");
+                iconoPA.textContent = productosCesta.length;
+            } else {
+                iconoPA.classList.add("visually-hidden");
+            }
+        }
     }
 
 
@@ -240,17 +257,4 @@ document.body.addEventListener("click", function (event) {
         });
     }
 });
-document.addEventListener("DOMContentLoaded", cargarElementos);
-let iconoPA;
-const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
-function cargarElementos(){
-  iconoPA = document.getElementById("iconoPA");
-  actualizariconoPA();
-}
 
-function actualizariconoPA(){
-  if(productosCesta.length > 0){
-    iconoPA.classList.remove("visually-hidden");
-    iconoPA.textContent = productosCesta.length;
-  }
-}
