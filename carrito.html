@@ -7,12 +7,9 @@
     <link rel="stylesheet" href="./css/style.css">
 
     <title>Mi carrito</title>
-<<<<<<< HEAD
 
 
-=======
     
->>>>>>> 28214ee1930dabc8c18dc848910dbe723624d053
     <!-- Favicon principal en formato SVG -->
     <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
     <!-- PNG fallback para navegadores que no soportan SVG -->
@@ -78,11 +75,11 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                             Subtotal
-                            <span>$ </span>
+                            <span id="subtotalCarrito">$0.00</span>
                         </li>
                         <li class="list-group-item  d-flex justify-content-between align-items-center border-0">
                             Descuentos
-                            <span>$ </span>
+                            <span id="descuentoCarrito">$0.00</span>
                         </li>
                     </ul>
                     <div class="input-group input-group-sm mt-2 px-2">
@@ -92,7 +89,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-3 px-2 py-2 border-top">
                         <strong>Total</strong>
-                        <span>$ </span>
+                        <span id="totalCarrito">$0.00</span>
                     </div>
                     <div class="d-grid gap-2 col-10 mx-auto mt-4">
                         <button type="button" class="btn btn-outline-success">Pagar</button>

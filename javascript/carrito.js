@@ -1,4 +1,4 @@
-const productosPendientes = document.getElementById("productosPendientes")
+const productosPendientes = document.getElementById("productosPendientes");
 
 function mostrarCarrito() {
     productosPendientes.innerHTML = "";
@@ -37,6 +37,7 @@ function mostrarCarrito() {
         productosPendientes.innerHTML = "<p>El carrito está vacío</p>";
     }
     actualizariconoPA();
+    preciosCarrito();
 }
 
 
@@ -50,6 +51,7 @@ function eliminarProducto(index) {
     const alertaToast = document.getElementById("liveToast");
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(alertaToast)
     toastBootstrap.show()
+    preciosCarrito();
 }
 
 function actualizariconoPA(){
@@ -60,6 +62,22 @@ function actualizariconoPA(){
   }else{
     iconoPA.classList.add("visually-hidden");
   }
+}
+
+function preciosCarrito(){
+    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+    const subtotalCarrito = document.getElementById("subtotalCarrito");
+    const descuentosCarrito = document.getElementById("descuentosCarrito");
+    let totalCarrito = document.getElementById("totalCarrito");
+    let subtotal = 0;
+
+    productosCesta.forEach(producto => subtotal += Number(producto.precio));
+    if (subtotalCarrito) subtotalCarrito.textContent = `$${subtotal.toFixed(2)}`;
+
+    let descuentos = 0;
+    if (descuentosCarrito) descuentosCarrito.textContent = `$${descuentos.toFixed(2)}`;
+
+    if(totalCarrito) totalCarrito.textContent = `$${(subtotal - descuentos).toFixed(2)}`;
 }
 
 document.addEventListener("DOMContentLoaded", mostrarCarrito);

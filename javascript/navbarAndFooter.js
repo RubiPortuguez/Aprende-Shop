@@ -31,7 +31,7 @@ const navBarLoggedIn = `
                         <li class="nav-item ">
                             <a class="nav-link active" id="carrito" aria-current="page" href="./carrito.html">
                                 <i class="bi bi-cart d-none d-lg-inline">
-                                <span id="iconoPA" class="translate-middle badge rounded-pill bg-danger visually-hidden">1</span>
+                                <span id="iconoPA" class="translate-middle badge rounded-pill bg-danger visually-hidden"></span>
                                 </i>
                                     
                                 <span class="d-lg-none"> Carrito</span>

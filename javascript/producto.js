@@ -116,11 +116,7 @@ function crearCarruselComentarios() {
                         <div class="col-md-4 mb-4 mb-md-0">
                             <div class="card comment-card h-100 shadow-sm">
                                 <div class="card-body text-center p-4">
-<<<<<<< HEAD
                                     <img src="${comentario.user.photo}" class="avatar-img rounded-circle mb-3" alt="">
-=======
-                                    <img src="" class="avatar-img rounded-circle mb-3" alt="">
->>>>>>> Yutnu
                                     <h3 class="card-title">${comentario.user.name
         }</h3>
                                     <p class="text-muted mb-2"></p>
@@ -278,8 +274,9 @@ function cargarElementos(){
   btnComprar.addEventListener("click", agregarCarrito);
   
 }
-const productosCestaLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
-
+//array con productos en local
+const productosCestaLS = JSON.parse(localStorage.getItem("productos-cesta"));
+//verifica si hay para actualizar el array
 if(productosCestaLS){
   productosCesta = productosCestaLS;
 }else{
@@ -287,11 +284,15 @@ if(productosCestaLS){
 }
 
 function agregarCarrito() {
+const precioFinal = checkIncluyeKit.checked && producto.priceWithKit
+    ? producto.priceWithKit
+    : producto.price;
+
   productosCesta.push({
     id: producto.idProd,
     imagen: producto.mainImage,
     nombre: producto.name,
-    precio: producto.price
+    precio: precioFinal
   });
   //alerta de producto agregado
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(alertaToast)
@@ -307,7 +308,5 @@ function actualizariconoPA(){
     iconoPA.classList.remove("visually-hidden");
     iconoPA.textContent = productosCesta.length;
   }
-  
-  
 }
 
