@@ -35,24 +35,24 @@ const mensajeValido = `<div class="valid-feedback" id="mensajeVal">
                         </div>`;
 
 class Usuario {
-                    userId = 0;
-                    name = "";
-                    email = "";
-                    phoneNumber = "";
-                    password = "";
-                    userType = "";
+    userId = 0;
+    name = "";
+    email = "";
+    phoneNumber = "";
+    password = "";
+    userType = "";
 
-                    static total = 0;
+    static total = 0;
 
-                    constructor(name,email,phoneNumber,password,userType){
-                        this.userId = Usuario.total++;
-                        this.name = name;
-                        this.email = email;
-                        this.phoneNumber = phoneNumber;
-                        this.password = password;
-                        this.userType = userType;
-                    }
-                }
+    constructor(name, email, phoneNumber, password, userType) {
+        this.userId = Usuario.total++;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.userType = userType;
+    }
+}
 
 let usuarios = []; //Arreglo de usuarios
 
@@ -169,58 +169,83 @@ btnRegistro.addEventListener("click", function (event) {
         isValid &= true;
     }//validarTipoUsuario
 
-    if (isValid){
-        //Construir objeto
-        let usuario = new Usuario(iptNombre.value, iptCorreo.value, iptTelefono.value, iptPassword.value, selectUsuario.value);
+    if (isValid) {
 
-        //Agregar a arreglo de usuarios
-        usuarios.push(usuario);
+        Swal.fire({
+            title: '¿Registrarse?',
+            html: `Estás a punto de registrarte</strong>`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#00b19a',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Registrarme',
+            cancelButtonText: 'Cancelar'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                //Construir objeto
+                let usuario = new Usuario(iptNombre.value, iptCorreo.value, iptTelefono.value, iptPassword.value, selectUsuario.value);
 
-        //Convertir a String
-        let jsonUsuarios = JSON.stringify(usuarios);
-        //console.log("JSON: " + jsonUsuarios);
+                //Agregar a arreglo de usuarios
+                usuarios.push(usuario);
 
-        //Guardar en localStorage
-        localStorage.setItem("usuarios",jsonUsuarios);
+                //Convertir a String
+                let jsonUsuarios = JSON.stringify(usuarios);
+                //console.log("JSON: " + jsonUsuarios);
 
-        //Limpiar campos:
-        
-        //limpiar valores
-        iptNombre.value = "";
-        iptCorreo.value = "";
-        iptTelefono.value = "";
-        iptPassword.value = "";
-        iptConfirmPassword.value = "";
-        selectUsuario.value = "";
+                //Guardar en localStorage
+                localStorage.setItem("usuarios", jsonUsuarios);
 
-        //ocultar alertas invalido
-        invalidName.style.display = "none";
-        invalidCorreo.style.display = "none";
-        invalidTelefono.style.display = "none";
-        invalidPassword.style.display = "none";
-        invalidConfirmPassword.style.display = "none";
-        invalidSelectUsuario.style.display = "none";
+                Swal.fire({
+                    title: '¡Registro exitoso!',
+                    text: 'Tu cuenta ha sido creada correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#00b19a'
+                }).then(() => {
+                    window.location.href = './index.html';
+                });
 
-        //limpiar clases previas
-        iptNombre.classList.remove("is-valid", "is-invalid");
-        iptCorreo.classList.remove("is-valid", "is-invalid");
-        iptTelefono.classList.remove("is-valid", "is-invalid");
-        iptPassword.classList.remove("is-valid", "is-invalid");
-        iptConfirmPassword.classList.remove("is-valid", "is-invalid");
-        selectUsuario.classList.remove("is-valid", "is-invalid");
+                //Limpiar campos:
 
-        iptPassword.type = "password";
-        iptConfirmPassword.type = "password";
-        togglePassword.classList.add("bi-eye");
-        togglePassword.classList.remove("bi-eye-slash");
+                //limpiar valores
+                iptNombre.value = "";
+                iptCorreo.value = "";
+                iptTelefono.value = "";
+                iptPassword.value = "";
+                iptConfirmPassword.value = "";
+                selectUsuario.value = "";
+
+                //ocultar alertas invalido
+                invalidName.style.display = "none";
+                invalidCorreo.style.display = "none";
+                invalidTelefono.style.display = "none";
+                invalidPassword.style.display = "none";
+                invalidConfirmPassword.style.display = "none";
+                invalidSelectUsuario.style.display = "none";
+
+                //limpiar clases previas
+                iptNombre.classList.remove("is-valid", "is-invalid");
+                iptCorreo.classList.remove("is-valid", "is-invalid");
+                iptTelefono.classList.remove("is-valid", "is-invalid");
+                iptPassword.classList.remove("is-valid", "is-invalid");
+                iptConfirmPassword.classList.remove("is-valid", "is-invalid");
+                selectUsuario.classList.remove("is-valid", "is-invalid");
+
+                iptPassword.type = "password";
+                iptConfirmPassword.type = "password";
+                togglePassword.classList.add("bi-eye");
+                togglePassword.classList.remove("bi-eye-slash");
+            }
+        });
+
     }
+
 
 });//orejita boton
 
 togglePassword.addEventListener("click", () => {
-  const type = iptPassword.type === "password" ? "text" : "password";
-  iptPassword.type = type;
-  iptConfirmPassword.type = type;
-  togglePassword.classList.toggle("bi-eye");
-  togglePassword.classList.toggle("bi-eye-slash");
+    const type = iptPassword.type === "password" ? "text" : "password";
+    iptPassword.type = type;
+    iptConfirmPassword.type = type;
+    togglePassword.classList.toggle("bi-eye");
+    togglePassword.classList.toggle("bi-eye-slash");
 });

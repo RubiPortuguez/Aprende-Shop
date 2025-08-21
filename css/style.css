@@ -48,7 +48,7 @@ h5 {
     /* Mismo redondeo que tus cards */
     padding: 2rem;
     margin: 2rem auto;
-    max-width: 900px;
+    /* max-width: 900px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -83,7 +83,7 @@ h1#nombreProducto {
 /* Títulos Fotter */
 h2#titulo-istok-footter {
     font-family: var(--contenido);
-    font-weight:bold;
+    font-weight: bold;
     font-size: 1.3rem;
     /* color: var(--border-color); */
 }
@@ -111,7 +111,7 @@ p.parrafos {
 }
 
 
- /* .card:hover {
+/* .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3);
     transition: all 0.3s ease;
@@ -153,8 +153,8 @@ p.parrafos {
     flex-direction: column;
 }
 
-.tarjetas-individuales:hover{
-transform: translateY(-8px);
+.tarjetas-individuales:hover {
+    transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3);
     transition: all 0.3s ease;
 }
@@ -283,13 +283,15 @@ img.foto-persona {
 a.navbar-brand {
     font-family: var(--titulo);
     font-size: 2.5rem;
-    color: var(--verde);       /* Color para "Aprende" */
+    color: var(--verde);
+    /* Color para "Aprende" */
     padding-bottom: 1.4rem;
     transition: color 0.2s ease;
 }
 
 #shop {
-    color: var(--guinda);      /* Color distinto para "Shop" */
+    color: var(--guinda);
+    /* Color distinto para "Shop" */
     transition: color 0.2s ease;
 }
 
@@ -300,80 +302,93 @@ a.navbar-brand {
 .navbar .container-fluid,
 .navbar .navbar-collapse,
 .navbar .navbar-nav {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 /* Alinea marca e items al centro vertical exacto y evita alturas raras */
 .navbar .navbar-brand,
 .navbar .nav-link {
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 56px;        /* ajusta si tu navbar es más alta */
-  line-height: 1;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 56px;
+    /* ajusta si tu navbar es más alta */
+    line-height: 1;
 }
+
 /* Evita saltos por <br> dentro del collapse */
-#navbarSupportedContent br { display: none; }
+#navbarSupportedContent br {
+    display: none;
+}
 
 a.navbar-brand:hover {
-    color: var(--morado);      /* Cambia "Aprende" */
+    color: var(--morado);
+    /* Cambia "Aprende" */
 }
 
 a.navbar-brand:hover #shop {
-    color: var(--morado);      /* Cambia "Shop" igual que Aprende */
+    color: var(--morado);
+    /* Cambia "Shop" igual que Aprende */
 }
+
 /* ===== Dropdown del navbar con tema AprendeShop (verde) ===== */
-.navbar .dropdown-menu{
+.navbar .dropdown-menu {
     --bs-dropdown-bg: #fff;
     --bs-dropdown-color: #111827;
     --bs-dropdown-link-color: #111827;
     --bs-dropdown-link-hover-color: var(--verde-oscuro, #005b4f);
-    --bs-dropdown-link-hover-bg: rgba(0,177,154,.12);
+    --bs-dropdown-link-hover-bg: rgba(0, 177, 154, .12);
     --bs-dropdown-link-active-color: #fff;
     --bs-dropdown-link-active-bg: var(--verde, #00b19a);
     --bs-dropdown-border-color: var(--border-color, #e5e7eb);
-    --bs-dropdown-box-shadow: 0 16px 40px rgba(0,177,154,.18);
+    --bs-dropdown-box-shadow: 0 16px 40px rgba(0, 177, 154, .18);
     border-radius: 10px;
-  }
-  
-  /* Fallback extra por si algún estilo externo gana especificidad */
-  .navbar .dropdown-item.active,
-  .navbar .dropdown-item:active{
+}
+
+/* Fallback extra por si algún estilo externo gana especificidad */
+.navbar .dropdown-item.active,
+.navbar .dropdown-item:active {
     background-color: var(--verde, #00b19a) !important;
     color: #fff !important;
-  }
+}
 
 /* Píldora correcta (sin height fija) */
-.navbar .navbar-nav .nav-link{
-    display: inline-flex;           /* se ajusta al contenido */
-    align-items: center;            /* centra vertical */
-    height: auto !important;        /* <-- clave: quita la altura fija */
+.navbar .navbar-nav .nav-link {
+    display: inline-flex;
+    /* se ajusta al contenido */
+    align-items: center;
+    /* centra vertical */
+    height: auto !important;
+    /* <-- clave: quita la altura fija */
     line-height: 1.1;
-    padding: .30rem .56rem;         /* fina */
-    border-radius: 9999px;          /* forma de píldora */
-    border: 0;                      /* sin borde por defecto */
+    padding: .30rem .56rem;
+    /* fina */
+    border-radius: 9999px;
+    /* forma de píldora */
+    border: 0;
+    /* sin borde por defecto */
     background: transparent;
-  }
-  
-  /* Activo: verde translúcido, no “bola” */
-  .navbar .navbar-nav .nav-link.active,
-  .navbar .navbar-nav .nav-link[aria-current="page"]{
-    background-color: rgba(0,177,154,.16);     /* relleno sutil */
+}
+
+/* Activo: verde translúcido, no “bola” */
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link[aria-current="page"] {
+    background-color: rgba(0, 177, 154, .16);
+    /* relleno sutil */
     color: var(--verde-oscuro, #005b4f) !important;
-    border: 1px solid rgba(0,177,154,.45);     /* delineado fino */
-    box-shadow: 0 1px 3px rgba(0,177,154,.12); /* sombra ligera */
-  }
-  
-  /* Hover consistente (no activo) */
-  .navbar .navbar-nav .nav-link:hover{
-    background-color: rgba(0,177,154,.10);
+    border: 1px solid rgba(0, 177, 154, .45);
+    /* delineado fino */
+    box-shadow: 0 1px 3px rgba(0, 177, 154, .12);
+    /* sombra ligera */
+}
+
+/* Hover consistente (no activo) */
+.navbar .navbar-nav .nav-link:hover {
+    background-color: rgba(0, 177, 154, .10);
     color: var(--verde-oscuro, #005b4f);
-  }
-  
-  
-  
+}
 
 .bi-cart {
     color: var(--verde);
@@ -386,6 +401,31 @@ a.navbar-brand:hover #shop {
 nav.navbar {
     font-family: var(--contenido);
     background-color: var(--verde-mas-claro);
+}
+
+/* Estilo base para boton-nav */
+.navbar .navbar-nav #boton-nav {
+    color: rgba(0, 177, 154, .45) !important;
+    border: 1.5px solid rgba(0, 177, 154, .45);
+    box-shadow: 0 1px 3px rgba(0, 177, 154, .12);
+    border-radius: 15px;
+}
+
+/* Hover específico para boton-nav */
+.navbar .navbar-nav #boton-nav:hover {
+    background-color: rgba(0, 177, 154, .10) !important;
+    color: var(--verde-oscuro, #005b4f) !important;
+    border-radius: 15px;
+}
+
+li.navbar.navbar-nav#boton-nav.active,
+li.navbar.navbar-nav#boton-nav[aria-current="page"] {
+    background-color: var(--verde, #00b19a) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important; /* Sombra hacia dentro */
+    transform: translateY(1px); /* Efecto "presionado" */
 }
 
 /* Footer */
@@ -486,19 +526,19 @@ button#corazon2:hover {
 
 /*MOSTRAR UN PRODUCTO PARA ADQUIRIR*/
 #imgContainer {
-    position: relative;  
+    position: relative;
     height: 25rem;
     width: 100%;
 }
 
 .imagen-producto {
-    width: 100% ;
-    height: 100% ;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
     border-radius: 15px;
-} 
+}
 
 .card-producto {
     margin-top: 1rem;
@@ -575,10 +615,11 @@ button#corazon2:hover {
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 }
 
-#alertaMargen{
+#alertaMargen {
     margin-bottom: 1rem;
 }
-.alertaProducto{
+
+.alertaProducto {
     background-color: var(--verde-mas-claro);
     border-radius: 6px;
     text-align: center;
@@ -620,14 +661,14 @@ button#corazon2:hover {
     font-family: var(--contenido);
 }
 
-.formulario-producto .form-control, 
+.formulario-producto .form-control,
 .formulario-producto .form-select {
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
-.formulario-producto .form-control:focus, 
+.formulario-producto .form-control:focus,
 .formulario-producto .form-select:focus {
     border-color: var(--verde);
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
@@ -672,7 +713,7 @@ button#corazon2:hover {
         padding: 1rem;
         margin: 1rem;
     }
-    
+
     .formulario-producto .card-header {
         font-size: 1.2rem;
     }
@@ -682,25 +723,29 @@ button#corazon2:hover {
     display: inline-block;
     font-size: 20px;
     cursor: pointer;
-  }
-  .star {
+}
+
+.star {
     position: relative;
     display: inline-block;
-    color: #ccc; /* estrella vacía */
-  }
-  .star-fill {
+    color: #ccc;
+    /* estrella vacía */
+}
+
+.star-fill {
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
-    color: gold; /* estrella llena */
+    color: gold;
+    /* estrella llena */
     white-space: nowrap;
     pointer-events: none;
-  }
+}
 
 /***** HOVER DE LA TARJETA CLASES *****/
-.clases:hover{
-transform: translateY(-8px);
+.clases:hover {
+    transform: translateY(-8px);
     /* box-shadow: 0 8px 16px rgba(145, 0, 57, 0.3); */
     transition: all 0.3s ease;
 }
@@ -761,25 +806,25 @@ select.form-select:focus {
     background-color: white;
 }
 
-.fondo-color-registro{
+.fondo-color-registro {
     background: url(../assets/fondoContacto/Section-1.jpg);
     background-size: cover;
 }
 
 h1#titulo-registro {
-  font-family: var(--titulo);
-  color: var(--secondary-color);
-  font-size: 4rem;
-  text-align: center;
-  line-height: 0.7;
-  margin-bottom: 0.5em;
+    font-family: var(--titulo);
+    color: var(--secondary-color);
+    font-size: 4rem;
+    text-align: center;
+    line-height: 0.7;
+    margin-bottom: 0.5em;
 }
 
-p#subtitulo-registro{
+p#subtitulo-registro {
     color: var(--secondary-color);
-    font-family:  var(--contenido);
+    font-family: var(--contenido);
     font-size: 1.5rem;
-    margin: 0 0 0 0 ;
+    margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
 
@@ -791,6 +836,7 @@ p#subtitulo-registro{
 .text-verde {
     color: var(--verde) !important;
 }
+
 /* Badge morado para kit */
 .badge.bg-morado {
     background-color: var(--morado) !important;

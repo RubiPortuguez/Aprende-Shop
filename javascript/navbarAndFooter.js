@@ -43,7 +43,7 @@ const navBarLoggedIn = `
                             <li><a class="dropdown-item desktop-menu d-none d-md-block" href="${hrefPerfil}">Mi perfil</a></li>
                             <li><a class="dropdown-item" href="${hrefConfig}">Configuración</a></li>
                             <li><a class="dropdown-item" href="${hrefWishlist}">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="./iniciarSesion.html">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" id="cerrar-sesion" href="./registro.html">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -66,19 +66,17 @@ const navBarNotLoggedIn = `  <nav class="navbar navbar-expand-lg sticky-top">
                             <a class="nav-link active" aria-current="page" href="./clases.html">Clases</a>
                         </li>
                         <li class="nav-item align-self-end">
-                            <a class="nav-link active" aria-current="page" href="./materiales.html">Materiales</a>
-                        </li>
-                        <li class="nav-item align-self-end">
                             <a class="nav-link active" aria-current="page" href="./contacto.html">Contacto</a>
+                        </li>
+                         <li class="nav-item align-self-end mx-2" id="boton-nav">
+                            <a class="nav-link active" aria-current="page" href="./iniciarSesion.html">IniciarSesión</a>
+                        </li>
+                        <li class="nav-item align-self-end mx-1" id="boton-nav">
+                            <a class="nav-link active" aria-current="page" href="./registro.html">Registrarse</a>
                         </li>
                     </ul>
 
-                    <div class="d-flex flex-column flex-lg-row gap-2">
-                        <button class="color-boton-nav btn btn-outline-success align-self-end rounded-4" type="button">Iniciar
-                            Sesión</button>
-                        <button class="btn btn-outline-success align-self-end rounded-4"
-                            type="button">Registrarse</button>
-                    </div>
+                   
 
                 </div>
             </div>
@@ -134,27 +132,33 @@ const footerAprendeShop =
         </div>
 
     </div>
-    </footer>`; 
+    </footer>`;
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.body.insertAdjacentHTML("afterbegin", navBarLoggedIn);
-    document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
-  
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem('usuarios') === null) {
+        document.body.insertAdjacentHTML("afterbegin", navBarNotLoggedIn);
+        document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
+    } else {
+        document.body.insertAdjacentHTML("afterbegin", navBarLoggedIn);
+        document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
+    }
+
+
     // Activa ScrollSpy solo en perfil.html
     if (isPerfil && window.bootstrap) {
-      // Atributos útiles para ScrollSpy
-      document.body.setAttribute('data-bs-spy', 'scroll');
-      document.body.setAttribute('data-bs-target', '#perfilMenu');
-      document.body.setAttribute('data-bs-offset', '80');
-      document.body.setAttribute('tabindex', '0');
-  
-      // Inicialización programática (opcional pero recomendable al inyectar HTML)
-      new bootstrap.ScrollSpy(document.body, {
-        target: '#perfilMenu',
-        offset: 80
-      });
+        // Atributos útiles para ScrollSpy
+        document.body.setAttribute('data-bs-spy', 'scroll');
+        document.body.setAttribute('data-bs-target', '#perfilMenu');
+        document.body.setAttribute('data-bs-offset', '80');
+        document.body.setAttribute('tabindex', '0');
+
+        // Inicialización programática (opcional pero recomendable al inyectar HTML)
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#perfilMenu',
+            offset: 80
+        });
     }
-  });  
+});
 
 document.body.addEventListener('click', function (event) {
     if (event.target.closest('.copiarCorreoFooter')) { //Detecta el elemento donde se origino el clic
@@ -185,24 +189,49 @@ document.body.addEventListener('click', function (event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  
+
     // Marca los links del navbar principal
     document.querySelectorAll('.navbar a.nav-link[href]').forEach(a => {
-      const page = a.getAttribute('href').split('/').pop().toLowerCase();
-      if (page && page === current) {
-        a.classList.add('active');
-        a.setAttribute('aria-current', 'page');
-      } else {
-        a.classList.remove('active');
-        a.removeAttribute('aria-current');
-      }
+        const page = a.getAttribute('href').split('/').pop().toLowerCase();
+        if (page && page === current) {
+            a.classList.add('active');
+            a.setAttribute('aria-current', 'page');
+        } else {
+            a.classList.remove('active');
+            a.removeAttribute('aria-current');
+        }
     });
-  
+
     // (Opcional) Marca dentro del dropdown si estás en perfil/config/etc.
     document.querySelectorAll('.navbar .dropdown-menu a.dropdown-item[href]').forEach(a => {
-      const page = a.getAttribute('href').split('/').pop().toLowerCase();
-      if (page && page === current) a.classList.add('active');
-      else a.classList.remove('active');
+        const page = a.getAttribute('href').split('/').pop().toLowerCase();
+        if (page && page === current) a.classList.add('active');
+        else a.classList.remove('active');
     });
-  });
-  
+});
+
+document.body.addEventListener("click", function (event) {
+    const cerrar = event.target.closest('#cerrar-sesion');
+    if (cerrar) {
+        event.preventDefault();
+        Swal.fire({
+            title: '¿Estás seguro que deseas cerrar sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, cerrar sesión',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#985EFF',
+            cancelButtonColor: '#d33',
+            customClass: {
+                title: "mi-titulo",
+                content: "mi-contenido",
+                confirmButton: "mi-boton",
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('usuarios');
+                window.location.href = './index.html';
+            }
+        });
+    }
+});
