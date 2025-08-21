@@ -30,8 +30,13 @@ const navBarLoggedIn = `
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link active" id="carrito" aria-current="page" href="./carrito.html">
-                                <i class="bi bi-cart d-none d-lg-inline"></i>
+                                <i class="bi bi-cart d-none d-lg-inline">
+                                <span id="iconoPA" class="translate-middle badge rounded-pill bg-danger visually-hidden">1</span>
+                                </i>
+                                    
                                 <span class="d-lg-none"> Carrito</span>
+
+        
                             </a>
                         </li>
                         <li class="nav-item dropdown">
@@ -187,6 +192,7 @@ document.body.addEventListener('click', function (event) {
     }
 });
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
     const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
@@ -235,3 +241,19 @@ document.body.addEventListener("click", function (event) {
         });
     }
 });
+=======
+document.addEventListener("DOMContentLoaded", cargarElementos);
+let iconoPA;
+const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+function cargarElementos(){
+  iconoPA = document.getElementById("iconoPA");
+  actualizariconoPA();
+}
+
+function actualizariconoPA(){
+  if(productosCesta.length > 0){
+    iconoPA.classList.remove("visually-hidden");
+    iconoPA.textContent = productosCesta.length;
+  }
+}
+>>>>>>> Yutnu

@@ -13,6 +13,7 @@ const idiomaContainer = document.getElementById("idiomaContainer");
 const duracionContainer = document.getElementById("duracionContainer");
 const checkIncluyeKit = document.getElementById("checkNativeSwitch");
 
+
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id")); // obtiene el sku de la URL
 console.log(id);
@@ -65,10 +66,10 @@ if (producto) {
     "afterbegin",
     `<ul class="list-group list-group-flush">
          ${(producto.materials || [])
-           .map(
-             (material) => `<li class="list-group-item py-1">${material}</li>`
-           )
-           .join("")}
+      .map(
+        (material) => `<li class="list-group-item py-1">${material}</li>`
+      )
+      .join("")}
         </ul>
         `
   );
@@ -115,7 +116,11 @@ function crearCarruselComentarios() {
                         <div class="col-md-4 mb-4 mb-md-0">
                             <div class="card comment-card h-100 shadow-sm">
                                 <div class="card-body text-center p-4">
+<<<<<<< HEAD
                                     <img src="${comentario.user.photo}" class="avatar-img rounded-circle mb-3" alt="">
+=======
+                                    <img src="" class="avatar-img rounded-circle mb-3" alt="">
+>>>>>>> Yutnu
                                     <h3 class="card-title">${comentario.user.name
         }</h3>
                                     <p class="text-muted mb-2"></p>
@@ -257,3 +262,52 @@ function actualizarPromedioEstrella(value) {
 // Inicializar
 crearEstrella();
 actualizarPromedioEstrella(0);
+
+/***** FUNCIONALIDAD DEL CARRITO *****/
+
+const btnComprar = document.querySelector(".btnComprar");
+const alertaToast = document.getElementById("liveToast");
+let iconoPA;
+let productosCesta = [];
+
+document.addEventListener("DOMContentLoaded", cargarElementos);
+
+function cargarElementos(){
+  iconoPA = document.getElementById("iconoPA");
+  actualizariconoPA();
+  btnComprar.addEventListener("click", agregarCarrito);
+  
+}
+const productosCestaLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
+
+if(productosCestaLS){
+  productosCesta = productosCestaLS;
+}else{
+  productosCesta = [];
+}
+
+function agregarCarrito() {
+  productosCesta.push({
+    id: producto.idProd,
+    imagen: producto.mainImage,
+    nombre: producto.name,
+    precio: producto.price
+  });
+  //alerta de producto agregado
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(alertaToast)
+  toastBootstrap.show()
+  //funcion para el icono del carrito
+  actualizariconoPA();
+  //guardamos en local
+  localStorage.setItem("productos-cesta", JSON.stringify(productosCesta));
+}
+
+function actualizariconoPA(){
+  if(productosCesta.length > 0){
+    iconoPA.classList.remove("visually-hidden");
+    iconoPA.textContent = productosCesta.length;
+  }
+  
+  
+}
+

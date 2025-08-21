@@ -73,7 +73,7 @@
                         <p id="descripcionProducto"></p>
                     </div>
 
-                    <button class="btn-primary btnMateriales botonHide" type="button">Comprar</button>
+                    <button class="btn-primary btnComprar botonHide" type="button" id="liveToastBtn">Comprar</button>
 
                 </div>
             </div>
@@ -99,6 +99,20 @@
                 <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button> -->
+        </div>
+    </div>
+
+    <!-- Alerta de producto agregado -->
+    <div class="position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <img src="./assets/favicon/favicon.svg?v=3" width="25px" height="25px" class="rounded me-2"
+                        alt="...">
+                    <strong class="me-auto">Articulo agregado al carrito.</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
         </div>
     </div>
 

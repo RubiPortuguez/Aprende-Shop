@@ -62,61 +62,15 @@
             <!-- Cards -->
             <div class="col-md-9 mb-4">
                 <section>
-                    <div class="row row-cols-1 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Contenido de la card.</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
-                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Contenido de la card.</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
-                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Contenido de la card.</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
-                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Contenido de la card.</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mb-4">
-                                    <button type="button" class="btn btn-outline-success">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="productosPendientes" class="row row-cols-1 row-cols-md-3 g-3">
+
+
                     </div>
                 </section>
             </div>
 
             <!-- Lista -->
-            <div class="col-md-3">
+            <div class="col-md-3 mb-5 mt-5">
                 <aside>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -148,12 +102,27 @@
             </div>
         </div>
     </div>
+    <!-- Alerta de producto eliminado -->
+    <div class="position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <img src="./assets/favicon/favicon.svg?v=3" width="25px" height="25px" class="rounded me-2"
+                        alt="...">
+                    <strong class="me-auto">Articulo eliminado del carrito.</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
 
+        </div>
+    </div>
 
 
 
 
     <script src="./javascript/navbarAndFooter.js"></script>
+    <script src="./javascript/main.js"></script>
+    <script src="./javascript/carrito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
