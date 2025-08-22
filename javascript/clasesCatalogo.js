@@ -19,7 +19,7 @@ const card = `
                 ${product.includesKit ?
                     `<div class="d-flex justify-content-between align-items-start mb-2">
                         <div class="d-flex flex-column">
-                            <span class="h6 text-morado fw-bold">$ ${product.priceWithKit} MXN</span>
+                            <span class="h6 text-morado fw-bold">$ ${product.price} MXN</span>
                             <small class="text-verde">Incluye kit de materiales</small>
                         </div>
                         <span class="badge bg-morado text-white"><i class="bi bi-box-seam"></i> Kit</span>
