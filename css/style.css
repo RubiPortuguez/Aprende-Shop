@@ -30,6 +30,16 @@
     --verde-mas-claro: #ECFFFB;
 }
 
+/* solucion al espacio blanco en mobile */
+html, body { overflow-x: hidden; }
+
+/* Forzar colapso correcto únicamente dentro de #perfilMenu */
+#perfilMenu .navbar-collapse { display: none; }
+#perfilMenu .navbar-collapse.show { display: block; }
+
+/* Evitar desbordes inesperados en mobile */
+#perfilMenu .navbar-nav { max-width: 100%; }
+
 main {
     margin: 2rem;
 }
@@ -255,7 +265,11 @@ img.foto-persona {
     }
 }
 
+
 /* NavBar */
+/* Parche preventivo para contenido que se estira */
+img, video, iframe { max-width: 100%; height: auto; }
+
 a.navbar-brand {
     font-family: var(--titulo);
     font-size: 2.5rem;
@@ -672,3 +686,46 @@ select.form-select:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 }
+
+/* === FORMULARIO NUEVO CURSO: centrar y evitar pegado lateral === */
+
+/* Asegura que el contenedor no esté en flex accidentalmente */
+main.formulario-producto.container {
+    display: block;
+  }
+  
+  /* Centra la fila en todos los breakpoints (por si algo lo pisa) */
+  .formulario-producto .row {
+    justify-content: center !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Neutraliza floats/posiciones heredadas en columnas y fuerza centrado */
+  .formulario-producto [class*="col-"] {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Evita overflow lateral por gutters fuera de container correcto */
+  .formulario-producto .row {
+    --bs-gutter-x: 1rem;           /* puedes subirlo/bajarlo */
+  }
+  
+  /* Añade un pequeño padding lateral en móviles para que no se “pegue” */
+  @media (max-width: 576px) {
+    main.formulario-producto.container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  /* Medidas de seguridad: nada debe desbordar el ancho */
+  .formulario-producto img,
+  .formulario-producto video,
+  .formulario-producto iframe {
+    max-width: 100%;
+    height: auto;
+  }
+  

@@ -35,7 +35,7 @@ const navBarLoggedIn = `
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href=" href="${hrefPerfil}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="${hrefPerfil}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle d-none d-lg-inline"></i>
                             <span class="d-lg-none">Mi perfil</span>
                             </a>
@@ -182,3 +182,14 @@ document.body.addEventListener('click', function (event) {
         });
     }
 });
+
+//colapasar opciones navbar
+
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('navbarSupportedContent');
+    if (!nav) return;
+    if (nav.classList.contains('show') && e.target.closest('.nav-link, .dropdown-item')) {
+      bootstrap.Collapse.getOrCreateInstance(nav).hide();
+    }
+  });
+  
