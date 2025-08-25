@@ -140,7 +140,7 @@ const footerAprendeShop =
     </footer>`;
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem('usuarios') === null) {
+    if (localStorage.getItem('usuarioInicio') === null) {
         document.body.insertAdjacentHTML("afterbegin", navBarNotLoggedIn);
         document.body.insertAdjacentHTML("beforeend", footerAprendeShop);
     } else {
@@ -251,7 +251,7 @@ document.body.addEventListener("click", function (event) {
             },
         }).then((result) => {
             if (result.isConfirmed) {
-                localStorage.removeItem('usuarios');
+                localStorage.removeItem('usuarioInicio');
                 window.location.href = './index.html';
             }
         });

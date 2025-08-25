@@ -39,79 +39,19 @@
           <label for="password" class="form-label">Contraseña</label>
           <input type="password" class="form-control" id="userpassword" placeholder="Ingresa tu contraseña">
         </div>
-        <button type="submit" class="btn btn-primary w-100" id="btnIngresar">Ingresar</button>
+        <button type="button" class="btn btn-primary w-100" id="btnIngresar">Ingresar</button>
       </form>
     </div>
   </div>
 
 
-
-
-
+  <script src="./javascript/inicioDeSesion.js"></script>
   <script src="./javascript/main.js"></script>
   <script src="javascript/navbarAndFooter.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
-
-  <script>
-    const loginForm = document.getElementById("loginForm");
-    const errorMsg = document.getElementById("error-msg");
-    const btnIngresar = document.getElementById("btnIngresar");
-
-    btnIngresar.addEventListener("click", validarUsuario);
-
-    function validarUsuario(e) {
-      e.preventDefault();
-      const iptEmail = document.getElementById("useremail").value.trim();
-      const iptPassword = document.getElementById("userpassword").value.trim();
-
-      // Validar campos vacíos
-      if (iptEmail === "" || iptPassword === "") {
-        showError("Por favor, completa todos los campos.");
-      }
-
-      // Obtener usuarios del localStorage
-      const getUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-      // Buscar usuario válido
-      const buscarUsuario = getUsuarios.find(
-        user => user.email === iptEmail && user.password === iptPassword
-      );
-      if (buscarUsuario) {
-        window.location.href = "./index.html";
-      } else {
-        showError("Usuario o contraseña incorrectos.");
-      }
-
-    }
-
-
-    function showError(message) {
-    errorMsg.textContent = message;
-    errorMsg.classList.remove("d-none");
-    }
-
-    //el de inicio formulario
-    // Recuperar usuario  desde localStorage
-    //const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-
-    // if (!loggedUser) {
-    //   // Si no hay usuario logueado, redirigir al login
-    //   window.location.href = "index.html"; 
-    // } else {
-    //   // Mostrar mensaje de bienvenida
-    //   document.getElementById("welcomeMsg").textContent = 
-    //     `¡Bienvenido/a, ${loggedUser.username}!`;
-    // }
-
-    // // Botón de cerrar sesión
-    // document.getElementById("logoutBtn").addEventListener("click", () => {
-    //   localStorage.removeItem("loggedUser");
-    //   window.location.href = "index.html";
-    // });
-  </script>
 </body>
 
 </html>
