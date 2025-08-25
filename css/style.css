@@ -905,7 +905,12 @@ p#subtitulo-registro {
   background-color: hsl(261, 57%, 86%) !important;
 }
 
+<<<<<<< HEAD
 /*FORMULARIO INICIO DE SESIÓN*/
 .contenido{
 font-family: var(--contenido);
 }
+=======
+/* solucion al espacio blanco en mobile */
+html, body { overflow-x: hidden; }
+>>>>>>> EAHG.2
