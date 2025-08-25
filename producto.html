@@ -23,8 +23,10 @@
         <div class="row">
             <div class="col-lg-6 ">
                 <div id="imgContainer" class="containerProd">
-                    <button id="corazon"> <i class="bi bi-heart-fill"></i> </button>
-                    <button id="corazon2"> <i class="bi bi-heart"></i> </button>
+                    <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 start-0 m-2 btn-wishlist"
+                        data-id="${product.idProd}"> <i class="bi bi-heart"></i> </button>
+                    <!-- <button id="corazon"> <i class="bi bi-heart-fill"></i> </button> -->
+                    <!-- <button id="corazon2"> <i class="bi bi-heart"></i> </button> -->
                 </div>
 
             </div>
@@ -34,8 +36,8 @@
                     <h2 id="precioProducto"> </h2>
 
                     <div class="form-check form-switch">
-                        <input class="form-check-input botonHide" type="checkbox" value=""
-                            id="checkNativeSwitch" switch>
+                        <input class="form-check-input botonHide" type="checkbox" value="" id="checkNativeSwitch"
+                            switch>
                         <label class="form-check-label botonHide my-1" for="checkNativeSwitch" id="checkNativeSwitch">
                             Incluir materiales
                         </label>

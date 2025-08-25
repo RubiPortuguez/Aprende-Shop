@@ -10,8 +10,9 @@ const card = `
 <div class="col-sm-6 col-md-4 col-lg-3">
     <div class="card card-product h-100 shadow-sm clases">
         <img src="${product.mainImage}" class="card-img-top" alt="${product.alt}">
-        <button id="corazon"> <i class="bi bi-heart-fill"></i> </button>
-        <button id="corazon2"> <i class="bi bi-heart"></i> </button>
+        
+        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 start-0 m-2 btn-wishlist"
+        data-id="${product.idProd}"> <i class="bi bi-heart"></i> </button>
         <div class="card-body">
             <h5 class="card-title">${product.name}</h5>
             <p class="card-text">${product.shortDescription}</p>
@@ -55,3 +56,45 @@ products.forEach(product => addItem(product));
 
 const cards = document.querySelectorAll('.card-product');
 cards.forEach((card,index) => redirection(card, products[index].idProd));
+
+//traer wishlist de local storage, si no existe trae arreglo vacío
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+// --- Función para agregar/quitar un curso de la wishlist ---
+export function ponerQuitarWishlist(id, button) {
+  // Si ya existe el producto en wishlist
+  if (wishlist.includes(id)) {
+    wishlist = wishlist.filter(prodId => prodId !== id); // lo quitamos
+    button.querySelector("i").classList.replace("bi-heart-fill", "bi-heart"); // cambia icono a vacío
+  } else {
+    wishlist.push(id); // lo agregamos
+    button.querySelector("i").classList.replace("bi-heart", "bi-heart-fill"); // cambia icono a lleno
+  }//if-else
+  // Guardar cambios en localStorage
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}//fn t
+
+
+//-----Función para asignar orejitas a los botones wishlist-----
+export function orejasWishlistButtons() {
+    let btnsWishlist = document.querySelectorAll('.btn-wishlist');
+
+  btnsWishlist.forEach(btn => {
+    const id = Number(btn.dataset.id); //leer data-id de cada botón<3
+    // Si el producto ya está en wishlist, que muestre el icono lleno
+    if (wishlist.includes(id)) {
+      btn.querySelector("i").classList.replace("bi-heart", "bi-heart-fill");
+    }//if
+
+    // Evento click en cada botón
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      e.stopPropagation();  // evita que se dispare redirección de la card
+      ponerQuitarWishlist(id, btn);
+    }); //oreja
+  }); //foreach
+}//fn orejasWishlistButtons
+
+// --- Ejecutar ---
+orejasWishlistButtons();
