@@ -3,7 +3,7 @@ import { products } from "./data.js";
 
 
 // Función para agregar un producto al contenedor
-function addItem(product) {
+export function addItem(product) {
     const container = document.getElementById("itemsContainer");
     
 const card = `

@@ -24,7 +24,7 @@
   <header></header>
 
   <!-- Perfil y switch de dark mode -->
-  <section class="container my-5" id="perfil" >
+  <section class="container my-5" id="perfil">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2>Mi perfil</h2>
 
@@ -71,23 +71,32 @@
               data-bs-target="#editEmailModal"></i>
           </p>
           <p class="mb-0">
-            <button class="btn btn-link link-guinda p-0 align-baseline"
-        type="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
-  <i class="bi bi-key me-1"></i> Cambiar contraseña
-</button>
+            <button class="btn btn-link link-guinda p-0 align-baseline" type="button" data-bs-toggle="modal"
+              data-bs-target="#changePasswordModal">
+              <i class="bi bi-key me-1"></i> Cambiar contraseña
+            </button>
 
           </p>
-          
+
         </div>
       </div>
     </div>
   </section>
 
   <!-- Wishlist -->
-  <section class="container my-5" id="wishlist">
+  <!-- Contenedor de productos -->
+  <div class="container my-5">
+     <h3 class="mb-4">Wishlist</h3>
+    <div id="itemsContainer" class="row g-4">
+      <!-- Aquí se van a insertar las cards con los cursos de la wishlist -->
+    </div>
+  </div>
+
+
+  <!-- <section class="container my-5" id="wishlist">
     <h3 class="mb-4">Wishlist</h3>
     <div class="row g-4">
-      <!-- Curso -->
+      
       <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
           <img src="./assets/cursos/candles.jpeg" class="card-img-top" alt="Curso 1" />
@@ -102,7 +111,7 @@
           </div>
         </div>
       </div>
-      <!-- Curso -->
+      
       <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
           <img src="./assets/cursos/paint.jpeg" class="card-img-top" alt="Curso 2" />
@@ -117,7 +126,7 @@
           </div>
         </div>
       </div>
-      <!-- Curso -->
+      
       <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
           <img src="./assets/cursos/crochet.jpeg" class="card-img-top" alt="Curso 3" />
@@ -133,7 +142,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+  
 
   <!-- Modales para editar información -->
   <!-- Modal para elegir avatar -->
@@ -224,40 +234,41 @@
   </div>
 
   <!-- Modal Editar Contraseña -->
-  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <form class="modal-content" id="changePasswordForm" novalidate>
         <div class="modal-header">
           <h5 class="modal-title" id="changePasswordLabel">Cambiar contraseña</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-  
+
         <div class="modal-body">
           <div class="mb-3">
             <label for="currentPassword" class="form-label">Contraseña actual</label>
             <input type="password" class="form-control" id="currentPassword" required autocomplete="current-password">
             <div class="invalid-feedback">Ingresa tu contraseña actual.</div>
           </div>
-  
+
           <div class="mb-3">
             <label for="newPassword" class="form-label">Nueva contraseña</label>
             <input type="password" class="form-control" id="newPassword" required
-                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
-                   title="Mín. 8 caracteres, con al menos 1 mayúscula, 1 minúscula y 1 número"
-                   autocomplete="new-password" aria-describedby="passwordHelp">
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+              title="Mín. 8 caracteres, con al menos 1 mayúscula, 1 minúscula y 1 número" autocomplete="new-password"
+              aria-describedby="passwordHelp">
             <div id="passwordHelp" class="form-text">
               Mínimo 8 caracteres, al menos 1 mayúscula, 1 minúscula y 1 número.
             </div>
             <div class="invalid-feedback">Debe cumplir los requisitos mínimos.</div>
           </div>
-  
+
           <div class="mb-2">
             <label for="confirmPassword" class="form-label">Confirmar nueva contraseña</label>
             <input type="password" class="form-control" id="confirmPassword" required autocomplete="new-password">
             <div class="invalid-feedback">Las contraseñas no coinciden.</div>
           </div>
         </div>
-  
+
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-success">Guardar</button>
@@ -266,16 +277,16 @@
     </div>
   </div>
 
-<section class="container my-5" id="agregarProducto">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3>¿Quieres publicar un nuevo curso?</h3>
-    <button id="btnNuevoProducto" class="btn btn-morado">
-      <i class="bi bi-plus-circle me-2"></i>Agregar producto
-    </button>
-  </div>
-</section>
-  
-<script src="./javascript/perfil.js"></script>
+  <section class="container my-5" id="agregarProducto">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>¿Quieres publicar un nuevo curso?</h3>
+      <button id="btnNuevoProducto" class="btn btn-morado">
+        <i class="bi bi-plus-circle me-2"></i>Agregar producto
+      </button>
+    </div>
+  </section>
+
+  <script type="module" src="./javascript/perfil.js"></script>
   <script src="./javascript/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./javascript/navbarAndFooter.js"></script>

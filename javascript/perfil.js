@@ -197,3 +197,44 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+
+
+
+// ------------- wishlist -----------------
+//importar productos:
+import { products } from "./data.js";
+//importar función para agregar cards
+import {addItem} from "./clasesCatalogo.js";
+
+//traer wishlist de local storage, si no existe trae arreglo vacío:
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+//seleccionar contenedor donde se agregan los cursos:
+//const wishlistContainer = document.getElementById("wishlistContainer");
+//const itemsContainer = document.getElementById("itemsContainer");
+
+
+//agregar cursos 
+function mostrarCursosWishlist(){
+itemsContainer.innerHTML = "";
+if (wishlist.length === 0) {
+    itemsContainer.innerHTML = `<p class="text-muted">No tienes cursos en tu lista de deseos.</p>`;
+    return;
+  }//if no cursos
+
+wishlist.forEach(id => {
+    const product = products.find(p => p.idProd === id);
+    if (product) addItem(product);
+  });
+}//fn mostrarCursosWishlist
+
+
+mostrarCursosWishlist();
+
+//Faltan agregar algunos detalles:
+//1. que el botón de corazón esté relleno en perfil porque ya están en wishlist
+//2. que se quiten los cursos de la página de perfil al presionar el botón de corazon
+//3. que redirija a pag de producto desde la wishlist
+//4. agregar funcionalidad de botón wishlist en página de producto
+
+
+
