@@ -33,11 +33,11 @@
         <form id="loginForm">
           <div class="mb-3">
             <label for="username" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+            <input type="text" class="form-control" id="useremail" placeholder="Ingresa tu email">
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+            <input type="password" class="form-control" id="userpassword" placeholder="Ingresa tu contraseña">
           </div>
           <button type="submit" class="btn btn-primary w-100">Ingresar</button>
         </form>
@@ -46,15 +46,15 @@
   
     <script>
       // --- Usuarios de prueba guardados en localStorage ---
-      const users = [
-        { username: "admin", password: "1234" },
-        { username: "airam", password: "5678" }
-      ];
+      // const users = [
+      //   { username: "admin", password: "1234" },
+      //   { username: "airam", password: "5678" }
+      // ];
   
-      // Guardar en localStorage (solo si no existen aún)
-      if (!localStorage.getItem("users")) {
-        localStorage.setItem("users", JSON.stringify(users));
-      }
+      // // Guardar en localStorage (solo si no existen aún)
+      // if (!localStorage.getItem("users")) {
+      //   localStorage.setItem("users", JSON.stringify(users));
+      // }
   
       const loginForm = document.getElementById("loginForm");
       const errorMsg = document.getElementById("error-msg");
@@ -62,20 +62,20 @@
       loginForm.addEventListener("submit", function(e) {
         e.preventDefault();
   
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
+        const iptEmail = document.getElementById("useremail").value.trim();
+        const iptPassword = document.getElementById("userpassword").value.trim();
   
         // Validar campos vacíos
-        if (username === "" || password === "") {
+        if (iptEmail === "" || iptPassword === "") {
           showError("Por favor, completa todos los campos.");
-          return;
+          //return;
         }
   
         // Obtener usuarios del localStorage
-        const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+        const getUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   
         // Buscar usuario válido
-        const userFound = storedUsers.find(
+        const buscarUsuario = getUsuarios.find(
           user => user.username === username && user.password === password
         );
   
@@ -98,20 +98,20 @@
        // Recuperar usuario  desde localStorage
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
-if (!loggedUser) {
-  // Si no hay usuario logueado, redirigir al login
-  window.location.href = "index.html"; 
-} else {
-  // Mostrar mensaje de bienvenida
-  document.getElementById("welcomeMsg").textContent = 
-    `¡Bienvenido/a, ${loggedUser.username}!`;
-}
+// if (!loggedUser) {
+//   // Si no hay usuario logueado, redirigir al login
+//   window.location.href = "index.html"; 
+// } else {
+//   // Mostrar mensaje de bienvenida
+//   document.getElementById("welcomeMsg").textContent = 
+//     `¡Bienvenido/a, ${loggedUser.username}!`;
+// }
 
-// Botón de cerrar sesión
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  localStorage.removeItem("loggedUser");
-  window.location.href = "index.html";
-});
+// // Botón de cerrar sesión
+// document.getElementById("logoutBtn").addEventListener("click", () => {
+//   localStorage.removeItem("loggedUser");
+//   window.location.href = "index.html";
+// });
     </script>
 
     
