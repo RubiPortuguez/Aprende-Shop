@@ -904,3 +904,8 @@ p#subtitulo-registro {
 #liveToast {
   background-color: hsl(261, 57%, 86%) !important;
 }
+
+/*FORMULARIO INICIO DE SESIÓN*/
+.contenido{
+font-family: var(--contenido);
+}
