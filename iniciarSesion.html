@@ -2,126 +2,116 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
-    <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180">
-    <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="./css/navbarAndFooter.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="./assets/favicon/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon/favicon.png?v=3" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png?v=3" sizes="180x180">
+  <link rel="mask-icon" href="./assets/favicon/favicon.svg?v=4" color="#000000">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="css/inicio.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-light">
 
-    <br>
-    <h1>Inicio de Sesión</h1>
-    <br>
+  <br>
+  <h1>Inicio de Sesión</h1>
+  <br>
 
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-      <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
-        <h3 class="text-center mb-4">Iniciar Sesión</h3>
-        
-        <!-- Mensajes de error -->
-        <div id="error-msg" class="alert alert-danger d-none"></div>
-  
-        <form id="loginForm">
-          <div class="mb-3">
-            <label for="username" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="useremail" placeholder="Ingresa tu email">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="userpassword" placeholder="Ingresa tu contraseña">
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-        </form>
-      </div>
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+      <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+      <!-- Mensajes de error -->
+      <div id="error-msg" class="alert alert-danger d-none"></div>
+
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="useremail" placeholder="Ingresa tu email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="userpassword" placeholder="Ingresa tu contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" id="btnIngresar">Ingresar</button>
+      </form>
     </div>
-  
-    <script>
-      // --- Usuarios de prueba guardados en localStorage ---
-      // const users = [
-      //   { username: "admin", password: "1234" },
-      //   { username: "airam", password: "5678" }
-      // ];
-  
-      // // Guardar en localStorage (solo si no existen aún)
-      // if (!localStorage.getItem("users")) {
-      //   localStorage.setItem("users", JSON.stringify(users));
-      // }
-  
-      const loginForm = document.getElementById("loginForm");
-      const errorMsg = document.getElementById("error-msg");
-  
-      loginForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-  
-        const iptEmail = document.getElementById("useremail").value.trim();
-        const iptPassword = document.getElementById("userpassword").value.trim();
-  
-        // Validar campos vacíos
-        if (iptEmail === "" || iptPassword === "") {
-          showError("Por favor, completa todos los campos.");
-          //return;
-        }
-  
-        // Obtener usuarios del localStorage
-        const getUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  
-        // Buscar usuario válido
-        const buscarUsuario = getUsuarios.find(
-          user => user.username === username && user.password === password
-        );
-  
-        if (userFound) {
-          // Guardar sesión (opcional)
-          localStorage.setItem("loggedUser", JSON.stringify(userFound));
-          // Redirigir a inicio
-          window.location.href = "inicioformulario.html"; 
-        } else {
-          showError("Usuario o contraseña incorrectos.");
-        }
-      });
-  
-      function showError(message) {
-        errorMsg.textContent = message;
-        errorMsg.classList.remove("d-none");
+  </div>
+
+
+
+
+
+  <script src="./javascript/main.js"></script>
+  <script src="javascript/navbarAndFooter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("error-msg");
+    const btnIngresar = document.getElementById("btnIngresar");
+
+    btnIngresar.addEventListener("click", validarUsuario);
+
+    function validarUsuario(e) {
+      e.preventDefault();
+      const iptEmail = document.getElementById("useremail").value.trim();
+      const iptPassword = document.getElementById("userpassword").value.trim();
+
+      // Validar campos vacíos
+      if (iptEmail === "" || iptPassword === "") {
+        showError("Por favor, completa todos los campos.");
       }
 
-      //el de inicio formulario
-       // Recuperar usuario  desde localStorage
-    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      // Obtener usuarios del localStorage
+      const getUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-// if (!loggedUser) {
-//   // Si no hay usuario logueado, redirigir al login
-//   window.location.href = "index.html"; 
-// } else {
-//   // Mostrar mensaje de bienvenida
-//   document.getElementById("welcomeMsg").textContent = 
-//     `¡Bienvenido/a, ${loggedUser.username}!`;
-// }
+      // Buscar usuario válido
+      const buscarUsuario = getUsuarios.find(
+        user => user.email === iptEmail && user.password === iptPassword
+      );
+      if (buscarUsuario) {
+        window.location.href = "./index.html";
+      } else {
+        showError("Usuario o contraseña incorrectos.");
+      }
 
-// // Botón de cerrar sesión
-// document.getElementById("logoutBtn").addEventListener("click", () => {
-//   localStorage.removeItem("loggedUser");
-//   window.location.href = "index.html";
-// });
-    </script>
+    }
 
-    
 
-    <script src="./javascript/main.js"></script>
-    <script src="./javascript/navbarAndFooter.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-        crossorigin="anonymous"></script>
+    function showError(message) {
+    errorMsg.textContent = message;
+    errorMsg.classList.remove("d-none");
+    }
+
+    //el de inicio formulario
+    // Recuperar usuario  desde localStorage
+    //const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+    // if (!loggedUser) {
+    //   // Si no hay usuario logueado, redirigir al login
+    //   window.location.href = "index.html"; 
+    // } else {
+    //   // Mostrar mensaje de bienvenida
+    //   document.getElementById("welcomeMsg").textContent = 
+    //     `¡Bienvenido/a, ${loggedUser.username}!`;
+    // }
+
+    // // Botón de cerrar sesión
+    // document.getElementById("logoutBtn").addEventListener("click", () => {
+    //   localStorage.removeItem("loggedUser");
+    //   window.location.href = "index.html";
+    // });
+  </script>
 </body>
 
 </html>
