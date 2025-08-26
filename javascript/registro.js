@@ -201,7 +201,7 @@ btnRegistro.addEventListener("click", function (event) {
                     icon: 'success',
                     confirmButtonColor: '#00b19a'
                 }).then(() => {
-                    window.location.href = './index.html';
+                    window.location.href = './iniciarSesion.html';
                 });
 
                 //Limpiar campos:
