@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const btnNuevoProducto = document.getElementById('btnNuevoProducto');
     if (btnNuevoProducto) {
-      btnNuevoProducto.addEventListener('click', function() {
-        window.location.href = 'formularioProducto.html';
-      });
+        btnNuevoProducto.addEventListener('click', function () {
+            window.location.href = 'formularioProducto.html';
+        });
     }
-  });
+});
 
 
 
@@ -204,36 +204,76 @@ document.addEventListener('DOMContentLoaded', function() {
 //importar productos:
 import { products } from "./data.js";
 //importar función para agregar cards
-import {addItem} from "./clasesCatalogo.js";
+import { addItem } from "./clasesCatalogo.js";
+//importar función para redireccionamiento
+import { redirection } from "./clasesCatalogo.js";
+
+
 
 //traer wishlist de local storage, si no existe trae arreglo vacío:
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 //seleccionar contenedor donde se agregan los cursos:
-//const wishlistContainer = document.getElementById("wishlistContainer");
-//const itemsContainer = document.getElementById("itemsContainer");
+const itemsContainer = document.getElementById("itemsContainer");
 
 
-//agregar cursos 
-function mostrarCursosWishlist(){
-itemsContainer.innerHTML = "";
-if (wishlist.length === 0) {
-    itemsContainer.innerHTML = `<p class="text-muted">No tienes cursos en tu lista de deseos.</p>`;
-    return;
-  }//if no cursos
+//mostrar cursos 
+function mostrarCursosWishlist() {
+    itemsContainer.innerHTML = "";
+    if (wishlist.length === 0) {
+        itemsContainer.innerHTML = `<p class="text-muted">No tienes cursos en tu lista de deseos.</p>`;
+        return;
+    }//if no cursos
 
-wishlist.forEach(id => {
-    const product = products.find(p => p.idProd === id);
-    if (product) addItem(product);
-  });
+    wishlist.forEach(id => {
+        const product = products.find(p => p.idProd === id);
+        if (product) addItem(product);
+    });
 }//fn mostrarCursosWishlist
 
 
-mostrarCursosWishlist();
+//quitar curso 
+function quitarCursoWishlist(id) {
+    wishlist = wishlist.filter(prodId => prodId !== id); // lo quitamos
+    // Guardar cambios en localStorage
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}//fn quitarCursoWishlist
+
+
+function renderWishlist() {
+    mostrarCursosWishlist();
+
+    //agregar redireción a detalle de producto
+    const cards = document.querySelectorAll('.card-product');
+    cards.forEach((card, index) => redirection(card, wishlist[index]));
+
+    //poner corazón lleno y orejas a botones
+    const btnsWishlist = document.querySelectorAll('.btn-wishlist');
+
+    //corazon
+    btnsWishlist.forEach(btn =>
+        btn.querySelector("i").classList.replace("bi-heart", "bi-heart-fill")
+    );
+
+    //oreja
+    btnsWishlist.forEach(btn => {
+        const id = Number(btn.dataset.id); //leer data-id de cada botón<3
+        btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            quitarCursoWishlist(id);
+            renderWishlist(); //si se vuelve a dar click al botón muestra cursos, redirecciona, pone corazones y orejas.
+        }); //oreja
+    });//foreach
+
+}//fn renderWishlist
+
+
+renderWishlist();
 
 //Faltan agregar algunos detalles:
-//1. que el botón de corazón esté relleno en perfil porque ya están en wishlist
-//2. que se quiten los cursos de la página de perfil al presionar el botón de corazon
-//3. que redirija a pag de producto desde la wishlist
+//listo 1. que el botón de corazón esté relleno en perfil porque ya están en wishlist
+//listo 2.que se quiten los cursos de la página de perfil al presionar el botón de corazon
+// listo 3. que redirija a pag de producto desde la wishlist
 //4. agregar funcionalidad de botón wishlist en página de producto
 
 

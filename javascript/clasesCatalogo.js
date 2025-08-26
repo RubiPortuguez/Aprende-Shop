@@ -42,7 +42,7 @@ const card = `
 
 
 // Redireccionamiento y adición del id
-function redirection(card, id){
+export function redirection(card, id){
     card.addEventListener('click', function(event){
         event.preventDefault();
         window.location.href = `./producto.html?id=${id}`;

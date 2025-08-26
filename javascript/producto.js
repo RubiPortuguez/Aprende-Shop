@@ -268,23 +268,23 @@ let productosCesta = [];
 
 document.addEventListener("DOMContentLoaded", cargarElementos);
 
-function cargarElementos(){
+function cargarElementos() {
   iconoPA = document.getElementById("iconoPA");
   actualizariconoPA();
   btnComprar.addEventListener("click", agregarCarrito);
-  
+
 }
 //array con productos en local
 const productosCestaLS = JSON.parse(localStorage.getItem("productos-cesta"));
 //verifica si hay para actualizar el array
-if(productosCestaLS){
+if (productosCestaLS) {
   productosCesta = productosCestaLS;
-}else{
+} else {
   productosCesta = [];
 }
 
 function agregarCarrito() {
-const precioFinal = checkIncluyeKit.checked && producto.priceWithKit
+  const precioFinal = checkIncluyeKit.checked && producto.priceWithKit
     ? producto.priceWithKit
     : producto.price;
 
@@ -303,10 +303,59 @@ const precioFinal = checkIncluyeKit.checked && producto.priceWithKit
   localStorage.setItem("productos-cesta", JSON.stringify(productosCesta));
 }
 
-function actualizariconoPA(){
-  if(productosCesta.length > 0){
+function actualizariconoPA() {
+  if (productosCesta.length > 0) {
     iconoPA.classList.remove("visually-hidden");
     iconoPA.textContent = productosCesta.length;
   }
 }
 
+
+
+
+// ---------- wishlist ----------
+
+//traer wishlist de local storage, si no existe trae arreglo vacío
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+
+let btnWishlistProduct = document.getElementById("btnWishlistProduct");
+const ID = producto.idProd;
+console.log(ID);
+
+// --- Función para agregar/quitar un curso de la wishlist ---
+function ponerQuitarWishlist(ID, button) {
+  // Si ya existe el producto en wishlist
+  if (wishlist.includes(ID)) {
+    wishlist = wishlist.filter(prodId => prodId !== ID); // lo quitamos
+    button.querySelector("i").classList.replace("bi-heart-fill", "bi-heart"); // cambia icono a vacío
+  } else {
+    wishlist.push(ID); // lo agregamos
+    button.querySelector("i").classList.replace("bi-heart", "bi-heart-fill"); // cambia icono a lleno
+  }//if-else
+  // Guardar cambios en localStorage
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}//fn t
+
+//ponerQuitarWishlist(ID, btnWishlistProduct);
+
+
+//-----Función para asignar orejitas a los botones wishlist-----
+function orejasWishlistButtons() {
+
+
+  if (wishlist.includes(ID)) {
+    btnWishlistProduct.querySelector("i").classList.replace("bi-heart", "bi-heart-fill");
+  }//if
+
+  // Evento click en cada botón
+  btnWishlistProduct.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();  // evita que se dispare redirección de la card
+    ponerQuitarWishlist(ID, btnWishlistProduct);
+  }); //oreja
+
+}//fn orejasWishlistButtons
+
+orejasWishlistButtons();
