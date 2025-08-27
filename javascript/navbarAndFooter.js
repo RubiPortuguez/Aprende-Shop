@@ -91,7 +91,10 @@ const footerAprendeShop =
     `<footer class="py-4 border-top"> 
 <div class="container">
         <div class="row">
-            <div class="col-md-3 mb-2"></div>
+                        <div class="col-md-3 mb-2">
+                <h2 class="navbar-brand fs-1 text-white">Aprende<span id="shop" class="fs-1">Shop</span></h2>
+
+            </div>
 
             <div class="col-md-3 mb-1">
                 <h2 id="titulo-istok-footter">Cursos</h2>
