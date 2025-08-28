@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +18,81 @@
 </head>
 
 <body>
+    <div class="container my-4">
+        <!-- <h1 class="text-center mb-4">Clases</h1> -->
+        <!-- Barra de navegación con filtros -->
+        <nav class=" navbarClases navbar-expand-lg navbar-filter rounded">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarFilter">
+                    <i class="bi bi-filter"></i> Filtros
+                </button>
 
-    <div class="container">
-    <h1>Clases</h1>
+                <div class="collapse navbar-collapse" id="navbarFilter">
+                    <ul class="navbar-nav w-100 d-flex justify-content-between">
+
+                        <li class="nav-item nav-filter-item active flex-fill text-center colorFiltro">
+                            <a class="nav-link" href="#" data-filter="all">
+                                <img src="./assets/iconos/artesania.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-house"></i> -->
+                                <span>Todo</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="Cerámica">
+                                <!-- <i class="bi bi-bucket"></i> -->
+                                <img src="./assets/iconos/ceramica.png" class="iconosClases" alt="Metal" width="18">
+                                <span>Cerámica</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="Pintura">
+                                <img src="./assets/iconos/pintar.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-brush"></i> -->
+                                <span>Pintura</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="Bordado">
+                                <img src="./assets/iconos/maquina.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-threads"></i> -->
+                                <span>Bordado</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="joyeria">
+                                <img src="./assets/iconos/joyeria.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-gem"></i> -->
+                                <span>Joyería</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="crochet">
+                                <img src="./assets/iconos/tejer.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-plus-circle"></i> -->
+                                <span>Crochet</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-filter-item flex-fill text-center">
+                            <a class="nav-link" href="#" data-filter="Repostería Creativa">
+                                <img src="./assets/iconos/panadero.png" class="iconosClases" alt="Metal" width="18">
+                                <!-- <i class="bi bi-plus-circle"></i> -->
+                                <span>Repostería Creativa</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-    
-        <!-- Contenedor de productos -->
+
+    <!-- Contenedor de productos -->
     <div class="container my-5">
         <div id="itemsContainer" class="row g-4">
             <!-- Aquí se van a insertar las cards con los cursos -->
         </div>
     </div>
 
-
-    
     <script src="./javascript/navbarAndFooter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -38,4 +100,5 @@
         crossorigin="anonymous"></script>
     <script type="module" src="./javascript/clasesCatalogo.js"></script>
 </body>
+
 </html>
