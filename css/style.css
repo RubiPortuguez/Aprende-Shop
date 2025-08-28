@@ -28,6 +28,8 @@
     /* Sombra de tarjetas */
     --fondo: #D8F4EE;
     --verde-mas-claro: #ECFFFB;
+    --morado-claro: #d4c5ff;
+
 }
 
 main {
@@ -914,3 +916,57 @@ font-family: var(--contenido);
 /* solucion al espacio blanco en mobile */
 html, body { overflow-x: hidden; }
 >>>>>>> EAHG.2
+
+
+/*Navbar de filtros*/
+
+img.iconosClases{
+    align-items: center;
+    margin-right: 3px;
+} 
+
+
+.navbarClases{
+    background-color: transparent!important;
+    color: black !important;
+}
+
+/* Hover específico para boton-nav */
+.navbar .navbar-nav #boton-nav:hover {
+    background-color: rgba(0, 177, 154, .10) !important;
+    color: var(--verde-oscuro, #005b4f) !important;
+    border-radius: 15px;
+}
+
+li.navbar.navbar-nav#boton-nav.active,
+li.navbar.navbar-nav#boton-nav.colorFiltro[aria-current="page"] {
+    background-color: var(--verde, #00b19a) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important; /* Sombra hacia dentro */
+    transform: translateY(1px); /* Efecto "presionado" */
+}
+
+
+.nav-filter-item {
+  transition: all 0.3s ease;
+  border-radius: 100px;
+  margin: 0 2px;
+  
+}
+
+.nav-filter-item:hover{
+background-color: var(--morado-claro);
+/* background-color: var(--fondo); */
+}
+
+
+
+/* Estilo cuando está activo */
+ .nav-filter-item.active {
+  background-color: var(--morado-claro)!important;
+} 
+
+
+
