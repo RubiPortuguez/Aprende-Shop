@@ -56,35 +56,44 @@ export function redirection(card, id) {
 
 /*********** Función para filtrar productos por categoría *******************/
 function filterProducts(category) {
-  // Limpiar el contenedor
   const container = document.getElementById("itemsContainer");
   container.innerHTML = "";
 
-  // Filtrar y mostrar productos
+  let productsToShow = [];
+  
   if (category === "all") {
-    products.forEach((product) => addItem(product));
+    productsToShow = products;
   } else {
-    const filteredProducts = products.filter((product) => product.category === category);
-
-    if (filteredProducts.length === 0) {
-      container.innerHTML = `
-                        <div class="col-12 text-center py-5">
-                            <h4>No se encontraron productos en esta categoría</h4>
-                            <p>Intenta con otra categoría o vuelve a "Todo" para ver todos los productos</p>
-                        </div>
-                    `;
-    } else {
-      filteredProducts.forEach((product) => addItem(product));
-    }
+    productsToShow = products.filter(product => product.category === category);
   }
+
+  if (productsToShow.length === 0) {
+    container.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <h4>No se encontraron productos en esta categoría</h4>
+      </div>
+    `;
+  } else {
+    productsToShow.forEach(product => addItem(product));
+  }
+
+  // Usar productsToShow en lugar de products
   const cards = document.querySelectorAll(".card-product");
-  cards.forEach((card, index) => redirection(card, products[index].idProd));
+  cards.forEach((card, index) => {
+    if (productsToShow[index]) {
+      redirection(card, productsToShow[index].idProd);
+    }
+  });
+  
   orejasWishlistButtons();
 }
 
 // Inicializar la aplicación
 document.addEventListener("DOMContentLoaded", function () {
   // Mostrar todos los productos al cargar la página
+    if (window.location.pathname.includes('perfil.html')) {
+    return;
+  }
   filterProducts("all");
 
   // Agregar event listeners a los filtros

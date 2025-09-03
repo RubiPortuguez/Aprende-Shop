@@ -522,66 +522,95 @@ import { addItem } from "./clasesCatalogo.js";
 import { redirection } from "./clasesCatalogo.js";
 
 
-
-//traer wishlist de local storage, si no existe trae arreglo vacío:
+//traer wishlist de local storage y normalizar IDs a números
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-//seleccionar contenedor donde se agregan los cursos:
+wishlist = wishlist.map(id => Number(id));
+
 const itemsContainer = document.getElementById("itemsContainer");
 
-
-//mostrar cursos 
+//mostrar cursos - CON DEPURACIÓN
 function mostrarCursosWishlist() {
     itemsContainer.innerHTML = "";
+    console.log("Mostrando wishlist. IDs:", wishlist);
+    
     if (wishlist.length === 0) {
         itemsContainer.innerHTML = `<p class="text-muted">No tienes cursos en tu lista de deseos.</p>`;
         return;
-    }//if no cursos
+    }
 
     wishlist.forEach(id => {
         const product = products.find(p => p.idProd === id);
-        if (product) addItem(product);
+        if (product) {
+            console.log("Agregando producto a la vista:", product.idProd, product.name);
+            addItem(product);
+        } else {
+            console.warn("Producto no encontrado en data.js para ID:", id);
+        }
     });
-}//fn mostrarCursosWishlist
+}
 
-
-//quitar curso 
 function quitarCursoWishlist(id) {
-    wishlist = wishlist.filter(prodId => prodId !== id); // lo quitamos
-    // Guardar cambios en localStorage
+    wishlist = wishlist.filter(prodId => prodId !== id);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-}//fn quitarCursoWishlist
-
+    console.log("Producto removido. Nueva wishlist:", wishlist);
+}
 
 function renderWishlist() {
     mostrarCursosWishlist();
 
-    //agregar redireción a detalle de producto
     const cards = document.querySelectorAll('.card-product');
-    cards.forEach((card, index) => redirection(card, wishlist[index]));
+    cards.forEach(card => {
+        const btn = card.querySelector('.btn-wishlist');
+        if (btn) {
+            const id = Number(btn.dataset.id);
+            redirection(card, id);
+        }
+    });
 
-    //poner corazón lleno y orejas a botones
+   
     const btnsWishlist = document.querySelectorAll('.btn-wishlist');
+    console.log("Botones encontrados:", btnsWishlist.length);
 
-    //corazon
-    btnsWishlist.forEach(btn =>
-        btn.querySelector("i").classList.replace("bi-heart", "bi-heart-fill")
-    );
-
-    //oreja
     btnsWishlist.forEach(btn => {
-        const id = Number(btn.dataset.id); //leer data-id de cada botón<3
-        btn.addEventListener('click', (event) => {
+        const id = Number(btn.dataset.id);
+        const icon = btn.querySelector("i");
+        
+        // Estado visual
+        if (wishlist.includes(id)) {
+            icon.classList.replace("bi-heart", "bi-heart-fill");
+        } else {
+            icon.classList.replace("bi-heart-fill", "bi-heart");
+        }
+
+
+        btn.onclick = (event) => {
             event.preventDefault();
             event.stopPropagation();
             quitarCursoWishlist(id);
-            renderWishlist(); //si se vuelve a dar click al botón muestra cursos, redirecciona, pone corazones y orejas.
-        }); //oreja
-    });//foreach
+            renderWishlist();
+        };
+    });
+}
 
-}//fn renderWishlist
+// Verificar integridad de la wishlist al inicio
+function verificarWishlist() {
+    const wishlistFiltrada = wishlist.filter(id => 
+        products.some(p => p.idProd === id)
+    );
+    
+    if (wishlistFiltrada.length !== wishlist.length) {
+        console.warn("Limpieando IDs inválidos de la wishlist");
+        wishlist = wishlistFiltrada;
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }
+}
 
-
-renderWishlist();
+// En perfil.js, verifica que estás en la página correcta
+if (window.location.pathname.includes('perfil.html')) {
+    // Solo ejecutar la lógica de wishlist en la página de perfil
+    verificarWishlist();
+    renderWishlist();
+}
 
 //Faltan agregar algunos detalles:
 //listo 1. que el botón de corazón esté relleno en perfil porque ya están en wishlist
