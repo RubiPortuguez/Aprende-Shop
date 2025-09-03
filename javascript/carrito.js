@@ -1,4 +1,8 @@
 const productosPendientes = document.getElementById("productosPendientes");
+const btnPagar = document.getElementById("btnPagar");
+const paso1 = document.getElementById("1");
+const paso2 = document.getElementById("2");
+const paso3 = document.getElementById("3");
 
 function mostrarCarrito() {
     productosPendientes.innerHTML = "";
@@ -55,7 +59,7 @@ function eliminarProducto(index) {
 }
 
 function actualizariconoPA(){
-    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta")) || [];
   if(productosCesta.length > 0){
     iconoPA.classList.remove("visually-hidden");
     iconoPA.textContent = productosCesta.length;
@@ -65,7 +69,7 @@ function actualizariconoPA(){
 }
 
 function preciosCarrito(){
-    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta"));
+    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta")) || [];
     const subtotalCarrito = document.getElementById("subtotalCarrito");
     const descuentosCarrito = document.getElementById("descuentosCarrito");
     let totalCarrito = document.getElementById("totalCarrito");
@@ -80,4 +84,64 @@ function preciosCarrito(){
     if(totalCarrito) totalCarrito.textContent = `$${(subtotal - descuentos).toFixed(2)}`;
 }
 
+function metodosPago(){
+    productosPendientes.innerHTML = "";
+    const productosCesta = JSON.parse(localStorage.getItem("productos-cesta")) || [];
+
+    if (productosCesta.length === 0) {
+        Swal.fire({
+            icon: "warning",
+            title: "Carrito vacío",
+            text: "No hay productos en el carrito para pagar."
+        });
+        return;
+    }
+    btnPagar.style.display = "none";
+    const opciones = ["Opción 1","Opción 2","Opción3"];
+
+    opciones.forEach(op =>{
+        const div = document.createElement("div");
+        div.classList.add("col","mt-4"); 
+
+        div.innerHTML = `
+            <div class="card ">
+                <div class="card-body text-center">
+                    <h5 class="card-title">${op}</h5>
+                </div>
+                <div class="d-grid gap-2 col-8 mx-auto mb-4">
+                    <button type="button" class="btn btn-outline-success btnTransaccion">
+                        Realizar pago
+                    </button>
+                </div>
+            </div>
+        `;
+        productosPendientes.appendChild(div);
+    });
+    const btnTransaccion = document.querySelectorAll(".btnTransaccion");
+    btnTransaccion.forEach(btn => {
+        btn.addEventListener("click", finalizarCompra);
+    });
+    
+    paso2.classList.remove("btn-inactivo");
+    paso2.classList.add("btn-activo");
+}
+
+function finalizarCompra(){
+    productosPendientes.innerHTML = "";
+    
+    Swal.fire({
+    title: "Gracias por su compra",
+    icon: "success",
+    draggable: true
+    });
+    paso3.classList.remove("btn-inactivo");
+    paso3.classList.add("btn-activo");
+
+    localStorage.removeItem("productos-cesta");
+    actualizariconoPA();
+    preciosCarrito();
+}
+
 document.addEventListener("DOMContentLoaded", mostrarCarrito);
+
+btnPagar.addEventListener("click",metodosPago);

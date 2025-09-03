@@ -27,11 +27,9 @@
 
 <body>
 
-
     <br>
-    <h1>Mi carrito</h1>
+    <h2 class="ms-4">Mi carrito</h2>
     <br>
-
 
     <div class="container">
 
@@ -43,14 +41,14 @@
                         <div class="progress-bar" style="width: 0%"></div>
                     </div>
                     <button type="button"
-                        class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
-                        style="width: 2rem; height:2rem;">1</button>
+                        class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-activo rounded-pill"
+                        style="width: 2rem; height:2rem;" id="1">1</button>
                     <button type="button"
-                        class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill"
-                        style="width: 2rem; height:2rem;">2</button>
+                        class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-inactivo rounded-pill"
+                        style="width: 2rem; height:2rem;" id="2">2</button>
                     <button type="button"
-                        class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
-                        style="width: 2rem; height:2rem;">3</button>
+                        class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-inactivo rounded-pill"
+                        style="width: 2rem; height:2rem;" id="3">3</button>
                 </div>
             </div>
         </div>
@@ -67,7 +65,7 @@
             </div>
 
             <!-- Lista -->
-            <div class="col-md-3 mb-5 mt-5">
+            <div class="col-md-3 mb-5 mt-5" id="resumenCompra">
                 <aside>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -92,7 +90,7 @@
                         <span id="totalCarrito">$0.00</span>
                     </div>
                     <div class="d-grid gap-2 col-10 mx-auto mt-4">
-                        <button type="button" class="btn btn-outline-success">Pagar</button>
+                        <button type="button" class="btn btn-outline-success" id="btnPagar">Pagar</button>
                     </div>
 
                 </aside>

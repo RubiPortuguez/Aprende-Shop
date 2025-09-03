@@ -978,3 +978,27 @@ li.navbar.navbar-nav#boton-nav.colorFiltro[aria-current="page"] {
 .nav-filter-item.active {
     background-color: var(--morado-claro) !important;
 }
+
+/* ESTILOS CARRITO */
+.btn-activo{
+    background-color: var(--morado) !important;
+}
+.btn-inactivo{
+    background-color: var(--morado-claro) !important;
+}
+#btnPagar, .btnTransaccion{
+    border-color: var(--verde-fosfo) !important;
+    color: var(--verde-fosfo) !important;
+}
+#btnPagar:hover, .btnTransaccion:hover{
+    background-color: var(--verde-fosfo) !important;
+    color: var(--verde-mas-claro) !important;
+}
+.btnEliminar{
+    border-color: var(--guinda) !important;
+    color: var(--guinda) !important;
+}
+.btnEliminar:hover{
+    background-color: var(--guinda) !important;
+    color: var(--verde-mas-claro) !important;
+}
