@@ -8,9 +8,8 @@ export function addItem(product) {
   const card = `
 <div class="col-sm-6 col-md-4 col-lg-3">
     <div class="card card-product h-100 shadow-sm clases">
-        <img src="${product.mainImage}" class="card-img-top" alt="${
-    product.alt
-  }">
+        <img src="${product.mainImage}" class="card-img-top" alt="${product.alt
+    }">
         
         <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 start-0 m-2 btn-wishlist"
         data-id="${product.idProd}"> <i class="bi bi-heart"></i> </button>
@@ -18,9 +17,8 @@ export function addItem(product) {
             <h5 class="card-title">${product.name}</h5>
             <p class="card-text">${product.shortDescription}</p>
             <div class="mt-3 pt-2">
-                ${
-                  product.includesKit
-                    ? `<div class="d-flex justify-content-between align-items-start mb-2">
+                ${product.includesKit
+      ? `<div class="d-flex justify-content-between align-items-start mb-2">
                         <div class="d-flex flex-column">
                             <span class="h6 text-morado fw-bold">$ ${product.priceWithKit} MXN</span>
                             <small class="text-verde">Incluye kit de materiales</small>
@@ -30,10 +28,10 @@ export function addItem(product) {
                     <div class="text-start">
                         <small class="text-muted">$ ${product.price} MXN sin kit</small>
                     </div>`
-                    : `<div class="d-flex justify-content-between align-items-center">
+      : `<div class="d-flex justify-content-between align-items-center">
                         <span class="h5 text-verde fw-bold">$ ${product.price} MXN</span>
                     </div>`
-                }
+    }
             </div>
         </div>
     </div>
@@ -80,7 +78,7 @@ function filterProducts(category) {
     }
   }
   const cards = document.querySelectorAll(".card-product");
-cards.forEach((card, index) => redirection(card, products[index].idProd));
+  cards.forEach((card, index) => redirection(card, products[index].idProd));
   orejasWishlistButtons();
 }
 

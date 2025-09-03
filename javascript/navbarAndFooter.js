@@ -47,7 +47,7 @@ const navBarLoggedIn = `
                             <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item desktop-menu d-none d-md-block" href="${hrefPerfil}">Mi perfil</a></li>
                             <li><a class="dropdown-item" href="${hrefConfig}">Configuración</a></li>
-                            <li><a class="dropdown-item" href="${hrefWishlist}">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="${hrefWishlist}">Lista de deseos</a></li>
                             <li><a class="dropdown-item" id="cerrar-sesion" href="./registro.html">Cerrar sesión</a></li>
                             </ul>
                         </li>

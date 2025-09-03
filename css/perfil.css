@@ -111,8 +111,10 @@
 
     /* Si el nombre estaba en verde, unifícalo también */
     .perfil-card #userName {
-        color: var(--gris-900, #111827) !important;
+        font-family: var(--contenido);
+        color: var(--guinda);
         font-weight: 600;
+        font-size: 1.5rem;
     }
 
     /* La descripción tenía .text-muted: sobreescríbela para unificar */

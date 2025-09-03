@@ -20,7 +20,6 @@ console.log(id);
 
 // JSON del producto
 const producto = products.find((prod) => prod.idProd === id);
-console.log(producto);
 
 if (producto) {
   nombreProducto.textContent = producto.name;
@@ -87,10 +86,7 @@ if (producto) {
 }
 
 /***** INSERTA EL CARRUSEL DE COMENTARIOS *****/
-let comentarios = [];
-producto.reviews.forEach((review) => {
-  comentarios.push(review);
-});
+let comentarios = producto?.reviews ? [...producto.reviews] : [];
 
 function agruparComentarios(comentarios, tamanoGrupo) {
   const grupos = [];
@@ -101,6 +97,16 @@ function agruparComentarios(comentarios, tamanoGrupo) {
 }
 
 function crearCarruselComentarios() {
+  // Si no hay comentarios, no crear el carrusel
+  if (!comentarios || comentarios.length === 0) {
+    const carruselContainer = document.getElementById("commentsCarousel");
+    carruselContainer.innerHTML = `
+      <div class="text-center p-4">
+        <p class="text-muted">Todavía no hay reseñas para este producto 📝</p>
+      </div>`;
+    return;
+  }
+
   let tamanoGrupo = 3;
   const carruselInner = document.getElementById("carousel-inner");
   const gruposComentarios = agruparComentarios(comentarios, tamanoGrupo);
@@ -109,47 +115,36 @@ function crearCarruselComentarios() {
     const item = document.createElement("div");
     item.className = `carousel-item ${index === 0 ? "active" : ""}`;
 
-    let tarjetasHTML = '<div class="row justify-content-center">';
-
+    let tarjetasHTML = '<div class="d-flex justify-content-center">';
     grupo.forEach((comentario) => {
       tarjetasHTML += `
-                        <div class="col-md-4 mb-4 mb-md-0">
-                            <div class="card comment-card h-100 shadow-sm">
-                                <div class="card-body text-center p-4">
-                                    <img src="${comentario.user.photo}" class="avatar-img rounded-circle mb-3" alt="">
-                                    <h3 class="card-title">${comentario.user.name
-        }</h3>
-                                    <p class="text-muted mb-2"></p>
-                                    <div class="star-rating mb-3">
-                                    ${starsRandom(comentario.rating)}
-                                    </div>
-                                    <p class="card-text">"${comentario.comment
-        }"</p>
-                                    <small class="text-muted">${comentario.createdAt
-        }</small>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+        <div class="card mx-2" style="min-width: 250px; max-width: 300px;">
+          <div class="card-body">
+            <h6 class="card-title">${comentario.user.name}</h6>
+            <div>${starsRandom(comentario.rating)}</div>
+            <p class="card-text">"${comentario.comment}"</p>
+            <small class="text-muted">${comentario.createdAt}</small>
+          </div>
+        </div>
+      `;
     });
-
     tarjetasHTML += "</div>";
+
     item.innerHTML = tarjetasHTML;
     carruselInner.appendChild(item);
   });
 
   // Inicializar carrusel con autoplay
-  const myCarousel = new bootstrap.Carousel(
-    document.getElementById("commentsCarousel"),
-    {
-      interval: 5000, // 5 segundos entre transiciones
-      wrap: true, // Permite ciclo infinito
-      touch: true, // Habilita desplazamiento táctil
-    }
-  );
+  new bootstrap.Carousel(document.getElementById("commentsCarousel"), {
+    interval: 5000,
+    wrap: true,
+    touch: true,
+  });
 }
+
 // Iniciar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", crearCarruselComentarios);
+
 
 /*****************************/
 

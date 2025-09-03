@@ -1,3 +1,5 @@
+import { products } from "./data.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- Referencias mínimas necesarias ---
   const form = document.getElementById("product-form");
@@ -134,9 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    const idProd = Math.max(0, ...products.map(p => p.idProd || 0)) + 1;
+
+
     // Crear objeto curso
     const data = {
-      id: cursos.length > 0 ? Math.max(...cursos.map(c => c.id)) + 1 : 1,
+      idProd: idProd,
       name: document.getElementById("courseName").value,
       shortDescription: shortDescription.value,
       fullDescription: document.getElementById("fullDescription").value,

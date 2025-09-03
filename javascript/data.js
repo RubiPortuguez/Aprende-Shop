@@ -440,10 +440,21 @@ export const products = [
   }
 ];
 
-// Añadir al catálogo ---------------------------------------------- Pendiente 
-if (localStorage.getItem('curso')) {
-    localStorage.getItem('curso');
-    const nuevoCurso = JSON.parse(localStorage.getItem('curso'));
-    console.log(nuevoCurso);
-    products.push(nuevoCurso);
-} 
+// Añadir cursos del usuario al catálogo
+try {
+    const cursosGuardados = localStorage.getItem('cursos');
+    if (cursosGuardados) {
+        const cursos = JSON.parse(cursosGuardados);
+        console.log('Cursos encontrados:', cursos);
+        
+        // Si es un array de cursos
+        if (Array.isArray(cursos)) {
+            products.push(...cursos); // Agregar todos los cursos
+        } else {
+            // Si es un solo curso
+            products.push(cursos);
+        }
+    }
+} catch (error) {
+    console.warn('Error al cargar cursos del localStorage:', error);
+}

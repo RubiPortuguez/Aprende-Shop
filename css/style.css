@@ -68,7 +68,9 @@ h1#titulo-nosotras {
 }
 
 /* Títulos con font istok */
-h2#titulo-istok {
+h2#titulo-istok,
+h3#titulo-istok,
+#titulo-istok {
     font-family: var(--contenido);
     font-weight: bold;
     font-size: 1.5rem;
@@ -426,8 +428,10 @@ li.navbar.navbar-nav#boton-nav[aria-current="page"] {
     color: white !important;
     border: none !important;
     border-radius: 10px !important;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important; /* Sombra hacia dentro */
-    transform: translateY(1px); /* Efecto "presionado" */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important;
+    /* Sombra hacia dentro */
+    transform: translateY(1px);
+    /* Efecto "presionado" */
 }
 
 /* Footer */
@@ -531,6 +535,7 @@ button#corazon2:hover {
     position: relative;
     height: 25rem;
     width: 100%;
+    overflow: hidden;
 }
 
 .imagen-producto {
@@ -590,8 +595,8 @@ button#corazon2:hover {
     /* margin-bottom: 1rem; */
 }
 
-.btnComprar{
-font-family: var(--contenido);
+.btnComprar {
+    font-family: var(--contenido);
     background-color: var(--primary-color);
     /* Color de fondo */
     color: white;
@@ -648,9 +653,12 @@ font-family: var(--contenido);
 
 /* ===== ESTILOS ESPECÍFICOS PARA FORMULARIO PRODUCTO ===== */
 .formulario-producto {
-  max-width: 800px;   /* ancho máximo en desktop */
-  margin: 0 auto;     /* centrado */
-  padding: 0 15px;    /* espacio en móviles */
+    max-width: 800px;
+    /* ancho máximo en desktop */
+    margin: 0 auto;
+    /* centrado */
+    padding: 0 15px;
+    /* espacio en móviles */
 }
 
 .formulario-producto .card-header {
@@ -800,7 +808,7 @@ input.form-control:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 177, 154, 0.25);
 
-} 
+}
 
 
 select.form-select:focus {
@@ -904,30 +912,31 @@ p#subtitulo-registro {
 /* ESTILOS TOAST alerta chiquita de agregado */
 
 #liveToast {
-  background-color: hsl(261, 57%, 86%) !important;
+    background-color: hsl(261, 57%, 86%) !important;
 }
 
-<<<<<<< HEAD
 /*FORMULARIO INICIO DE SESIÓN*/
-.contenido{
-font-family: var(--contenido);
+.contenido {
+    font-family: var(--contenido);
 }
-=======
+
 /* solucion al espacio blanco en mobile */
-html, body { overflow-x: hidden; }
->>>>>>> EAHG.2
+html,
+body {
+    overflow-x: hidden;
+}
 
 
 /*Navbar de filtros*/
 
-img.iconosClases{
+img.iconosClases {
     align-items: center;
     margin-right: 3px;
-} 
+}
 
 
-.navbarClases{
-    background-color: transparent!important;
+.navbarClases {
+    background-color: transparent !important;
     color: black !important;
 }
 
@@ -944,29 +953,28 @@ li.navbar.navbar-nav#boton-nav.colorFiltro[aria-current="page"] {
     color: white !important;
     border: none !important;
     border-radius: 10px !important;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important; /* Sombra hacia dentro */
-    transform: translateY(1px); /* Efecto "presionado" */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1) !important;
+    /* Sombra hacia dentro */
+    transform: translateY(1px);
+    /* Efecto "presionado" */
 }
 
 
 .nav-filter-item {
-  transition: all 0.3s ease;
-  border-radius: 100px;
-  margin: 0 2px;
-  
+    transition: all 0.3s ease;
+    border-radius: 100px;
+    margin: 0 2px;
+
 }
 
-.nav-filter-item:hover{
-background-color: var(--morado-claro);
-/* background-color: var(--fondo); */
+.nav-filter-item:hover {
+    background-color: var(--morado-claro);
+    /* background-color: var(--fondo); */
 }
 
 
 
 /* Estilo cuando está activo */
- .nav-filter-item.active {
-  background-color: var(--morado-claro)!important;
-} 
-
-
-
+.nav-filter-item.active {
+    background-color: var(--morado-claro) !important;
+}
