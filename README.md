@@ -14,28 +14,24 @@ Desarrollar una aplicación web funcional con enfoque **Full Stack**, aplicando 
 - **Frontend:** HTML5, CSS3, JavaScript  
 - **Diseño:** Figma + Principios de accesibilidad  
 - **Control de versiones:** Git & GitHub  
-- **Metodología:** Scrum + Trello para gestión de tareas  
+- **Metodología:** Scrum + Trello para gestión de tareas
+- **Backend:** Java y  SpringBoot
+- **Base de datos:** MySQL
+- **Deploy:** AWS
 
 ---
 
-## 🧩 Funcionalidades actuales
+## 🧩 Funcionalidades
 - Página informativa sobre **Aprende Shop** y su equipo.  
-- Sección de productos destacados.  
-- Base para futura integración con:
-  - Carrito de compras.
-  - Sistema de login y registro.
-  - Gestión de contenido desde backend.
+- Catalogo de productos destacados.
+- Foro de discusión. 
+- Carrito de compras.
+- Sistema de login y registro.
+- Gestión de contenido desde backend.
 
 ---
 
-## 🌱 Estado del proyecto
-Proyecto en desarrollo como parte del curso **Full Stack Java**.  
-Se irá ampliando progresivamente con funcionalidades dinámicas e integraciones a backend (Amazon, API’s, etc.).
-
----
-
-## 🤝 Equipo de desarrollo
-- Airam Yutzil Alvarado Romero  
+## Equipo de desarrollo
 - Yumari Díaz Herrera  
 - Yutnu Hernández Arteaga  
 - Erika Ahide Hernández
@@ -46,12 +42,7 @@ Se irá ampliando progresivamente con funcionalidades dinámicas e integraciones
 
 ---
 
-## 📂 Estructura del repositorio
-*(En construcción)*
-
----
-
-## ✨ Vista previa
+##  Vista previa
 [🔗 Ver en GitHub Pages](https://rubiportuguez.github.io/Aprende-Shop/nosotras.html)
 
 ---
